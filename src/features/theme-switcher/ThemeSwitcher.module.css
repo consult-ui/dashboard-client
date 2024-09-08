@@ -1,0 +1,8 @@
+.button {
+  padding: 1em 3em;
+  border-radius: 30px;
+  background: var(--white);
+  color: var(--dark);
+  border: 1px solid var(--white);
+  transition: 0.15s;
+}

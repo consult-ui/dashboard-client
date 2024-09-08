@@ -1,0 +1,76 @@
+.form {
+  width: 592px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+.form > h4 {
+  font-weight: 800;
+}
+
+/*inputWrapper*/
+.inputWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.inputWrapper > div {
+  display: flex;
+  gap: 6px;
+}
+.inputWrapper input {
+  flex: 1;
+}
+
+/*inputs*/
+.form label {
+  margin-left: 1.25em;
+  font-weight: 600;
+}
+.form input,
+.form button,
+.btnSwitcher {
+  height: 50px;
+  padding: 0 1.25em;
+
+  border-radius: 50px;
+  border: 1px solid var(--border-color);
+  background: var(--gray-dark);
+  font-weight: 600;
+  transition: 0.15s;
+}
+.form input::placeholder {
+  color: var(--gray-light);
+}
+
+/*btnSwitcher*/
+.btnSwitcher {
+  padding: 0;
+  display: flex;
+  flex: 1;
+}
+.btnSwitcher > button {
+  height: 48px;
+  flex: 1;
+  border-color: transparent;
+  transition: 0.15s;
+}
+.btnSwitcher > button:disabled {
+  border-color: var(--primary);
+}
+
+/*submit*/
+.form > button[type='submit'] {
+  margin-top: 1em;
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.form > button[type='submit']:hover {
+  background: var(--dark);
+  border-color: var(--white);
+}
+.form > button[type='submit']:disabled {
+  border-color: var(--gray-dark);
+  background: var(--gray-dark);
+}

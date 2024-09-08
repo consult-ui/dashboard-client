@@ -2,6 +2,8 @@
 
 * {
   font-family: 'Nunito Sans', system-ui;
+  outline-color: var(--primary);
+  box-sizing: border-box;
 }
 
 :root {
@@ -35,6 +37,10 @@ body {
   color: var(--white);
   background: var(--dark);
 }
+#root {
+  width: inherit;
+  height: inherit;
+}
 
 p,
 a,
@@ -43,6 +49,7 @@ input,
 li,
 button {
   font-size: 1em;
+  color: inherit;
 }
 h1 {
   font-size: 5em;
@@ -61,6 +68,14 @@ h5 {
 }
 h6 {
   font-size: 1.25em;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }
 
 button,
