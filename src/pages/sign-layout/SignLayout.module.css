@@ -1,0 +1,28 @@
+.wrapper {
+  height: inherit;
+  display: flex;
+}
+
+.wrapper > section:first-child {
+  height: inherit;
+  padding: 5em 5.75%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: var(--gray-dark);
+}
+.wrapper > section > small {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray-light);
+}
+
+.bg {
+  flex: 1;
+  background-image: url('/src/shared/assets/images/bg-auth.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right center;
+}

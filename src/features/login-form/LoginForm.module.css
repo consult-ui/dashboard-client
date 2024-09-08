@@ -2,7 +2,7 @@
   width: 592px;
   display: flex;
   flex-direction: column;
-  gap: 1.5em;
+  gap: 1.25em;
 }
 .form > h4 {
   font-weight: 800;
@@ -11,6 +11,7 @@
 /*inputWrapper*/
 .inputWrapper {
   width: 100%;
+  margin-top: 0.25em;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -34,9 +35,6 @@
   font-weight: 600;
   transition: 0.15s;
 }
-.form input:focus {
-  background: var(--dark);
-}
 .form input::placeholder {
   color: var(--gray-light);
 }
@@ -44,14 +42,29 @@
 /*submit*/
 .form > button[type='submit'] {
   margin-top: 0.5em;
+  color: var(--white-static);
   background: var(--primary);
   border-color: var(--primary);
 }
 .form > button[type='submit']:hover {
-  background: var(--dark);
+  background: var(--gray-dark);
   border-color: var(--white);
 }
 .form > button[type='submit']:disabled {
-  border-color: var(--gray-dark);
-  background: var(--gray-dark);
+  border-color: var(--dark);
+  background: var(--dark);
+}
+
+/*updatePassword*/
+.updatePassword {
+  display: flex;
+  justify-content: flex-end;
+}
+.updatePassword > a {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--primary);
+}
+.updatePassword > a:hover {
+  text-decoration: underline;
 }

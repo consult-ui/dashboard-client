@@ -1,8 +1,13 @@
 import { useAppSelector } from '@/app/store/store.ts';
+import { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 
 const ToastsContainer = () => {
   const theme = useAppSelector((store) => store.layout.theme);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   return (
     <ToastContainer
