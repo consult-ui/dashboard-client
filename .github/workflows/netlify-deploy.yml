@@ -2,8 +2,9 @@ name: Deploy to Netlify
 
 on:
   push:
-    branches:
-      - main # Вы можете поменять на ту ветку, которую хотите использовать для деплоя
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   deploy:
