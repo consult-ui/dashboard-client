@@ -1,0 +1,17 @@
+.wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5em;
+}
+
+.wrapper > button {
+  padding: 1em 3em;
+  border-radius: 30px;
+  background: var(--white);
+  color: var(--dark);
+  border: 1px solid var(--white);
+  transition: 0.15s;
+}

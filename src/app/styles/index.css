@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+* {
+  font-family: 'Nunito Sans', system-ui;
+}
+
+:root {
+  --primary: #19ad72;
+  --white: #ffffff;
+  --gray-light: #c2c2c2;
+  --border-color: #4c4c4c;
+  --gray-dark: #2e2e2e;
+  --gray: #404040;
+  --dark: #212121;
+}
+[data-theme='light'] {
+  --primary: #19ad72;
+  --white: #335545;
+  --gray-light: #808080;
+  --border-color: #efefef;
+  --gray-dark: #f7f7f7;
+  --gray: #fff;
+  --dark: #ffffff;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  color: var(--white);
+  background: var(--dark);
+}
+
+p,
+a,
+select,
+input,
+li,
+button {
+  font-size: 1em;
+}
+h1 {
+  font-size: 5em;
+}
+h2 {
+  font-size: 3.5em;
+}
+h3 {
+  font-size: 2.25em;
+}
+h4 {
+  font-size: 1.8em;
+}
+h5 {
+  font-size: 1.5em;
+}
+h6 {
+  font-size: 1.25em;
+}
+
+button,
+a,
+select {
+  cursor: pointer;
+}
+button:disabled,
+select:disabled,
+input:disabled {
+  cursor: no-drop;
+}
