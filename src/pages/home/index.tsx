@@ -1,10 +1,11 @@
 import styles from './HomePage.module.css';
-import ThemeSwitcher from '@/features/theme-switcher';
+import Sidebar from '@/widgets/sidebar';
 
 const HomePage = () => {
   return (
     <div className={styles.wrapper}>
-      <ThemeSwitcher />
+      <Sidebar />
+      <main className={styles.main}></main>
     </div>
   );
 };

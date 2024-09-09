@@ -1,0 +1,36 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wrapper > button {
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.15s;
+}
+.wrapper > button:disabled,
+.wrapper > button:disabled:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.wrapper > button:hover {
+  border-color: var(--white);
+}
+.wrapper > button > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.quest {
+  margin: 0 -5px -3px 0;
+  padding: 5px;
+}

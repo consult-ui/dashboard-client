@@ -1,0 +1,13 @@
+.tooltip {
+  position: fixed;
+  max-width: 300px;
+
+  background-color: var(--dark);
+  border: 1px solid var(--gray-dark);
+  color: var(--white);
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.2;
+  z-index: 1000;
+}
