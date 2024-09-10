@@ -1,7 +1,10 @@
 name: Playwright Tests
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   test:
@@ -12,20 +15,44 @@ jobs:
         node-version: [20]
     steps:
       - uses: actions/checkout@v4
+
       - uses: pnpm/action-setup@v4
         with:
           version: 9.6.0
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
+
+      # Кэширование PNPM зависимостей
+      - name: Cache PNPM
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: pnpm-${{ matrix.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-${{ matrix.node-version }}-
+
+      # Кэширование Playwright браузеров
+      - name: Cache Playwright Browsers
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ matrix.node-version }}-${{ hashFiles('package-lock.json', 'pnpm-lock.yaml') }}
+          restore-keys: |
+            playwright-${{ matrix.node-version }}-
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
+
       - name: Run Playwright tests
         run: pnpm run e2e
+
       - uses: actions/upload-artifact@v3
         if: always()
         with:
