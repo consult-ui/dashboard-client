@@ -3,4 +3,5 @@ export enum ELinks {
   SIGN_IN = '/sign-in',
   PASSWORD_RECOVERY = '/password-recovery',
   PASSWORD_RESET = '/password-reset',
+  COMPANY = '/company',
 }

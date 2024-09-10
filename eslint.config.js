@@ -42,6 +42,7 @@ export default [
           endOfLine: 'auto',
         },
       ],
+      'react/display-name': 'off',
     },
   },
 ];

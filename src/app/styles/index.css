@@ -9,10 +9,12 @@
 :root {
   /*no changed vars*/
   --white: #ffffff;
+  --primary-hover: #454fda;
+  --transition: all 0.25s ease-in-out;
   /*changed vars*/
   --primary: #5661f6;
   --white-static: #ffffff;
-  --gray-light: #c2c2c2;
+  --gray-light: #808080;
   --border-color: #4c4c4c;
   --gray-dark: #2e2e2e;
   --gray: #404040;
@@ -21,7 +23,7 @@
 [data-theme='light'] {
   --primary: #5661f6;
   --white: #383b59;
-  --gray-light: #808080;
+  --gray-light: #F7F7F7;
   --border-color: #e9e9e9;
   --gray-dark: #f7f7f7;
   --gray: #fff;

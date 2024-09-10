@@ -36,6 +36,14 @@ const Router = () => {
           </SignLayout>
         }
       />
+      <Route
+        path={ELinks.COMPANY}
+        element={
+          <SignLayout>
+            <PasswordReset />
+          </SignLayout>
+        }
+      />
     </Routes>
   );
 };
