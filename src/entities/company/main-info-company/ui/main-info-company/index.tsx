@@ -14,7 +14,14 @@ export const MainInfoCompany = () => {
       <header className={styles.header}>
         <span className={styles.subtitle}>Основная информация о компании</span>
         <div className={styles.actions}>
-          {!replace && (
+          {replace ? (
+            <>
+              <Button onClick={toggleReplace} color={'error'}>
+                Отменить
+              </Button>
+              <Button color={'primary'}>Сохранить</Button>
+            </>
+          ) : (
             <Button color="dark" onClick={toggleReplace}>
               <div className={styles.editContainer}>
                 <EditIcon />
@@ -22,18 +29,9 @@ export const MainInfoCompany = () => {
               </div>
             </Button>
           )}
-          {replace && (
-            <>
-              <Button onClick={toggleReplace} color={'error'}>
-                Отменить
-              </Button>
-              <Button color={'primary'}>Сохранить</Button>
-            </>
-          )}
         </div>
       </header>
-      {!replace && <InfoItems />}
-      {replace && <MainInfoForm />}
+      {replace ? <MainInfoForm /> : <InfoItems />}
     </div>
   );
 };

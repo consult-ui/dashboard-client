@@ -1,5 +1,4 @@
 import styles from './Input.module.css';
-import classNames from 'classnames';
 
 interface IProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   label?: string;
@@ -16,7 +15,7 @@ export const Input = (props: IProps) => {
         <span>{label}</span>
         <input
           disabled={isLoading || disabled}
-          className={classNames(styles.input, rest.className, styles[sizes])}
+          className={`${styles.input} ${rest.className} ${styles[sizes]}`}
           {...rest}
         />
       </div>
@@ -24,6 +23,10 @@ export const Input = (props: IProps) => {
   }
 
   return (
-    <input disabled={isLoading || disabled} className={classNames(styles.input, rest.className, isLoading)} {...rest} />
+    <input
+      disabled={isLoading || disabled}
+      className={`${styles.input} ${rest.className} ${styles[sizes]}`}
+      {...rest}
+    />
   );
 };

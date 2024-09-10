@@ -1,5 +1,4 @@
 import styles from './Card.module.css';
-import classNames from 'classnames';
 
 interface IProps {
   children: React.ReactNode;
@@ -7,5 +6,5 @@ interface IProps {
 }
 
 export const Card = ({ children, className }: IProps) => {
-  return <div className={classNames(styles.card, className)}>{children}</div>;
+  return <div className={`${styles.card} ${className}`}>{children}</div>;
 };

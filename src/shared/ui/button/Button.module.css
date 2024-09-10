@@ -59,11 +59,6 @@
 .wrapper.error:hover {
   background: var(--error);
 }
-
-/*hover*/
-/*.wrapper:hover {*/
-/*  opacity: 0.75;*/
-/*}*/
-/*.wrapper:active {*/
-/*  opacity: 0.5;*/
-/*}*/
+.wrapper:active {
+  opacity: 0.5;
+}

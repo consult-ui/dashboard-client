@@ -12,21 +12,20 @@ export const Statistic = () => {
       <header className={styles.header}>
         <span className={styles.subtitle}>Статистика компании</span>
         <div className={styles.actions}>
-          {!replace && (
-            <Button color="dark" onClick={toggleReplace}>
-              <div className={styles.editContainer}>
-                <EditIcon />
-                Редактировать
-              </div>
-            </Button>
-          )}
-          {replace && (
+          {replace ? (
             <>
               <Button onClick={toggleReplace} color={'error'}>
                 Отменить
               </Button>
               <Button color={'primary'}>Сохранить</Button>
             </>
+          ) : (
+            <Button color="dark" onClick={toggleReplace}>
+              <div className={styles.editContainer}>
+                <EditIcon />
+                Редактировать
+              </div>
+            </Button>
           )}
         </div>
       </header>
