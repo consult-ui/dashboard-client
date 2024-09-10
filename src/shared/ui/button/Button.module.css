@@ -33,6 +33,11 @@
   background: var(--white);
   color: var(--dark);
 }
+.wrapper.error {
+  border: 1px solid var(--error);
+  background: var(--gray-dark);
+  color: var(--white-static);
+}
 
 /*variant*/
 .wrapper.contained {
@@ -45,10 +50,20 @@
   border-color: transparent;
 }
 
+.wrapper.dark:hover {
+  background: var(--gray);
+}
+.wrapper.light:hover {
+  background: var(--gray-light);
+}
+.wrapper.error:hover {
+  background: var(--error);
+}
+
 /*hover*/
-.wrapper:hover {
-  opacity: 0.75;
-}
-.wrapper:active {
-  opacity: 0.5;
-}
+/*.wrapper:hover {*/
+/*  opacity: 0.75;*/
+/*}*/
+/*.wrapper:active {*/
+/*  opacity: 0.5;*/
+/*}*/

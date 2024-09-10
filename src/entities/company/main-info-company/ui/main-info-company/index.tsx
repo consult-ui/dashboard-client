@@ -1,5 +1,7 @@
-import { Card } from '../card';
+import { InfoItems } from '../info-items';
 import styles from './MainInfoCompany.module.css';
+import { MainInfoForm } from '@/features/company/main-info-form';
+import EditIcon from '@/shared/assets/icons/pencil.svg?react';
 import Button from '@/shared/ui/button';
 import { useState } from 'react';
 
@@ -14,20 +16,24 @@ export const MainInfoCompany = () => {
         <div className={styles.actions}>
           {!replace && (
             <Button color="dark" onClick={toggleReplace}>
-              Редактировать
+              <div className={styles.editContainer}>
+                <EditIcon />
+                Редактировать
+              </div>
             </Button>
           )}
           {replace && (
             <>
-              <button onClick={toggleReplace}>Отменить</button>
-              <button>Сохранить</button>
+              <Button onClick={toggleReplace} color={'error'}>
+                Отменить
+              </Button>
+              <Button color={'primary'}>Сохранить</Button>
             </>
           )}
         </div>
       </header>
-      {/*TODO: Вынести в переиспользуемый*/}
-      {!replace && <Card />}
-      {/*{replace && <Form />}*/}
+      {!replace && <InfoItems />}
+      {replace && <MainInfoForm />}
     </div>
   );
 };
