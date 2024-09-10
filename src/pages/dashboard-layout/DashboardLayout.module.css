@@ -1,0 +1,13 @@
+.wrapper {
+  height: inherit;
+  display: flex;
+}
+.content {
+  flex: 1;
+  display: grid;
+  grid-template-rows: 64px 1fr;
+  overflow-y: auto;
+}
+.main {
+  overflow-y: auto;
+}

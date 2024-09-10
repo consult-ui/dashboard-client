@@ -1,13 +1,15 @@
-import styles from './HomePage.module.css';
-import Sidebar from '@/widgets/sidebar';
+import { ELinks } from '@/app/router/types';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const HomePage = () => {
-  return (
-    <div className={styles.wrapper}>
-      <Sidebar />
-      <main className={styles.main}></main>
-    </div>
-  );
+const Home = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate(ELinks.DASHBOARD);
+  }, []);
+
+  return null;
 };
 
-export default HomePage;
+export default Home;

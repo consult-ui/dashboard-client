@@ -1,0 +1,28 @@
+.wrapper {
+  padding: 0 1.5em;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: var(--gray-dark);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+.info > small {
+  font-size: 12px;
+  font-weight: 300;
+}
+.info > h6 {
+  font-size: 18px;
+  line-height: 1;
+}
+.info > h6 > span {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--gray-light);
+}

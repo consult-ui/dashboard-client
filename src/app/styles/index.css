@@ -92,3 +92,16 @@ select:disabled,
 input:disabled {
   cursor: no-drop;
 }
+
+/*scrollbar styles*/
+*::-webkit-scrollbar {
+  width: 12px;
+}
+*::-webkit-scrollbar-track {
+  background: var(--gray-dark);
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--gray);
+  border-radius: 20px;
+  border: none;
+}
