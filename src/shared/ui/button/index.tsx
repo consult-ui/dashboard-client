@@ -1,14 +1,14 @@
 import styles from './Button.module.css';
 
+type Button = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
+
 interface Props extends Button {
   isLoading?: boolean;
   children: React.ReactNode;
-  color?: 'primary' | 'dark' | 'light';
+  color?: 'primary' | 'dark' | 'light' | 'error';
   variant?: 'contained' | 'outlined' | 'text';
   size?: 'sm' | 'md' | 'lg';
 }
-
-type Button = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
 
 const Button = (props: Props) => {
   const { isLoading, children, className, variant, size, disabled, color, ...rest } = props;

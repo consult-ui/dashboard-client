@@ -1,8 +1,9 @@
-import styles from './Card.module.css';
+import styles from './InfoItems.module.css';
+import { Card } from '@/shared/ui/card';
 
-export const Card = () => {
+export const InfoItems = () => {
   return (
-    <div className={styles.card}>
+    <Card>
       <div className={styles.item}>
         <span>Наименование</span>
         <h2>
@@ -27,6 +28,6 @@ export const Card = () => {
           aliquet nisi purus, eu pulvinar sapien porta ut.
         </p>
       </div>
-    </div>
+    </Card>
   );
 };

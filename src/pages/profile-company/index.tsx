@@ -1,5 +1,5 @@
 import styles from './ProfileCompany.module.css';
-import MainInfoCompany from '@/entities/company/MainInfoCompany';
+import MainInfoCompany from '@/entities/company/main-info-company';
 import Statistic from '@/entities/company/statistic';
 
 const ProfileCompany = () => {

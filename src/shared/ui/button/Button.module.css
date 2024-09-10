@@ -33,6 +33,11 @@
   background: var(--white);
   color: var(--dark);
 }
+.wrapper.error {
+  border: 1px solid var(--error);
+  background: var(--gray-dark);
+  color: var(--white-static);
+}
 
 /*variant*/
 .wrapper.contained {
@@ -45,9 +50,14 @@
   border-color: transparent;
 }
 
-/*hover*/
-.wrapper:hover {
-  opacity: 0.75;
+.wrapper.dark:hover {
+  background: var(--gray);
+}
+.wrapper.light:hover {
+  background: var(--gray-light);
+}
+.wrapper.error:hover {
+  background: var(--error);
 }
 .wrapper:active {
   opacity: 0.5;

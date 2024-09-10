@@ -1,11 +1,5 @@
 .item {
-  width: 100%;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  border: 1px solid var(--border-color);
-  background: var(--gray);
-  display: flex;
-  flex-direction: column;
+  gap: 0.25rem;
 }
 .item > span {
   font-size: 0.85rem;
