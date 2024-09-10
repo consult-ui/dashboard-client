@@ -1,10 +1,10 @@
 import styles from './ProfileCompany.module.css';
 import MainInfoCompany from '@/entities/company/MainInfoCompany';
-import Statistic from 'src/entities/company/statistic';
+import Statistic from '@/entities/company/statistic';
 
 const ProfileCompany = () => {
   return (
-    <div className={styles.ProfileCompany}>
+    <div className={styles.wrapper}>
       <h1>Моя компания</h1>
       <div className={styles.main}>
         <MainInfoCompany />

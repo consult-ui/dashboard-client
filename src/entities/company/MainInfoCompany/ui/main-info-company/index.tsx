@@ -5,6 +5,7 @@ import { useState } from 'react';
 export const MainInfoCompany = () => {
   const [replace, setReplace] = useState(false);
   const toggleReplace = () => setReplace(!replace);
+
   return (
     <div className={styles.mainInfoCompany}>
       <header className={styles.header}>
