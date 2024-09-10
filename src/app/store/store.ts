@@ -1,5 +1,5 @@
 import layoutSlice from './slices/layoutSlice.ts';
-import userApi from '@/app/api/apiList/user.ts';
+import userApi from '@/app/api/api-list/user.ts';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, persistStore, persistReducer } from 'redux-persist';
