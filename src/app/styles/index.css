@@ -96,10 +96,12 @@ input:disabled {
 
 /*scrollbar styles*/
 *::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
 }
 *::-webkit-scrollbar-track {
+  margin: 5px 0;
   background: var(--gray-dark);
+  border-radius: 20px;
 }
 *::-webkit-scrollbar-thumb {
   background-color: var(--gray);

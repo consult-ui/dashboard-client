@@ -1,5 +1,5 @@
-const Dashboard = () => {
-  return <h3>home page</h3>;
-};
+import Chat from '@/widgets/chat';
+
+const Dashboard = () => <Chat />;
 
 export default Dashboard;

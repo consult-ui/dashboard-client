@@ -21,6 +21,13 @@
 .wrapper > button:disabled:hover {
   background: var(--primary);
   border-color: var(--primary);
+  color: var(--white-static);
+}
+.wrapper > button svg {
+  stroke: var(--white);
+}
+.wrapper > button:disabled svg {
+  stroke: var(--white-static);
 }
 .wrapper > button:hover {
   border-color: var(--white);
