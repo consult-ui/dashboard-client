@@ -1,0 +1,19 @@
+.Item {
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  background: var(--white-static);
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  font-size: 0.85rem;
+  color: var(--gray-light);
+  font-weight: 500;
+}
+h2.content {
+  font-size: 1.5rem;
+  color: var(--white);
+  font-weight: 800;
+}

@@ -1,18 +1,16 @@
+import styles from './ProfileCompany.module.css';
+import MainInfoCompany from '@/entities/company/MainInfoCompany';
+import Statistic from '@/entities/company/Statistic';
+
 const ProfileCompany = () => {
   return (
-    <>
-      <h1>Profile company page</h1>
-      <h1>Profile company page</h1>
-      <h1>Profile company page</h1>
-      <h1>Profile company page</h1>
-      <h1>Profile company page</h1>
-      <h1>Profile company page</h1>
-      <h1>Profile company page</h1>
-      <h1>Profile company page</h1>
-      <h1>Profile company page</h1>
-      <h1>Profile company page</h1>
-      <h1>Profile company page</h1>
-    </>
+    <div className={styles.ProfileCompany}>
+      <h1>Моя компания</h1>
+      <div className={styles.main}>
+        <MainInfoCompany />
+        <Statistic />
+      </div>
+    </div>
   );
 };
 

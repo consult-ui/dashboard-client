@@ -1,0 +1,13 @@
+.ProfileCompany {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  h1 {
+    font-size: 32px;
+  }
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}

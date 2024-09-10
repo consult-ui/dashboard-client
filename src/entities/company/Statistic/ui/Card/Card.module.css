@@ -1,0 +1,12 @@
+.Card {
+  width: 100%;
+  padding: 1.5rem;
+  background: var(--gray-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+}
+.cards {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
