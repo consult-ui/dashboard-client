@@ -1,0 +1,54 @@
+.wrapper {
+  border-radius: 50px;
+  transition: 0.15s;
+}
+
+/*size*/
+.wrapper.sm {
+  padding: 0.25em 0.75em;
+  font-size: 14px;
+}
+.wrapper.md {
+  padding: 0.5em 1.25em;
+  font-size: 16px;
+}
+.wrapper.lg {
+  padding: 0.85em 2em;
+  font-size: 18px;
+}
+
+/*color*/
+.wrapper.primary {
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: var(--white-static);
+}
+.wrapper.dark {
+  border: 1px solid var(--border-color);
+  background: var(--gray-dark);
+  color: var(--white);
+}
+.wrapper.light {
+  border: 1px solid var(--gray-light);
+  background: var(--white);
+  color: var(--dark);
+}
+
+/*variant*/
+.wrapper.contained {
+}
+.wrapper.outlined {
+  background: none;
+}
+.wrapper.text {
+  background: none;
+  border-color: transparent;
+}
+
+/*hover*/
+.wrapper:hover {
+  opacity: 0.75;
+}
+.wrapper:active {
+  opacity: 0.5;
+}

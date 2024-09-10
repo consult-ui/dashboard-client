@@ -1,5 +1,6 @@
 import { Card } from '../card';
 import styles from './MainInfoCompany.module.css';
+import Button from '@/shared/ui/button';
 import { useState } from 'react';
 
 export const MainInfoCompany = () => {
@@ -11,8 +12,11 @@ export const MainInfoCompany = () => {
       <header className={styles.header}>
         <span className={styles.subtitle}>Основная информация о компании</span>
         <div className={styles.actions}>
-          {/*TODO: Изменить кнопки на переиспользуемые*/}
-          {!replace && <button onClick={toggleReplace}>Редактировать</button>}
+          {!replace && (
+            <Button color="dark" onClick={toggleReplace}>
+              Редактировать
+            </Button>
+          )}
           {replace && (
             <>
               <button onClick={toggleReplace}>Отменить</button>
