@@ -1,4 +1,4 @@
-.Item {
+.item {
   width: 100%;
   padding: 1.5rem;
   border-radius: 1rem;
@@ -7,12 +7,12 @@
   display: flex;
   flex-direction: column;
 }
-.title {
+.item > span {
   font-size: 0.85rem;
   color: var(--gray-light);
   font-weight: 500;
 }
-h2.content {
+.item > h2 {
   font-size: 1.5rem;
   color: var(--white);
   font-weight: 800;

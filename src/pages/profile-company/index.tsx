@@ -1,6 +1,6 @@
 import styles from './ProfileCompany.module.css';
 import MainInfoCompany from '@/entities/company/MainInfoCompany';
-import Statistic from '@/entities/company/Statistic';
+import Statistic from 'src/entities/company/statistic';
 
 const ProfileCompany = () => {
   return (

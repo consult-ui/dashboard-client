@@ -1,14 +1,14 @@
-import { Card } from '../Card/Card.tsx';
-import styles from './Statistic.module.css';
+import { Card } from '../card';
+import styles from './MainInfoCompany.module.css';
 import { useState } from 'react';
 
-export const Statistic = () => {
+export const MainInfoCompany = () => {
   const [replace, setReplace] = useState(false);
   const toggleReplace = () => setReplace(!replace);
   return (
-    <div className={styles.Statistic}>
+    <div className={styles.mainInfoCompany}>
       <header className={styles.header}>
-        <span className={styles.subtitle}>Статистика компании</span>
+        <span className={styles.subtitle}>Основная информация о компании</span>
         <div className={styles.actions}>
           {/*TODO: Изменить кнопки на переиспользуемые*/}
           {!replace && <button onClick={toggleReplace}>Редактировать</button>}
@@ -20,7 +20,9 @@ export const Statistic = () => {
           )}
         </div>
       </header>
+      {/*TODO: Вынести в переиспользуемый*/}
       {!replace && <Card />}
+      {/*{replace && <Form />}*/}
     </div>
   );
 };
