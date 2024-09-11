@@ -1,0 +1,8 @@
+.wrapper > footer {
+  width: 85%;
+  display: flex;
+  gap: 12px;
+}
+.wrapper > footer > button {
+  flex: 1;
+}

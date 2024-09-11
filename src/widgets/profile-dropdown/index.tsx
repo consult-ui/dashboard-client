@@ -1,5 +1,6 @@
 import styles from './ProfileDropdown.module.css';
 import { ELinks } from '@/app/router/types';
+import LogoutButton from '@/features/logout-button';
 import ThemeSwitcher from '@/features/theme-switcher';
 import Arrow from '@/shared/assets/icons/arrow.svg?react';
 import Icon from '@/shared/assets/icons/lk-icon.svg?react';
@@ -51,6 +52,9 @@ const ProfileDropdown = () => {
         </li>
         <li>
           <ThemeSwitcher />
+        </li>
+        <li>
+          <LogoutButton />
         </li>
       </ul>
     </div>

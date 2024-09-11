@@ -1,5 +1,7 @@
+import { UserInfo } from '@/entities/user-info/ui/user-info';
+
 const ProfileUser = () => {
-  return <h3>Profile user page</h3>;
+  return <UserInfo />;
 };
 
 export default ProfileUser;

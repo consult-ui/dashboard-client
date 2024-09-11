@@ -1,5 +1,6 @@
 import { ELinks } from '@/app/router/types';
 import DashboardLayout from '@/pages/dashboard-layout';
+import ProfileLayout from '@/pages/profile-layout';
 import SignLayout from '@/pages/sign-layout';
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
@@ -28,7 +29,9 @@ const Router = () => {
         path={ELinks.DASHBOARD + ELinks.USER}
         element={
           <DashboardLayout>
-            <User />
+            <ProfileLayout title={'Личные данные'}>
+              <User />
+            </ProfileLayout>
           </DashboardLayout>
         }
       />
@@ -36,7 +39,9 @@ const Router = () => {
         path={ELinks.DASHBOARD + ELinks.COMPANY}
         element={
           <DashboardLayout>
-            <Company />
+            <ProfileLayout title={'Моя компания'}>
+              <Company />
+            </ProfileLayout>
           </DashboardLayout>
         }
       />
