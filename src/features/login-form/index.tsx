@@ -1,17 +1,34 @@
 import styles from './LoginForm.module.css';
+import { useSignInMutation } from '@/app/api';
 import { ELinks } from '@/app/router/types';
+import { TOAST_ERROR } from '@/shared/constants/toasts.ts';
+import Cookies from 'js-cookie';
 import { FormEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [signIn, { isLoading }] = useSignInMutation();
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
-    setTimeout(() => setIsLoading(false), 3000);
+    signIn({ login, password })
+      .unwrap()
+      .then((res) => {
+        if (res.success) {
+          Cookies.set('access_token', res.data.access_token);
+          Cookies.set('refresh_token', res.data.refresh_token);
+          navigate(ELinks.DASHBOARD);
+        } else {
+          throw new Error(res?.msg);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        TOAST_ERROR(err?.data?.msg || 'Ошибка входа в аккаунт, обратитесь в поддержку!');
+      });
   };
 
   return (

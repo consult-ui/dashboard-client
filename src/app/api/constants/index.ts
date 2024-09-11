@@ -1,16 +1,16 @@
+import { IRefresh } from '@/app/api/types';
 import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Mutex } from 'async-mutex';
+import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 
 const mutex = new Mutex();
 
 const baseQuery = fetchBaseQuery({
-  // TODO: add url
-  baseUrl: 'API_MAIN_URL',
+  baseUrl: import.meta.env.VITE_API_URL,
   prepareHeaders: (headers) => {
-    // TODO: add token
-    const token = 'token';
+    const token = Cookies.get('access_token');
     if (token) {
       headers.set('Authorization', `Bearer ${token}`);
     }
@@ -25,24 +25,22 @@ export const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, Fetch
 ) => {
   await mutex.waitForUnlock();
   let result = await baseQuery(args, api, extraOptions);
-  // TODO: add refresh token
-  const refreshToken = 'refresh token';
+  const refreshToken = Cookies.get('refresh_token');
 
   if (result?.error?.status === 401 && refreshToken) {
     if (!mutex.isLocked()) {
       const release = await mutex.acquire();
       try {
-        const refreshResult = await fetch('link for refresh token', {
+        const refreshResult = await fetch(import.meta.env.VITE_API_URL + '/auth/refresh', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ refresh_token: refreshToken }),
         });
-        const refreshResJSON = await refreshResult.json();
-        if (refreshResJSON && refreshResJSON.refresh_token && refreshResJSON.access_token) {
+        const refreshResJSON: IRefresh = await refreshResult.json();
+        if (refreshResJSON?.success) {
           console.log('%cTOKEN WAS SUCCESS UPDATED!', 'color: green');
-          // TODO: add setter for tokens
-          // TokenService.setLocalAccessToken(refreshResJSON.access_token);
-          // TokenService.setLocalRefreshToken(refreshResJSON.refresh_token);
+          Cookies.set('access_token', refreshResJSON.data.access_token);
+          Cookies.set('refresh_token', refreshResJSON.data.refresh_token);
           result = await baseQuery(args, api, extraOptions);
         } else {
           toast('Ошибка обн. пользователя! Пожалуйста, войдите в систему заново!', {
@@ -51,9 +49,9 @@ export const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, Fetch
             autoClose: 3000,
           });
           release();
-          // TODO: add clear user data
-          // TokenService.removeUser();
-          location.reload();
+          // TODO: add clear user data and navigate to login
+          Cookies.remove('access_token');
+          Cookies.remove('refresh_token');
         }
       } finally {
         release();
