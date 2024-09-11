@@ -3,6 +3,7 @@ import DashboardLayout from '@/pages/dashboard-layout';
 import SignLayout from '@/pages/sign-layout';
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import ProfileLayout from '@/pages/profile-layout';
 
 const Home = lazy(() => import('@/pages/home'));
 const Dashboard = lazy(() => import('@/pages/dashboard'));
@@ -28,7 +29,9 @@ const Router = () => {
         path={ELinks.DASHBOARD + ELinks.USER}
         element={
           <DashboardLayout>
+            <ProfileLayout title={'Личные данные'}>
             <User />
+            </ProfileLayout>
           </DashboardLayout>
         }
       />
@@ -36,7 +39,9 @@ const Router = () => {
         path={ELinks.DASHBOARD + ELinks.COMPANY}
         element={
           <DashboardLayout>
+            <ProfileLayout title={'Моя компания'}>
             <Company />
+            </ProfileLayout>
           </DashboardLayout>
         }
       />
