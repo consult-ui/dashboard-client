@@ -1,5 +1,5 @@
 import styles from './DashboardNavbar.module.css';
-import ProfileDropdown from '@/features/profile-dropdown';
+import ProfileDropdown from '@/widgets/profile-dropdown';
 
 const DashboardNavbar = () => {
   return (
