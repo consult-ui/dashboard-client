@@ -1,9 +1,9 @@
 import { ELinks } from '@/app/router/types';
 import DashboardLayout from '@/pages/dashboard-layout';
+import ProfileLayout from '@/pages/profile-layout';
 import SignLayout from '@/pages/sign-layout';
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import ProfileLayout from '@/pages/profile-layout';
 
 const Home = lazy(() => import('@/pages/home'));
 const Dashboard = lazy(() => import('@/pages/dashboard'));
@@ -30,7 +30,7 @@ const Router = () => {
         element={
           <DashboardLayout>
             <ProfileLayout title={'Личные данные'}>
-            <User />
+              <User />
             </ProfileLayout>
           </DashboardLayout>
         }
@@ -40,7 +40,7 @@ const Router = () => {
         element={
           <DashboardLayout>
             <ProfileLayout title={'Моя компания'}>
-            <Company />
+              <Company />
             </ProfileLayout>
           </DashboardLayout>
         }
