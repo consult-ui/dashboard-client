@@ -19,11 +19,7 @@
   font-size: 14px;
   font-weight: 500;
   color: var(--white);
-  outline: none;
   transition: 0.15s;
-}
-.input:focus {
-  border-color: var(--primary);
 }
 .input:disabled {
   background: var(--gray);

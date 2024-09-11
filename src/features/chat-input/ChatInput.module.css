@@ -1,0 +1,55 @@
+.wrapper {
+  position: relative;
+}
+
+/*input*/
+.wrapper > input {
+  width: 100%;
+  height: 100%;
+  padding: 0.5em calc(42px + 1em);
+
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 50px;
+  border: 1px solid var(--border-color);
+  background: var(--gray-dark);
+  color: var(--white);
+}
+.wrapper > input::placeholder {
+  color: var(--gray-light);
+}
+
+/*button*/
+.button {
+  position: absolute;
+  top: 11px;
+
+  width: 42px;
+  aspect-ratio: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+  border: none;
+  background: var(--primary);
+  z-index: 2;
+  transition: 0.15s;
+}
+.button:first-child {
+  left: 0.75em;
+  background: none;
+}
+.button:last-child {
+  right: 0.75em;
+}
+.button:last-child > svg > path {
+  stroke: var(--white-static);
+}
+.button:hover {
+  opacity: 0.75;
+}
+.button:active {
+  opacity: 0.5;
+}

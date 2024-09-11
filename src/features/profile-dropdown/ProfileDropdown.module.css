@@ -1,0 +1,46 @@
+.wrapper {
+  position: relative;
+}
+
+.wrapper > button {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.wrapper > button > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.wrapper > button > div > svg {
+  margin-top: -1px;
+}
+
+.dropdown {
+  position: absolute;
+  width: 100%;
+  margin: 5px 0 0 0;
+  padding: 0;
+
+  list-style: none;
+  background: var(--gray-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+.dropdown > li {
+  padding: 0.65em 1.25em;
+  border-bottom: 1px solid var(--border-color);
+}
+.dropdown > li:last-child {
+  border-bottom: 0;
+}
+.dropdown > li > a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: 0.15s;
+}
+.dropdown > li > a:hover {
+  opacity: 0.65;
+}

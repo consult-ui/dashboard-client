@@ -1,4 +1,4 @@
-.mainInfoForm {
+.wrapper {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -7,4 +7,24 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.inputWrapper > label {
+  margin-left: 1.25rem;
+  font-size: 14px;
+  color: var(--gray-light);
+  font-weight: 500;
+}
+.inputWrapper > textarea {
+  padding: 1rem 1.5rem;
+  font-size: 16px;
+  background: var(--dark);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  resize: none;
 }

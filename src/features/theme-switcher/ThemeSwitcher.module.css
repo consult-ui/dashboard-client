@@ -1,8 +1,15 @@
-.button {
-  padding: 1em 3em;
-  border-radius: 30px;
-  background: var(--white);
-  color: var(--dark);
-  border: 1px solid var(--white);
-  transition: 0.15s;
+.wrapper {
+  width: 100%;
+  display: flex;
+  gap: 5px;
+}
+.wrapper > button {
+  flex: 1;
+}
+.wrapper > button > svg {
+  scale: 1.25;
+  stroke: var(--white);
+}
+.wrapper > button:disabled > svg {
+  stroke: var(--white-static);
 }

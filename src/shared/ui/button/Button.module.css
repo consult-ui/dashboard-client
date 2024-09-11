@@ -36,7 +36,7 @@
 .wrapper.error {
   border: 1px solid var(--error);
   background: var(--gray-dark);
-  color: var(--white-static);
+  color: var(--white);
 }
 
 /*variant*/
@@ -57,6 +57,7 @@
   background: var(--gray-light);
 }
 .wrapper.error:hover {
+  color: var(--white-static);
   background: var(--error);
 }
 .wrapper:active {
