@@ -1,8 +1,6 @@
-export type Props = {
-  open: boolean;
-  onClose: () => void;
-  styles?: React.CSSProperties;
-  zIndex?: number;
-  className?: string;
-  desc?: string;
-};
+import { Props as PropsModal } from '@/shared/ui/modal-general/types';
+
+export interface PropsConfirm extends Omit<PropsModal, 'children' | 'className'> {
+  onConfirm: () => void;
+  isLoading?: boolean;
+}

@@ -17,7 +17,7 @@ export const customStyles: { overlay: CSSProperties; content: CSSProperties } = 
     transform: 'translate(-50%,-50%)',
     width: 'max-content',
     maxWidth: '60vw',
-    minWidth: '596px',
+    minWidth: '320px',
     minHeight: '120px',
     maxHeight: '95vh',
     padding: '1.5rem',

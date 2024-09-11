@@ -1,78 +1,30 @@
 import styles from './ModalConfirm.module.css';
-import { customStyles } from './styles';
-import { Props } from './types';
-import CloseIcon from '@/shared/assets/icons/close.svg?react';
 import Button from '@/shared/ui/button';
-import { useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { PropsConfirm } from '@/shared/ui/modal-confirm/types';
+import { ModalGeneral } from '@/shared/ui/modal-general';
 
-export const ModalConfirm = (props: Props) => {
-  const { open, styles: stylesProps, zIndex, onClose, className, desc } = props;
-  const [container] = useState<HTMLDivElement>(document.createElement('div'));
-  const ref = useRef<HTMLDivElement | null>(null);
+const ModalConfirm = (props: PropsConfirm) => {
+  const { onConfirm, onClose, isLoading, zIndex, open, title, styles: stylesProps } = props;
 
-  const closeOnEscapePressed = (e: KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      onClose();
-    }
-  };
-
-  const closeOpenMenus = (e: Event) => {
-    if (!e?.target) return;
-    if (ref?.current && open && !ref.current.contains(e.target as Node)) {
-      onClose();
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', closeOpenMenus);
-    return () => {
-      document.removeEventListener('mousedown', closeOpenMenus);
-    };
-  }, [ref, open]);
-
-  useEffect(() => {
-    const containerPortal = document.getElementById('modal-portal');
-    if (!containerPortal || !open || !container) return;
-    containerPortal.appendChild(container);
-    return () => {
-      containerPortal.removeChild(container);
-    };
-  }, [open, container]);
-
-  useEffect(() => {
-    if (!open) return;
-    window.addEventListener('keydown', closeOnEscapePressed);
-    return () => {
-      window.removeEventListener('keydown', closeOnEscapePressed);
-    };
-  }, [open]);
-
-  return createPortal(
-    <div
-      style={{
-        ...customStyles.overlay,
-        zIndex: zIndex ?? customStyles.overlay.zIndex,
-      }}
+  return (
+    <ModalGeneral
+      className={styles.wrapper}
+      styles={stylesProps}
+      zIndex={zIndex}
+      open={open}
+      onClose={onClose}
+      title={title || 'Подтвердите действие'}
     >
-      <div style={{ ...customStyles.content, ...stylesProps }} className={className} ref={ref}>
-        <header className={styles.header}>
-          <h3>Подтвердите действие</h3>
-          <Button onClick={onClose} className={styles.btnClose} color={'dark'}>
-            <CloseIcon />
-          </Button>
-        </header>
-        <div className={styles.content}>
-          {desc && <p>{desc}</p>}
-          <div className={styles.actions}>
-            <Button color={'primary'}>Подтвердить</Button>
-            <Button color={'error'} onClick={onClose}>
-              Отмена
-            </Button>
-          </div>
-        </div>
-      </div>
-    </div>,
-    container,
+      <footer>
+        <Button size="lg" color="dark" onClick={onClose}>
+          Отмена
+        </Button>
+        <Button size="lg" onClick={onConfirm} isLoading={isLoading}>
+          Подтвердить
+        </Button>
+      </footer>
+    </ModalGeneral>
   );
 };
+
+export default ModalConfirm;
