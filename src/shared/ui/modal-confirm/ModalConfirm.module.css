@@ -1,0 +1,38 @@
+.header {
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header > h3 {
+  font-size: 1.5rem;
+  color: var(--white);
+  font-weight: 500;
+}
+.content {
+  width: 100%;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.actions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.actions > button:first-child {
+  width: 65%;
+}
+.actions > button:last-child {
+  width: 35%;
+}
+.btnClose {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.75rem;
+  padding: 0.55rem 0.5rem !important;
+}

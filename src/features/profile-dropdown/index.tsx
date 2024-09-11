@@ -46,7 +46,7 @@ const ProfileDropdown = () => {
         <li>
           <Link to={ELinks.DASHBOARD + ELinks.USER}>
             <Users />
-            Личная информация
+            Профиль
           </Link>
         </li>
         <li>
