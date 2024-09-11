@@ -1,0 +1,15 @@
+.wrapper {
+  margin-bottom: -4px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.wrapper::-webkit-scrollbar {
+  height: 13px;
+}
+.wrapper::-webkit-scrollbar-track,
+.wrapper::-webkit-scrollbar-thumb {
+  border: 4px solid var(--dark);
+}
