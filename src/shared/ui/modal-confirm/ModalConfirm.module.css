@@ -1,8 +1,11 @@
 .wrapper > footer {
-  width: 85%;
+  width: 100%;
   display: flex;
   gap: 12px;
 }
 .wrapper > footer > button {
   flex: 1;
+}
+.wrapper > footer > button:first-child {
+  max-width: 35%;
 }
