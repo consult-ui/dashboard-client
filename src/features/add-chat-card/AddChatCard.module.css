@@ -1,0 +1,42 @@
+.card {
+  padding: 1.5em;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+}
+.card > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card > header > div > small {
+  margin: 0;
+  line-height: 1;
+  font-size: 12px;
+}
+.card > header > div > h6 {
+  max-width: 150px;
+  font-size: 16px;
+  line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.card > header > button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.card > p {
+  opacity: 0.5;
+  font-size: 14px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+}
