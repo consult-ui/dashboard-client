@@ -1,17 +1,20 @@
 import styles from './InfoItems.module.css';
+import { useMeQuery } from '@/app/api';
 import { Item } from '@/entities/user-info/ui/item';
 import { Card } from '@/shared/ui/card';
-
-const titles = ['Имя', 'Логин', 'Телефон', 'E-Mail', 'Компании'];
-const data = ['Михаил', 'mihail2003', '+79524484331', 'asd1asd84@mail.ru', '3233, 5446, 12332'];
+import { formatDate } from '@/shared/utils/formatDate.ts';
 
 export const InfoItems = () => {
+  const { data } = useMeQuery();
+
   return (
     <Card>
       <div className={styles.items}>
-        {titles.map((title, index) => (
-          <Item key={title} title={title} content={data[index]} />
-        ))}
+        <Item title={'Имя и фамилия'} content={`${data?.data?.last_name || ''} ${data?.data?.first_name || ''}`} />
+        <Item title={'Телефон'} content={data?.data?.phone_number} />
+        <Item title={'E-Mail'} content={data?.data?.email} />
+        <Item title={'Компания'} content={'-'} />
+        <Item title={'Дата завершения подписки'} content={formatDate(data?.data?.expiration_date)} />
       </div>
     </Card>
   );
