@@ -17,7 +17,7 @@ export const UserInfo = () => {
         <div className={styles.actions}>
           {replace ? (
             <>
-              <Button onClick={toggleReplace} color={'error'}>
+              <Button onClick={toggleReplace} variant={'outlined'} color={'error'}>
                 Отменить
               </Button>
               <Button color={'primary'}>Сохранить</Button>

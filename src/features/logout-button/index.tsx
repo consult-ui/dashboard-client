@@ -1,3 +1,4 @@
+import LogoutIcon from '@/shared/assets/icons/logout.svg?react';
 import Button from '@/shared/ui/button';
 import ModalConfirm from '@/shared/ui/modal-confirm';
 import { useState } from 'react';
@@ -11,10 +12,21 @@ const LogoutButton = () => {
     <>
       <Button
         onClick={() => setIsOpen(true)}
-        variant="text"
-        style={{ width: '100%', padding: 0, fontSize: 16, border: 'none', color: 'var(--error)' }}
+        variant="outlined"
+        color={'error'}
+        size={'sm'}
+        style={{
+          width: '100%',
+          padding: '0.5rem',
+          fontSize: 14,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '0.5rem',
+        }}
       >
-        Выйти из аккаунта
+        <LogoutIcon />
+        <span>Выйти из аккаунта</span>
       </Button>
 
       <ModalConfirm
