@@ -16,10 +16,10 @@ const ModalConfirm = (props: PropsConfirm) => {
       title={title || 'Подтвердите действие'}
     >
       <footer>
-        <Button size="lg" color="dark" onClick={onClose}>
+        <Button size="md" variant={'outlined'} color="error" onClick={onClose}>
           Отмена
         </Button>
-        <Button size="lg" onClick={onConfirm} isLoading={isLoading}>
+        <Button size="md" onClick={onConfirm} isLoading={isLoading}>
           Подтвердить
         </Button>
       </footer>

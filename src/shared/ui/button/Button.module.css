@@ -17,49 +17,145 @@
   font-size: 18px;
 }
 
-/*color*/
-.wrapper.primary {
+
+/*VARIANTS*/
+
+/*primary*/
+/*contained*/
+.wrapper.primary.contained{
   border: 1px solid var(--primary);
-  background: var(--primary);
   color: var(--white-static);
+  background: var(--primary);
 }
-.wrapper.dark {
+.wrapper.primary.contained:hover{
+  opacity: 0.75;
+}
+/*outlined*/
+.wrapper.primary.outlined{
+  border: 1px solid var(--border-color);
+  color: var(--white);
+  background: var(--gray-dark);
+}
+.wrapper.primary.outlined:hover{
+  border: 1px solid var(--primary);
+  color: var(--white);
+}
+/*text*/
+.wrapper.primary.text{
+  border: none;
+  background: inherit;
+  color: var(--white);
+}
+.wrapper.primary.text:hover{
+  color: var(--primary);
+}
+.wrapper.primary:disabled:hover {
+  opacity: 1;
+}
+
+/*dark*/
+/*contained*/
+.wrapper.dark.contained{
   border: 1px solid var(--border-color);
   background: var(--gray-dark);
   color: var(--white);
 }
-.wrapper.light {
-  border: 1px solid var(--gray-light);
-  background: var(--white);
-  color: var(--dark);
+.wrapper.dark.contained:hover{
+  opacity: 0.75;
 }
-.wrapper.error {
-  border: 1px solid var(--error);
-  background: var(--gray-dark);
+/*outlined*/
+.wrapper.dark.outlined{
+  border: 1px solid var(--border-color);
+  color: var(--white);
+  background: inherit;
+}
+.wrapper.dark.outlined:hover{
+  border: 1px solid var(--primary);
   color: var(--white);
 }
+/*text*/
+.wrapper.dark.text{
+  border: none;
+  background: inherit;
+  color: var(--white);
+}
+.wrapper.dark.text:hover{
+  color: var(--primary);
+}
+.wrapper.dark:disabled:hover {
+  opacity: 1;
+}
 
-/*variant*/
-.wrapper.contained {
+/*light*/
+/*contained*/
+.wrapper.light.contained{
+  border: 1px solid var(--border-color);
+  background: var(--gray);
+  color: var(--white);
 }
-.wrapper.outlined {
-  background: none;
+.wrapper.light.contained:hover{
+  opacity: 0.75;
 }
-.wrapper.text {
-  background: none;
-  border-color: transparent;
-}
-
-.wrapper.dark:hover {
+/*outlined*/
+.wrapper.light.outlined{
+  border: 1px solid var(--border-color);
+  color: var(--white);
   background: var(--gray);
 }
-.wrapper.light:hover {
-  background: var(--gray-light);
+.wrapper.light.outlined:hover{
+  border: 1px solid var(--primary);
+  color: var(--white);
 }
-.wrapper.error:hover {
+/*text*/
+.wrapper.light.text{
+  border: none;
+  background: inherit;
+  color: var(--white);
+}
+.wrapper.light.text:hover{
+  color: var(--primary);
+}
+.wrapper.light:disabled:hover {
+  opacity: 1;
+}
+
+/*error*/
+/*contained*/
+.wrapper.error.contained{
+  border: 1px solid var(--error);
   color: var(--white-static);
   background: var(--error);
 }
+.wrapper.error.contained:hover{
+  opacity: 0.75;
+}
+.wrapper.error.contained:disabled:hover{
+  opacity: 1;
+}
+/*outlined*/
+.wrapper.error.outlined{
+  border: 1px solid var(--border-color);
+  color: var(--white);
+  background: var(--gray-dark);
+}
+.wrapper.error.outlined:hover{
+  border: 1px solid var(--error);
+  color: var(--white);
+}
+/*text*/
+.wrapper.error.text{
+  border: none;
+  background: inherit;
+  color: var(--white);
+}
+.wrapper.error.text:hover{
+  color: var(--error);
+}
+.wrapper.error:disabled:hover {
+  opacity: 1;
+}
+
+
 .wrapper:active {
   opacity: 0.5;
 }
