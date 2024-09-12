@@ -6,6 +6,7 @@ import ModalConfirm from '@/shared/ui/modal-confirm';
 import Cookies from 'js-cookie';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import LogoutIcon from '@/shared/assets/icons/logout.svg?react';
 
 const LogoutButton = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,10 +32,21 @@ const LogoutButton = () => {
     <>
       <Button
         onClick={() => setIsOpen(true)}
-        variant="text"
-        style={{ width: '100%', padding: 0, fontSize: 16, border: 'none', color: 'var(--error)' }}
+        variant="outlined"
+        color={'error'}
+        size={'sm'}
+        style={{
+          width: '100%',
+          padding: '0.5rem',
+          fontSize: 14,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '0.5rem',
+        }}
       >
-        Выйти из аккаунта
+        <LogoutIcon />
+        <span>Выйти из аккаунта</span>
       </Button>
 
       <ModalConfirm
