@@ -26,7 +26,6 @@ const LoginForm = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
         TOAST_ERROR(err?.data?.msg || 'Ошибка входа в аккаунт, обратитесь в поддержку!');
       });
   };
