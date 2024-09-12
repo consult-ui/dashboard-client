@@ -18,9 +18,16 @@ const AddChat = () => {
 
       <ModalGeneral onClose={() => setIsShow(false)} open={isShow} title="Добавьте новых помощников">
         <div className={styles.modalBody}>
-          {LIST_CHATS.map((elem) => (
-            <AddChatCard key={elem.id} data={elem} />
-          ))}
+          <p>
+            Если вам недостаточно изначально добавленных чатов, вы можете добавить их, выбрав нужный шаблон чата из
+            списка ниже. Если вы <b>не нашли подходящий чат</b> в этом списке, обратитесь в поддержку, и{' '}
+            <b>модераторы добавят</b> его.
+          </p>
+          <div className={styles.cards}>
+            {LIST_CHATS.map((elem) => (
+              <AddChatCard key={elem.id} data={elem} />
+            ))}
+          </div>
         </div>
       </ModalGeneral>
     </>

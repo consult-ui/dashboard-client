@@ -1,0 +1,35 @@
+.wrapper {
+  width: inherit;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dots {
+  display: inline-block;
+  width: 1em; /* Чтобы каждая точка занимала одинаковое пространство */
+}
+.dots::after {
+  content: '';
+  animation: dots 2s steps(1, end) infinite;
+}
+
+@keyframes dots {
+  0% {
+    content: '';
+  }
+  25% {
+    content: '.';
+  }
+  50% {
+    content: '..';
+  }
+  75% {
+    content: '...';
+  }
+  100% {
+    content: '';
+  }
+}

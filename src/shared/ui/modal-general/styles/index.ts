@@ -7,7 +7,8 @@ export const customStyles: { overlay: CSSProperties; content: CSSProperties } = 
     top: '0',
     bottom: '0',
     left: '0',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: '#212121BF',
+    backdropFilter: 'blur(3px)',
     zIndex: '9',
   },
   content: {

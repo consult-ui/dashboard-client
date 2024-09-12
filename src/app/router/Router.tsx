@@ -2,7 +2,8 @@ import { ELinks } from '@/app/router/types';
 import DashboardLayout from '@/pages/dashboard-layout';
 import ProfileLayout from '@/pages/profile-layout';
 import SignLayout from '@/pages/sign-layout';
-import { lazy } from 'react';
+import SuspenseLoader from '@/shared/ui/suspense-loader';
+import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 const Home = lazy(() => import('@/pages/home'));
@@ -21,7 +22,9 @@ const Router = () => {
         path={ELinks.DASHBOARD}
         element={
           <DashboardLayout>
-            <Dashboard />
+            <Suspense fallback={<SuspenseLoader />}>
+              <Dashboard />
+            </Suspense>
           </DashboardLayout>
         }
       />
@@ -30,7 +33,9 @@ const Router = () => {
         element={
           <DashboardLayout>
             <ProfileLayout title={'Личные данные'}>
-              <User />
+              <Suspense fallback={<SuspenseLoader />}>
+                <User />
+              </Suspense>
             </ProfileLayout>
           </DashboardLayout>
         }
@@ -40,7 +45,9 @@ const Router = () => {
         element={
           <DashboardLayout>
             <ProfileLayout title={'Моя компания'}>
-              <Company />
+              <Suspense fallback={<SuspenseLoader />}>
+                <Company />
+              </Suspense>
             </ProfileLayout>
           </DashboardLayout>
         }
@@ -49,7 +56,9 @@ const Router = () => {
         path={ELinks.SIGN_IN}
         element={
           <SignLayout>
-            <SignIn />
+            <Suspense fallback={<SuspenseLoader />}>
+              <SignIn />
+            </Suspense>
           </SignLayout>
         }
       />
@@ -57,7 +66,9 @@ const Router = () => {
         path={ELinks.PASSWORD_RECOVERY}
         element={
           <SignLayout>
-            <PasswordRecovery />
+            <Suspense fallback={<SuspenseLoader />}>
+              <PasswordRecovery />
+            </Suspense>
           </SignLayout>
         }
       />
@@ -65,7 +76,9 @@ const Router = () => {
         path={ELinks.PASSWORD_RESET}
         element={
           <SignLayout>
-            <PasswordReset />
+            <Suspense fallback={<SuspenseLoader />}>
+              <PasswordReset />
+            </Suspense>
           </SignLayout>
         }
       />

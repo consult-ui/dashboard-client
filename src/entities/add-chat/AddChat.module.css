@@ -5,12 +5,24 @@
   justify-content: center;
   gap: 8px;
 }
-.button:hover > svg > path {
+.button > svg path {
+  stroke: var(--white);
+}
+.button:hover > svg path {
   stroke: var(--primary);
 }
 
 .modalBody {
   width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+.modalBody > p > b {
+  color: var(--primary);
+  font-weight: inherit;
+}
+.cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 12px;

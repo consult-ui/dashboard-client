@@ -31,6 +31,12 @@
   align-items: center;
   gap: 5px;
 }
+.card > header > button > svg path {
+  stroke: var(--white-static);
+}
+.card > header > button:disabled > svg path {
+  stroke: var(--white);
+}
 
 .card > p {
   opacity: 0.5;
