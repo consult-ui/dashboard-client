@@ -1,12 +1,12 @@
 import { useSignOutMutation } from '@/app/api';
 import { ELinks } from '@/app/router/types';
+import LogoutIcon from '@/shared/assets/icons/logout.svg?react';
 import { TOAST_ERROR } from '@/shared/constants/toasts.ts';
 import Button from '@/shared/ui/button';
 import ModalConfirm from '@/shared/ui/modal-confirm';
 import Cookies from 'js-cookie';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import LogoutIcon from '@/shared/assets/icons/logout.svg?react';
 
 const LogoutButton = () => {
   const [isOpen, setIsOpen] = useState(false);
