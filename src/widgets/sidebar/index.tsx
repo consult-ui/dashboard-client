@@ -1,5 +1,6 @@
 import styles from './Sidebar.module.css';
 import { ELinks } from '@/app/router/types';
+import AddChat from '@/entities/add-chat';
 import AdviceAnalysis from '@/entities/advice-analysis ';
 import ChatsList from '@/entities/chats-list';
 import Logo from '@/shared/assets/icons/logo.svg?react';
@@ -27,6 +28,7 @@ const Sidebar = () => {
           <div className={styles.line} />
         </div>
         <ChatsList />
+        <AddChat />
       </div>
 
       <footer>
