@@ -157,3 +157,8 @@
 .wrapper:active {
   opacity: 0.5;
 }
+.wrapper.contained:disabled {
+  background: var(--dark);
+  border-color: var(--dark);
+  color: var(--white);
+}

@@ -4,6 +4,7 @@ export interface Props {
   title?: string;
   className?: string;
   zIndex?: number;
+  visibleCloseButton?: boolean;
   onClose: () => void;
   open: boolean;
 }

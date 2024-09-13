@@ -1,4 +1,5 @@
 import styles from './AdviceAnalysis.module.css';
+import Blobs from '@/shared/assets/images/blobs.svg?react';
 import Coffee from '@/shared/assets/images/coffee.svg?react';
 import Stats from '@/shared/assets/images/stats.svg?react';
 
@@ -11,6 +12,9 @@ const AdviceAnalysis = () => {
           <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consectetur adipiscing elit.</small>
         </div>
         <Stats />
+        <div className={styles.blobs}>
+          <Blobs />
+        </div>
       </div>
 
       <div className={styles.block}>
@@ -19,6 +23,9 @@ const AdviceAnalysis = () => {
           <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
         </div>
         <Coffee />
+        <div className={styles.blobs}>
+          <Blobs />
+        </div>
       </div>
     </div>
   );
