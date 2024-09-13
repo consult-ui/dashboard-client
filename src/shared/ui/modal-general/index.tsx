@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 export const ModalGeneral = (props: Props) => {
-  const { open, onClose, title, styles: stylesProps, zIndex, className, children } = props;
+  const { open, onClose, title, styles: stylesProps, zIndex, visibleCloseButton = true, className, children } = props;
   const [container] = useState<HTMLDivElement>(document.createElement('div'));
   const ref = useRef<HTMLDivElement | null>(null);
 
@@ -53,9 +53,11 @@ export const ModalGeneral = (props: Props) => {
       <div ref={ref} style={{ ...customStyles.content, ...stylesProps }}>
         <header className={styles.header}>
           <h3>{title}</h3>
-          <Button onClick={onClose} className={styles.btnClose} color={'dark'}>
-            <CloseIcon />
-          </Button>
+          {visibleCloseButton && (
+            <Button onClick={onClose} className={styles.btnClose} color={'dark'}>
+              <CloseIcon />
+            </Button>
+          )}
         </header>
         <div className={className}>{children}</div>
       </div>

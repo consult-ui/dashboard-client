@@ -5,6 +5,7 @@
 }
 .block {
   padding: 10px 20px;
+  position: relative;
 
   display: flex;
   align-items: center;
@@ -26,15 +27,28 @@
   gap: 5px;
 }
 .block > div > h6 {
+  z-index: 5;
   font-size: 18px;
   font-weight: 800;
 }
 .block > div > small {
   display: -webkit-box;
+  z-index: 5;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
 .block > svg {
   margin: 0 -10px -10px 15px;
+  z-index: 5;
+}
+.blobs {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+.block:last-child .blobs {
+  top: 1rem;
+  right: -1rem;
 }

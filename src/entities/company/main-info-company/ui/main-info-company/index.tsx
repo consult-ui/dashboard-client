@@ -1,5 +1,6 @@
 import { InfoItems } from '../info-items';
 import styles from './MainInfoCompany.module.css';
+import { CompanyInitialForm } from '@/features/company-initial-form';
 
 export const MainInfoCompany = () => {
   return (
@@ -7,6 +8,7 @@ export const MainInfoCompany = () => {
       <header className={styles.header}>
         <span className={styles.subtitle}>Основная информация о компании</span>
       </header>
+      <CompanyInitialForm />
       <InfoItems />
     </div>
   );

@@ -1,38 +1,36 @@
-.container {
-  width: 100%;
+.form {
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.block {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-.container > span {
+.block > label {
   font-weight: 500;
   font-size: 14px;
   color: var(--gray-light);
   margin-left: 1.25rem;
 }
-
-.input {
+.block > textarea {
+  max-width: 100%;
+  border-radius: 1rem;
   width: 100%;
+  padding: 1rem;
   background: var(--light);
   border: 1px solid var(--border-color);
-  border-radius: 50px;
   font-size: 14px;
   font-weight: 500;
   color: var(--white);
+  resize: none;
   transition: 0.15s;
 }
-.input:disabled {
-  background: var(--dark);
-}
-
-/*sizes*/
-.input.sm {
-  padding: 1rem;
-  font-size: 14px;
-  max-height: 2.25rem;
-}
-.input.md {
-  padding: 1.5rem;
-  max-height: 3rem;
-  font-size: 16px;
+.block .actions {
+  margin-top: 1em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
