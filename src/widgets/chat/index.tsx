@@ -5,7 +5,7 @@ import PopularQuestions from '@/features/popular-questions';
 
 const Chat = () => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} data-testid="chat-widget">
       <ChatMessagesList />
       <PopularQuestions />
       <ChatInput />

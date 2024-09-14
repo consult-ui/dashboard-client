@@ -36,3 +36,12 @@
   max-height: 3rem;
   font-size: 16px;
 }
+
+.container > header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.container > header svg {
+  stroke: var(--white);
+}

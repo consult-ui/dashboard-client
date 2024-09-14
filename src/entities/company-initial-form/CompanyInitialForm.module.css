@@ -1,0 +1,52 @@
+.header {
+  width: 700px;
+  margin-bottom: 1.5em;
+}
+.header > p {
+  font-size: 14px;
+}
+.header > p > b {
+  color: var(--primary);
+  font-weight: inherit;
+}
+
+.form {
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25em;
+}
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.block > label {
+}
+.block > textarea {
+  max-width: 100%;
+  border-radius: 1rem;
+  width: 100%;
+  padding: 1rem;
+  background: var(--light);
+  border: 1px solid var(--border-color);
+  font-size: 1em;
+  font-weight: 500;
+  color: var(--white);
+  resize: none;
+  transition: 0.15s;
+}
+.block > textarea::-webkit-scrollbar {
+  width: 12px;
+}
+.block > textarea::-webkit-scrollbar-track,
+.block > textarea::-webkit-scrollbar-thumb {
+  margin: 8px 0;
+  border: 3px solid var(--light);
+}
+
+.rowWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: inherit;
+}

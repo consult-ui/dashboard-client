@@ -1,6 +1,6 @@
 import { InfoItems } from '../info-items';
 import styles from './MainInfoCompany.module.css';
-import { CompanyInitialForm } from '@/features/company-initial-form';
+import { CompanyInitialForm } from '@/entities/company-initial-form';
 
 export const MainInfoCompany = () => {
   return (

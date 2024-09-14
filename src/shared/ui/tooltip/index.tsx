@@ -37,7 +37,7 @@ const Tooltip = ({ children, content }: TooltipProps) => {
       <div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        style={{ display: 'inline-block', cursor: 'pointer' }}
+        style={{ display: 'flex', cursor: 'pointer' }}
       >
         {children}
       </div>

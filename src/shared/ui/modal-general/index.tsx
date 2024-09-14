@@ -50,7 +50,7 @@ export const ModalGeneral = (props: Props) => {
 
   return createPortal(
     <div style={{ ...customStyles.overlay, zIndex: zIndex ?? customStyles.overlay.zIndex }}>
-      <div ref={ref} style={{ ...customStyles.content, ...stylesProps }}>
+      <div ref={ref} style={{ ...customStyles.content, ...stylesProps }} className={styles.wrapper}>
         <header className={styles.header}>
           <h3>{title}</h3>
           {visibleCloseButton && (

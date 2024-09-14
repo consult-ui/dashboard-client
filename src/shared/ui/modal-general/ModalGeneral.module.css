@@ -1,3 +1,19 @@
+.wrapper {
+}
+.wrapper::-webkit-scrollbar {
+  width: 12px;
+}
+.wrapper::-webkit-scrollbar-track {
+  margin: 16px 0;
+}
+.wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--dark);
+}
+.wrapper::-webkit-scrollbar-track,
+.wrapper::-webkit-scrollbar-thumb {
+  border: 3px solid var(--gray-dark);
+}
+
 .header {
   width: 100%;
   padding-bottom: 0.5rem;
