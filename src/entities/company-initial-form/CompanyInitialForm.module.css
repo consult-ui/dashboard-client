@@ -1,13 +1,20 @@
 .header {
   width: 700px;
   margin-bottom: 1.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 .header > p {
   font-size: 14px;
+  line-height: 1.45rem;
 }
 .header > p > b {
-  color: var(--primary);
-  font-weight: inherit;
+  font-weight: initial;
+  padding: 0 0.45rem;
+  color: var(--white-static);
+  background-color: var(--warn);
+  border-radius: 1rem;
 }
 
 .form {
@@ -43,6 +50,17 @@
 .block > textarea::-webkit-scrollbar-thumb {
   margin: 8px 0;
   border: 3px solid var(--light);
+}
+
+.infoBlock {
+  padding: 0.75rem 1rem;
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid var(--warn);
+}
+.infoBlock > p {
+  color: var(--white);
+  text-align: center;
 }
 
 .rowWrapper {

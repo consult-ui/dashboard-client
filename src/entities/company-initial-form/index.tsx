@@ -33,6 +33,10 @@ export const CompanyInitialForm = () => {
           <b>максимально подробно и честно</b>, чтобы наши модели могли составить более <b>точный портрет</b> вашей
           организации.
         </p>
+
+        <div className={styles.infoBlock}>
+          <p>Для работы с платформой необходимо заполнить форму</p>
+        </div>
       </header>
 
       <form onSubmit={submitForm} className={styles.form}>

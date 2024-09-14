@@ -1,6 +1,7 @@
 import styles from './ChatsList.module.css';
 import Chat from '@/shared/assets/icons/message.svg?react';
 import Question from '@/shared/assets/icons/question.svg?react';
+import Button from '@/shared/ui/button';
 import Tooltip from '@/shared/ui/tooltip';
 import { useState } from 'react';
 
@@ -12,7 +13,14 @@ const ChatsList = () => {
   return (
     <nav className={styles.wrapper}>
       {data.map((elem) => (
-        <button key={elem} disabled={active === elem} onClick={() => setActive(elem)}>
+        <Button
+          color={'primary'}
+          variant={'outlined'}
+          size={'md'}
+          key={elem}
+          disabled={active === elem}
+          onClick={() => setActive(elem)}
+        >
           <div>
             <Chat />
             {elem}
@@ -22,7 +30,7 @@ const ChatsList = () => {
               <Question />
             </div>
           </Tooltip>
-        </button>
+        </Button>
       ))}
     </nav>
   );
