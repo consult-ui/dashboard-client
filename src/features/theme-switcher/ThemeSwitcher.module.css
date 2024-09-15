@@ -10,6 +10,3 @@
   scale: 1.25;
   stroke: var(--white);
 }
-.wrapper > button:disabled > svg {
-  stroke: var(--white-static);
-}

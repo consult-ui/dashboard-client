@@ -1,4 +1,5 @@
 import layoutSlice from './slices/layoutSlice.ts';
+import organizationsApi from '@/app/api/api-list/organizations.ts';
 import userApi from '@/app/api/api-list/user.ts';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   layout: layoutSlice,
   //queries
   [userApi.reducerPath]: userApi.reducer,
+  [organizationsApi.reducerPath]: organizationsApi.reducer,
 });
 
 const persistConfig = {
@@ -26,7 +28,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(userApi.middleware),
+    }).concat(userApi.middleware, organizationsApi.middleware),
 });
 
 export const persistedStore = persistStore(store);

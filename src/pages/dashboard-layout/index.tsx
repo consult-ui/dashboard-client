@@ -3,8 +3,10 @@ import { useMeQuery } from '@/app/api';
 import { ELinks } from '@/app/router/types';
 import DashboardNavbar from '@/widgets/dashboard-navbar';
 import Sidebar from '@/widgets/sidebar';
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+const CompanyInitialForm = lazy(() => import('@/entities/company-initial-form'));
 
 type Props = {
   children: React.ReactNode;
@@ -23,6 +25,9 @@ const DashboardLayout = ({ children }: Props) => {
   return (
     <div className={styles.wrapper}>
       <Sidebar />
+      <Suspense fallback={undefined}>
+        <CompanyInitialForm />
+      </Suspense>
       <div className={styles.content}>
         <DashboardNavbar />
         <div className={styles.main}>{children}</div>

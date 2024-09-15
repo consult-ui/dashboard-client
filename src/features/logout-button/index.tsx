@@ -1,5 +1,7 @@
 import { useSignOutMutation } from '@/app/api';
+import userApi from '@/app/api/api-list/user.ts';
 import { ELinks } from '@/app/router/types';
+import { useAppDispatch } from '@/app/store/store.ts';
 import LogoutIcon from '@/shared/assets/icons/logout.svg?react';
 import { TOAST_ERROR } from '@/shared/constants/toasts.ts';
 import Button from '@/shared/ui/button';
@@ -12,6 +14,7 @@ const LogoutButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [logout, { isLoading }] = useSignOutMutation();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const onLogout = () => {
     logout()
@@ -21,6 +24,8 @@ const LogoutButton = () => {
           Cookies.remove('access_token');
           Cookies.remove('refresh_token');
           navigate(ELinks.SIGN_IN);
+          // clear cached for user queries
+          setTimeout(() => dispatch(userApi.util.resetApiState()), 500);
         } else {
           throw new Error(res.msg);
         }

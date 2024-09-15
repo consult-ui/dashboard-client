@@ -2,15 +2,26 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.35rem;
 }
-.container > span {
+
+/*header*/
+.container > header > label {
   font-weight: 500;
   font-size: 14px;
   color: var(--gray-light);
   margin-left: 1.25rem;
 }
+.container > header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.container > header svg {
+  stroke: var(--white);
+}
 
+/*input*/
 .input {
   width: 100%;
   background: var(--light);
@@ -35,13 +46,4 @@
   padding: 1.5rem;
   max-height: 3rem;
   font-size: 16px;
-}
-
-.container > header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.container > header svg {
-  stroke: var(--white);
 }

@@ -1,32 +1,29 @@
 import styles from './InfoItems.module.css';
+import { useMeQuery, useMyOrganizationQuery } from '@/app/api';
 import { Card } from '@/shared/ui/card';
 
 export const InfoItems = () => {
+  const { data: me } = useMeQuery();
+  const { data } = useMyOrganizationQuery(
+    { organization_id: me?.data?.organization_id as number },
+    { skip: !me?.data?.organization_id },
+  );
+
   return (
     <Card>
       <div className={styles.item}>
         <span>Наименование</span>
         <h2>
-          FIT SERVICE <span>(7716791437)</span>
+          {data?.data?.name || 'Загрузка...'} <span>({data?.data?.tax_number || '-'})</span>
         </h2>
       </div>
       <div className={styles.item}>
-        <span>Ключевые слова</span>
-        <p>serivce, fit-service, fit, car, auto</p>
+        <span>Руководитель</span>
+        <p>{data?.data?.head_name || '-'}</p>
       </div>
       <div className={styles.item}>
-        <span>Описание</span>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet nisi purus, eu pulvinar sapien porta
-          ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet nisi purus, eu pulvinar sapien
-          porta ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet nisi purus, eu pulvinar
-          sapien porta ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet nisi purus, eu
-          pulvinar sapien porta ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet nisi purus,
-          eu pulvinar sapien porta ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet nisi
-          purus, eu pulvinar sapien porta ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus aliquet
-          nisi purus, eu pulvinar sapien porta ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-          aliquet nisi purus, eu pulvinar sapien porta ut.
-        </p>
+        <span>Вид деятельности</span>
+        <p>{data?.data?.activity_type || '-'}</p>
       </div>
     </Card>
   );

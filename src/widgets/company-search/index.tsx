@@ -1,57 +1,58 @@
 import styles from './CompanySearch.module.css';
+import { useOrganizationsQuery } from '@/app/api';
+import { OrganizationItem } from '@/app/api/types/organizations.ts';
+import CompanySearchItem from '@/features/company-search-item';
+import Arrow from '@/shared/assets/icons/arrow.svg?react';
 import { useDebounce } from '@/shared/hooks/useDebounce.ts';
 import { Input } from '@/shared/ui/input';
 import { useState } from 'react';
 
-const data = [
-  {
-    name: 'ООО Тмыв денег',
-    inn: 9412789941,
-    fio: 'Дубасов Кирилл Сергеевич',
-  },
-  {
-    name: 'ООО Хомяки',
-    inn: 7198247114,
-    fio: 'Лохов Лох Ебланович',
-  },
-  {
-    name: 'ООО Лутаем бабос',
-    inn: 7645923052,
-    fio: 'Иванов Иван Иванович',
-  },
-];
+type Props = {
+  selected: OrganizationItem | null;
+  setSelected: (value: OrganizationItem) => void;
+};
 
-const CompanySearch = () => {
+const CompanySearch = ({ selected, setSelected }: Props) => {
   const [value, setValue] = useState<string>('');
   const debouncedValue = useDebounce<string>(value, 1000);
+  const { data, isFetching, isError } = useOrganizationsQuery({ query: debouncedValue }, { skip: !debouncedValue });
 
   return (
     <div className={styles.wrapper}>
-      <Input
-        placeholder="Название или ИНН"
-        label={'Поиск организации'}
-        type="search"
-        tooltip={
-          'Выберите свою компанию, введя её ИНН или название. Если компания не состоит на учете или ее нет в списке, пропустите этот блок'
-        }
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
+      <div className={styles.inputWrapper}>
+        <Input
+          placeholder="Название или ИНН"
+          label={'Поиск организации'}
+          type="search"
+          tooltip={
+            'Выберите свою компанию, введя её ИНН или название. Если компания не состоит на учете или ее нет в списке, пропустите этот блок'
+          }
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+        <Arrow className={styles.arrow} />
+      </div>
 
       {debouncedValue && (
-        <ul className={styles.dropdown}>
-          {data.map(({ name, inn, fio }) => (
-            <li key={name}>
-              <div className={styles.orgItem}>
-                <h6>{name}</h6>
-                <div>
-                  <span>ИНН {inn}</span>
-                  <small>{fio}</small>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <div className={styles.dropdown}>
+          {isFetching && !data?.data?.length && <p>Загрузка...</p>}
+          {isError && !data?.data?.length && <p>Ошибка загрузки! Попробуйте другой запрос</p>}
+          {!isError && !isFetching && !data?.data?.length && <p>Организации по вашему запросу не найдены!</p>}
+
+          {!!data?.data?.length && (
+            <ul>
+              {data.data.map((elem) => (
+                <CompanySearchItem
+                  setValue={setValue}
+                  key={elem.tax_number}
+                  data={elem}
+                  isActive={elem.tax_number === selected?.tax_number}
+                  setSelected={setSelected}
+                />
+              ))}
+            </ul>
+          )}
+        </div>
       )}
     </div>
   );

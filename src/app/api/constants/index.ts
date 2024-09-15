@@ -1,4 +1,4 @@
-import { IRefresh } from '@/app/api/types';
+import { IRefresh } from '@/app/api/types/user.ts';
 import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Mutex } from 'async-mutex';

@@ -19,7 +19,7 @@ const Button = (props: Props) => {
       disabled={isLoading || disabled}
       {...rest}
     >
-      {isLoading ? 'Загрузка' : children}
+      {isLoading ? 'Загрузка...' : children}
     </button>
   );
 };

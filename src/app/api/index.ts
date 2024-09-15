@@ -1,3 +1,4 @@
+import organizationsApi from '@/app/api/api-list/organizations.ts';
 import userApi from '@/app/api/api-list/user.ts';
 
 // Export hooks for usage in functional components, which are
@@ -10,3 +11,10 @@ export const {
   useChangePasswordMutation,
   useResetPasswordMutation,
 } = userApi;
+
+export const {
+  useOrganizationsQuery,
+  useLazyOneOrganizationQuery,
+  useCreateOrganizationMutation,
+  useMyOrganizationQuery,
+} = organizationsApi;

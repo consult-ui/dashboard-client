@@ -13,7 +13,6 @@ export const InfoItems = () => {
         <Item title={'Имя и фамилия'} content={`${data?.data?.last_name || ''} ${data?.data?.first_name || ''}`} />
         <Item title={'Телефон'} content={data?.data?.phone_number} />
         <Item title={'E-Mail'} content={data?.data?.email} />
-        <Item title={'Компания'} content={'-'} />
         <Item title={'Дата завершения подписки'} content={formatDate(data?.data?.expiration_date)} />
       </div>
     </Card>

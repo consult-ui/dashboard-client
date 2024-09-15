@@ -1,12 +1,11 @@
-.card {
+.wrapper {
   width: 100%;
   padding: 1.5rem;
   background: var(--gray-dark);
   border: 1px solid var(--border-color);
   border-radius: 1rem;
-}
-.items {
+
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 0.5rem;
 }
