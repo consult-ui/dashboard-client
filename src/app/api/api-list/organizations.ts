@@ -1,7 +1,7 @@
 import { baseQueryWithReauth } from '@/app/api/constants';
 import { ServerResponse } from '@/app/api/types';
 import { MyOrganization, Organization, OrganizationSuggests } from '@/app/api/types/organizations.ts';
-import { PayloadCreateCompany } from '@/entities/company-initial-form/types';
+import { PayloadCreateCompany } from '@/entities/company/company-initial-form/types';
 import { createApi } from '@reduxjs/toolkit/query/react';
 
 const organizationsApi = createApi({

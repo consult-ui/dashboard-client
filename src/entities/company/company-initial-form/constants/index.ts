@@ -1,4 +1,4 @@
-import { PayloadCreateCompany } from '@/entities/company-initial-form/types';
+import { PayloadCreateCompany } from '@/entities/company/company-initial-form/types';
 
 export const initialData: PayloadCreateCompany = {
   name: '',

@@ -1,12 +1,14 @@
 import styles from './DashboardLayout.module.css';
 import { useMeQuery } from '@/app/api';
 import { ELinks } from '@/app/router/types';
+import { useShowOrgModal } from '@/entities/company/company-initial-form';
+import AlertNoOrg from '@/features/alert-no-org';
 import DashboardNavbar from '@/widgets/dashboard-navbar';
 import Sidebar from '@/widgets/sidebar';
 import { lazy, Suspense, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const CompanyInitialForm = lazy(() => import('@/entities/company-initial-form'));
+const CompanyInitialForm = lazy(() => import('@/entities/company/company-initial-form'));
 
 type Props = {
   children: React.ReactNode;
@@ -14,6 +16,7 @@ type Props = {
 
 const DashboardLayout = ({ children }: Props) => {
   const { data, isLoading } = useMeQuery();
+  const { isEmptyOrg } = useShowOrgModal();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,8 +31,9 @@ const DashboardLayout = ({ children }: Props) => {
       <Suspense fallback={undefined}>
         <CompanyInitialForm />
       </Suspense>
-      <div className={styles.content}>
+      <div className={`${styles.content} ${isEmptyOrg ? styles.withAlert : ''}`}>
         <DashboardNavbar />
+        <AlertNoOrg />
         <div className={styles.main}>{children}</div>
       </div>
     </div>

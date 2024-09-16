@@ -6,7 +6,10 @@
   flex: 1;
   display: grid;
   grid-template-rows: 64px 1fr;
-  overflow-y: auto;
+  overflow-y: hidden;
+}
+.content.withAlert {
+  grid-template-rows: 64px 50px 1fr;
 }
 .main {
   overflow-y: auto;

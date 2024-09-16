@@ -1,10 +1,10 @@
 import styles from './CompanyInitialForm.module.css';
+import { useShowOrgModal } from './hooks/useShowOrgModal.ts';
 import { useCreateOrganizationMutation, useMeQuery } from '@/app/api';
 import { OrganizationItem } from '@/app/api/types/organizations.ts';
 import { ELinks } from '@/app/router/types';
-import { initialData } from '@/entities/company-initial-form/constants';
-import { useShowOrgModal } from '@/entities/company-initial-form/hooks/useShowOrgModal.ts';
-import { PayloadCreateCompany } from '@/entities/company-initial-form/types';
+import { initialData } from '@/entities/company/company-initial-form/constants';
+import { PayloadCreateCompany } from '@/entities/company/company-initial-form/types';
 import { TOAST_ERROR, TOAST_SUCCESS } from '@/shared/constants/toasts.ts';
 import Button from '@/shared/ui/button';
 import { Input } from '@/shared/ui/input';
@@ -155,3 +155,4 @@ const CompanyInitialForm = () => {
 };
 
 export default CompanyInitialForm;
+export { useShowOrgModal };

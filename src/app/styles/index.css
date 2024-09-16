@@ -9,6 +9,7 @@
 :root {
   /*no changed vars*/
   --error: #ff2a2e;
+  --warning: #a88d21;
   /*changed vars*/
   --white: #ffffff;
   --primary: #5661f6;

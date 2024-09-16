@@ -107,15 +107,3 @@
 .buttons > a:last-child {
   border: 1px solid #25d366;
 }
-
-.alert {
-  padding: 0.5em 0.75em;
-  border: 2px solid var(--error);
-  border-radius: 16px;
-  font-size: 14px;
-  text-align: center;
-  line-height: 1.2;
-}
-.alert > b {
-  color: var(--error);
-}
