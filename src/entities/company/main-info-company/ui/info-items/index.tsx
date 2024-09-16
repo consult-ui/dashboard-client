@@ -1,15 +1,11 @@
 import styles from './InfoItems.module.css';
-import { useMeQuery, useMyOrganizationQuery } from '@/app/api';
-import { useShowOrgModal } from '@/entities/company-initial-form/hooks/useShowOrgModal.ts';
+import { useShowOrgModal } from '@/entities/company/company-initial-form/hooks/useShowOrgModal.ts';
+import { useGetInfoOrganization } from '@/entities/company/hooks/useGetInfoOrganization.tsx';
 import { Card } from '@/shared/ui/card';
 
 export const InfoItems = () => {
   const { isEmptyOrg } = useShowOrgModal();
-  const { data: me } = useMeQuery();
-  const { data } = useMyOrganizationQuery(
-    { organization_id: me?.data?.organization_id as number },
-    { skip: !me?.data?.organization_id },
-  );
+  const { data } = useGetInfoOrganization();
 
   return (
     <Card>

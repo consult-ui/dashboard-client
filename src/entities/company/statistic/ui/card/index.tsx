@@ -1,13 +1,9 @@
 import { Item } from '../item';
 import styles from './Card.module.css';
-import { useMeQuery, useMyOrganizationQuery } from '@/app/api';
+import { useGetInfoOrganization } from '@/entities/company/hooks/useGetInfoOrganization.tsx';
 
 export const Card = () => {
-  const { data: me } = useMeQuery();
-  const { data } = useMyOrganizationQuery(
-    { organization_id: me?.data?.organization_id as number },
-    { skip: !me?.data?.organization_id },
-  );
+  const { data } = useGetInfoOrganization();
 
   return (
     <div className={styles.wrapper}>

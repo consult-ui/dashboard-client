@@ -1,5 +1,5 @@
 import { ServerResponse } from '@/app/api/types/index.ts';
-import { PayloadCreateCompany } from '@/entities/company-initial-form/types';
+import { PayloadCreateCompany } from '@/entities/company/company-initial-form/types';
 
 export interface OrganizationSuggests extends ServerResponse {
   data: OrganizationSuggestItem[];

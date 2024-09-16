@@ -6,7 +6,7 @@ import Sidebar from '@/widgets/sidebar';
 import { lazy, Suspense, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const CompanyInitialForm = lazy(() => import('@/entities/company-initial-form'));
+const CompanyInitialForm = lazy(() => import('@/entities/company/company-initial-form'));
 
 type Props = {
   children: React.ReactNode;

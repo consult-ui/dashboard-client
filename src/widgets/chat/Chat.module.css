@@ -1,4 +1,6 @@
 .wrapper {
+  position: relative;
+  z-index: 1;
   height: 100%;
   margin: 0 auto;
   padding: 0 7.5% 1.5em;

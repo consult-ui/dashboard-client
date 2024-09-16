@@ -1,0 +1,33 @@
+.alert {
+  position: absolute;
+  top: 1rem;
+  padding: 1rem 0.75rem;
+  border-radius: 0 16px 16px 0;
+  background: var(--error);
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+}
+.alert > span {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  transition: 0.15s;
+}
+.active > span {
+  width: auto;
+  height: auto;
+  font-size: 14px;
+  text-align: center;
+  color: var(--white-static);
+  line-height: 1.2;
+  font-weight: 600;
+  max-height: 100px;
+}
+.active > span > a {
+  font-weight: 700;
+}
+.active > span > b {
+  font-weight: 700;
+}
