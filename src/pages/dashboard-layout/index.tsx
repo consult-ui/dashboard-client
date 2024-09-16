@@ -33,7 +33,7 @@ const DashboardLayout = ({ children }: Props) => {
       </Suspense>
       <div className={`${styles.content} ${isEmptyOrg ? styles.withAlert : ''}`}>
         <DashboardNavbar />
-        <AlertNoOrg />
+        {isEmptyOrg && <AlertNoOrg />}
         <div className={styles.main}>{children}</div>
       </div>
     </div>

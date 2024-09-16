@@ -4,7 +4,6 @@ import AddChat from '@/entities/add-chat';
 import AdviceAnalysis from '@/entities/advice-analysis ';
 import ChatsList from '@/entities/chats-list';
 import Logo from '@/shared/assets/icons/logo.svg?react';
-import Sidebared from '@/shared/assets/icons/sidebar.svg?react';
 import Telegram from '@/shared/assets/icons/telegram.svg?react';
 import WhatsApp from '@/shared/assets/icons/whatsapp.svg?react';
 import { Link } from 'react-router-dom';
@@ -12,13 +11,10 @@ import { Link } from 'react-router-dom';
 const Sidebar = () => {
   return (
     <nav className={styles.nav}>
-      <header>
+      <header className={styles.header}>
         <Link to={ELinks.HOME}>
           <Logo />
         </Link>
-        <button>
-          <Sidebared />
-        </button>
       </header>
 
       <div className={styles.body}>

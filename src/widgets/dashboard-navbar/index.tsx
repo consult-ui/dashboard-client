@@ -15,7 +15,7 @@ const DashboardNavbar = () => {
             <span>({data?.data?.tax_number || 'ИНН не найден'})</span>
           </h6>
         ) : (
-          <h6>Неопределено</h6>
+          <h6>Данные не заполнены</h6>
         )}
       </div>
 

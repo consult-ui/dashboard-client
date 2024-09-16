@@ -9,36 +9,29 @@
 
   background: var(--gray-dark);
   border-right: 1px solid var(--border-color);
+
+  overflow-y: auto;
+}
+.nav::-webkit-scrollbar {
+  width: 12px;
+}
+.nav::-webkit-scrollbar-track,
+.nav::-webkit-scrollbar-thumb {
+  border: 3px solid var(--gray-dark);
 }
 
 /*header*/
-.nav > header {
+.header {
   padding: 1.25em 1.5em;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 
   border-bottom: 1px solid var(--border-color);
 }
-.nav > header > a {
+.header > a {
   margin-top: 8px;
-}
-.nav > header > button {
-  width: 32px;
-  height: 32px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: none;
-  border-radius: 8px;
-  background: var(--border-color);
-  transition: 0.15s;
-}
-.nav > header > button:hover {
-  background: var(--primary);
 }
 
 /*body*/
