@@ -3,6 +3,7 @@ import { useCreateOrganizationMutation, useMeQuery } from '@/app/api';
 import { OrganizationItem } from '@/app/api/types/organizations.ts';
 import { ELinks } from '@/app/router/types';
 import { initialData } from '@/entities/company-initial-form/constants';
+import { useShowOrgModal } from '@/entities/company-initial-form/hooks/useShowOrgModal.ts';
 import { PayloadCreateCompany } from '@/entities/company-initial-form/types';
 import { TOAST_ERROR, TOAST_SUCCESS } from '@/shared/constants/toasts.ts';
 import Button from '@/shared/ui/button';
@@ -13,7 +14,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const CompanyInitialForm = () => {
-  const { data: me, refetch, isFetching } = useMeQuery();
+  const { refetch, isFetching } = useMeQuery();
+  const { onClose, isShow, isEmptyOrg } = useShowOrgModal();
   const [data, setData] = useState<PayloadCreateCompany>(initialData);
   const [create, { isLoading }] = useCreateOrganizationMutation();
   const navigate = useNavigate();
@@ -36,17 +38,10 @@ const CompanyInitialForm = () => {
       .catch((err) => TOAST_ERROR(err?.message || 'Ошибка сохранения, попробуйте еще раз'));
   };
 
-  if (!me?.success || me?.data?.organization_id) return;
+  if (!isShow || !isEmptyOrg) return;
 
   return (
-    <ModalGeneral
-      visibleCloseButton={false}
-      zIndex={10}
-      title={'Заполните информацию о компании'}
-      // TODO: в будущем сделать заполнение по желанию
-      onClose={() => {}}
-      open={true}
-    >
+    <ModalGeneral zIndex={10} title={'Заполните информацию о компании'} onClose={onClose} open={true}>
       <header className={styles.header}>
         <p>
           Информация необходима, чтобы обеспечить более точные и персонализированные ответы на ваши запросы. Ваши данные{' '}
@@ -55,8 +50,6 @@ const CompanyInitialForm = () => {
           организации.
         </p>
       </header>
-
-      <article className={styles.alert}>Для работы с платформой необходимо заполнить форму</article>
 
       <form
         onKeyDown={(e) => {

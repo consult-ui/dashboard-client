@@ -1,8 +1,10 @@
 import styles from './InfoItems.module.css';
 import { useMeQuery, useMyOrganizationQuery } from '@/app/api';
+import { useShowOrgModal } from '@/entities/company-initial-form/hooks/useShowOrgModal.ts';
 import { Card } from '@/shared/ui/card';
 
 export const InfoItems = () => {
+  const { isEmptyOrg } = useShowOrgModal();
   const { data: me } = useMeQuery();
   const { data } = useMyOrganizationQuery(
     { organization_id: me?.data?.organization_id as number },
@@ -14,7 +16,8 @@ export const InfoItems = () => {
       <div className={styles.item}>
         <span>Наименование</span>
         <h2>
-          {data?.data?.name || 'Загрузка...'} <span>({data?.data?.tax_number || '-'})</span>
+          {isEmptyOrg ? '-' : data?.data?.name || 'Загрузка...'}{' '}
+          {!isEmptyOrg && <span>({data?.data?.tax_number || '-'})</span>}
         </h2>
       </div>
       <div className={styles.item}>
