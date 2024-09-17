@@ -11,9 +11,10 @@ type Props = {
   data: OrganizationSuggestItem;
   isActive: boolean;
   setSelected: (value: OrganizationItem) => void;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-const CompanySearchItem = ({ data, isActive, setSelected, setValue }: Props) => {
+const CompanySearchItem = ({ data, isActive, setSelected, setValue, setIsOpen }: Props) => {
   const { tax_number, name, head_name } = data;
 
   const [select, { isLoading }] = useLazyOneOrganizationQuery();
@@ -25,6 +26,7 @@ const CompanySearchItem = ({ data, isActive, setSelected, setValue }: Props) => 
         if (res.success) {
           setSelected(res.data);
           setValue('');
+          setIsOpen(false);
         } else {
           throw new Error(res?.msg);
         }
