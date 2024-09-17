@@ -16,5 +16,7 @@ export interface Me extends ServerResponse {
     organization_id: number | null;
     last_name: string;
     phone_number: string;
+    telegram_url: string;
+    whatsapp_url: string;
   };
 }
