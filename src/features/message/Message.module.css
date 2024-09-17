@@ -2,11 +2,11 @@
   width: 100%;
 
   display: grid;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 10% 1fr;
   align-items: flex-start;
 }
 .wrapper.robot {
-  grid-template-columns: 1fr 150px;
+  grid-template-columns: 1fr 10%;
 }
 .wrapper > .message {
   display: grid;
@@ -28,6 +28,7 @@
   line-height: 1.5;
 }
 
+/*time*/
 .time {
   height: 32px;
   padding: 0 12px;
