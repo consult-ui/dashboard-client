@@ -1,9 +1,8 @@
 import styles from './AddChat.module.css';
-import { LIST_CHATS } from '@/entities/add-chat/data';
-import AddChatCard from '@/features/add-chat-card';
 import Add from '@/shared/assets/icons/add.svg?react';
 import Button from '@/shared/ui/button';
 import { ModalGeneral } from '@/shared/ui/modal-general';
+import AddChatList from '@/widgets/add-chat-list';
 import { useState } from 'react';
 
 const AddChat = () => {
@@ -23,11 +22,7 @@ const AddChat = () => {
             списка ниже. Если вы <b>не нашли подходящий чат</b> в этом списке, обратитесь в поддержку, и{' '}
             <b>модераторы добавят</b> его.
           </p>
-          <div className={styles.cards}>
-            {LIST_CHATS.map((elem) => (
-              <AddChatCard key={elem.id} data={elem} />
-            ))}
-          </div>
+          <AddChatList />
         </div>
       </ModalGeneral>
     </>

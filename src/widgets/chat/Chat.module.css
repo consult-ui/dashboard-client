@@ -6,3 +6,25 @@
   grid-template-rows: 1fr auto 64px;
   gap: 12px;
 }
+
+.empty {
+  width: 925px;
+  max-height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  overflow-y: auto;
+}
+.empty > h3 {
+  font-size: 32px;
+}
+.empty > p {
+  max-width: 85%;
+  margin-bottom: 1em;
+  font-size: 14px;
+  color: var(--gray-light);
+  text-align: center;
+}

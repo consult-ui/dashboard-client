@@ -25,7 +25,7 @@ const AddChatCard = ({ data }: Props) => {
         {isAdded ? (
           <Button color={'dark'} size="sm" disabled>
             <Added />
-            Добавлено
+            Добавлен
           </Button>
         ) : (
           <Button size="sm">
