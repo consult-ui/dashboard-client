@@ -36,6 +36,7 @@ const LogoutButton = () => {
   return (
     <>
       <Button
+        data-testid="sign-out-modal-btn"
         onClick={() => setIsOpen(true)}
         variant="outlined"
         color={'error'}

@@ -18,7 +18,12 @@ const ProfileDropdown = () => {
 
   return (
     <div className={styles.wrapper} ref={ref}>
-      <Button variant="outlined" color="dark" onClick={() => setIsOpen((prev) => !prev)}>
+      <Button
+        variant="outlined"
+        color="dark"
+        onClick={() => setIsOpen((prev) => !prev)}
+        data-testid="profile-dropdown-btn"
+      >
         <div>
           <Icon />
           Личный кабинет

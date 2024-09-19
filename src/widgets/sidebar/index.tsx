@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
-    <nav className={styles.nav}>
+    <nav className={styles.nav} data-testid="sidebar">
       <header className={styles.header}>
         <Link to={ELinks.HOME}>
           <Logo />

@@ -31,11 +31,12 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={onSubmit} className={styles.form} id="Авторизация">
+    <form onSubmit={onSubmit} className={styles.form} id="Авторизация" data-testid="sign-in-form">
       <h4>Авторизация</h4>
       <div className={styles.inputWrapper}>
         <label htmlFor="login">Номер телефона или email</label>
         <input
+          data-testid="sign-in-login"
           required
           value={login}
           onChange={(e) => setLogin(e.target.value)}
@@ -48,6 +49,7 @@ const LoginForm = () => {
       <div className={styles.inputWrapper}>
         <label htmlFor="password">Пароль</label>
         <input
+          data-testid="sign-in-password"
           autoComplete="on"
           required
           value={password}
@@ -62,7 +64,7 @@ const LoginForm = () => {
         <Link to={ELinks.PASSWORD_RECOVERY}>Забыли пароль?</Link>
       </div>
 
-      <button disabled={isLoading} type={'submit'}>
+      <button disabled={isLoading} type={'submit'} data-testid="sign-in-submit">
         {isLoading ? 'Загрузка' : 'Войти'}
       </button>
     </form>

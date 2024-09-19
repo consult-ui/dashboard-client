@@ -6,7 +6,7 @@ const DashboardNavbar = () => {
   const { data } = useGetInfoOrganization();
 
   return (
-    <nav className={styles.wrapper}>
+    <nav className={styles.wrapper} data-testid="dashboard-navbar">
       <div className={styles.info}>
         <small>Компания</small>
         {data?.data?.name ? (

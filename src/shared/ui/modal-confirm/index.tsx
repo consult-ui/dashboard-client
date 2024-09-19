@@ -19,7 +19,7 @@ const ModalConfirm = (props: PropsConfirm) => {
         <Button size="md" variant={'outlined'} color="error" onClick={onClose}>
           Отмена
         </Button>
-        <Button size="md" onClick={onConfirm} isLoading={isLoading}>
+        <Button size="md" onClick={onConfirm} isLoading={isLoading} data-testid="confirm-modal-btn">
           Подтвердить
         </Button>
       </footer>
