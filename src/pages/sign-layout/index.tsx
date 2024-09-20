@@ -1,8 +1,9 @@
 import styles from './SignLayout.module.css';
 import { ELinks } from '@/app/router/types';
 import Logo from '@/shared/assets/icons/logo.svg?react';
+import SuspenseLoader from '@/shared/ui/suspense-loader';
 import Cookies from 'js-cookie';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 type Props = {
@@ -22,7 +23,7 @@ const SignLayout = ({ children }: Props) => {
     <div className={styles.wrapper}>
       <section>
         <Logo />
-        {children}
+        <Suspense fallback={<SuspenseLoader />}>{children}</Suspense>
         <small>Новые возможности для бизнеса в одном решении</small>
       </section>
       <section className={styles.bg} />

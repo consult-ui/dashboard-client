@@ -9,6 +9,8 @@ const data = ['Маркетолог', 'Юрист', 'Рерайтер', 'Коп�
 const ChatsList = () => {
   const [active, setActive] = useState<string>(data[0]);
 
+  // TODO: add delete and update
+
   return (
     <nav className={styles.wrapper}>
       {data.map((elem) => (

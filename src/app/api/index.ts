@@ -1,3 +1,4 @@
+import chatApi from '@/app/api/api-list/chat.ts';
 import organizationsApi from '@/app/api/api-list/organizations.ts';
 import userApi from '@/app/api/api-list/user.ts';
 
@@ -18,3 +19,5 @@ export const {
   useCreateOrganizationMutation,
   useMyOrganizationQuery,
 } = organizationsApi;
+
+export const { useChatCreateMutation, useChatDeleteMutation, useChatListQuery, useAssistantListQuery } = chatApi;

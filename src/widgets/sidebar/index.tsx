@@ -11,7 +11,7 @@ const Sidebar = () => {
   return (
     <nav className={styles.nav} data-testid="sidebar">
       <header className={styles.header}>
-        <Link to={ELinks.HOME}>
+        <Link to={ELinks.DASHBOARD}>
           <Logo />
         </Link>
       </header>
