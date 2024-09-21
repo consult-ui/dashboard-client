@@ -16,7 +16,7 @@ interface IProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLI
 }
 
 export const Input = (props: IProps | IPropsLabel) => {
-  const { label, isLoading, sizes = 'md', disabled, tooltip, ...rest } = props;
+  const { label, isLoading, sizes = 'md', disabled, tooltip, style, ...rest } = props;
 
   if (label) {
     return (
@@ -32,6 +32,7 @@ export const Input = (props: IProps | IPropsLabel) => {
         <input
           disabled={isLoading || disabled}
           className={`${styles.input} ${rest.className} ${styles[sizes]}`}
+          style={style}
           {...rest}
         />
       </div>

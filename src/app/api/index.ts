@@ -20,4 +20,10 @@ export const {
   useMyOrganizationQuery,
 } = organizationsApi;
 
-export const { useChatCreateMutation, useChatDeleteMutation, useChatListQuery, useAssistantListQuery } = chatApi;
+export const {
+  useChatCreateMutation,
+  useChatDeleteMutation,
+  useChatListQuery,
+  useAssistantListQuery,
+  useChatUpdateMutation,
+} = chatApi;

@@ -1,0 +1,47 @@
+.responsiveWrapper {
+  position: relative;
+}
+.button {
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  text-decoration: none;
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.15s;
+}
+.button.active,
+.button.active:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--white-static);
+}
+.button svg {
+  stroke: var(--white);
+}
+.button.active svg {
+  stroke: var(--white-static);
+}
+.button:hover {
+  border-color: var(--white);
+}
+.button > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.button > button {
+  position: relative;
+  background: none;
+  border: none;
+  transition: 0.15s;
+}
+.button > button:hover,
+.button > button:disabled {
+  opacity: 0.65;
+}
