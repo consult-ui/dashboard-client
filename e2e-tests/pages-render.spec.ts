@@ -14,7 +14,7 @@ test('no auth redirect to sign in', async ({ page }) => {
 test('with auth redirect to home page', async ({ page }) => {
   await signIn(page);
   await expect(page.getByTestId('sidebar')).toBeVisible();
-  await expect(page.getByTestId('dashboard-chat-navbar')).toBeVisible();
+  await expect(page.getByTestId('dashboard-navbar')).toBeVisible();
   await expect(page.getByTestId('chat-widget')).toBeVisible();
 });
 
