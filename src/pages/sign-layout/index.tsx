@@ -24,7 +24,7 @@ const SignLayout = ({ children }: Props) => {
       <section>
         <Logo />
         <Suspense fallback={<SuspenseLoader />}>{children}</Suspense>
-        <small>Новые возможности для бизнеса в одном решении</small>
+        <small>Простые инновации для всех задач вашего бизнеса</small>
       </section>
       <section className={styles.bg} />
     </div>

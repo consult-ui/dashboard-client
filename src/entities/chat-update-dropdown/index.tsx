@@ -2,6 +2,9 @@ import styles from './ChatUpdateDropdown.module.css';
 import { useChatDeleteMutation, useChatListQuery } from '@/app/api';
 import { ChatItem } from '@/app/api/types/chat.ts';
 import UpdateChatModal from '@/features/update-chat-modal';
+import Delete from '@/shared/assets/icons/delete.svg?react';
+import Quest from '@/shared/assets/icons/question.svg?react';
+import Settings from '@/shared/assets/icons/settings.svg?react';
 import { TOAST_ERROR, TOAST_SUCCESS } from '@/shared/constants/toasts.ts';
 import { useClickAway } from '@/shared/hooks/useClickAway.ts';
 import ModalConfirm from '@/shared/ui/modal-confirm';
@@ -37,19 +40,30 @@ const ChatUpdateDropdown = ({ chat, onClose, isOpen }: Props) => {
 
   useClickAway(ref, isOpen, onClose);
 
-  // TODO: add icons to list items
-
   return (
     <>
       {isOpen && (
         <ul ref={ref} className={styles.wrapper}>
           <li>
             <Tooltip content={chat.desc}>
-              <span>Подобнее</span>
+              <button title={chat.desc}>
+                <Quest />
+                <span>Подобнее</span>
+              </button>
             </Tooltip>
           </li>
-          <li onClick={() => setIsShowUpdate(true)}>Персонализация</li>
-          <li onClick={() => setIsShowDelete(true)}>Удалить</li>
+          <li>
+            <button onClick={() => setIsShowUpdate(true)}>
+              <Settings />
+              Персонализация
+            </button>
+          </li>
+          <li>
+            <button onClick={() => setIsShowDelete(true)}>
+              <Delete />
+              Удалить
+            </button>
+          </li>
         </ul>
       )}
 

@@ -1,0 +1,13 @@
+.wrapper {
+  max-width: 600px;
+  padding: 1em;
+  border-radius: 16px;
+  border: 1px solid var(--error);
+  text-align: center;
+}
+.wrapper > footer {
+  margin-top: 0.75em;
+  display: flex;
+  justify-content: center;
+  gap: 0.75em;
+}

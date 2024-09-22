@@ -42,25 +42,32 @@ const UpdateChatModal = ({ isOpen, onClose, chat }: Props) => {
   return (
     <ModalGeneral open={isOpen} onClose={onClose} title="Редактирование чата">
       <form className={styles.form} onSubmit={onUpdate}>
-        <Input
-          required
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          label="Название чата"
-          placeholder="Название чата"
-        />
+        <div>
+          <Input
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            label="Название чата"
+            placeholder="Название чата"
+          />
 
-        <Input
-          style={{ height: 50, maxHeight: 50, padding: '5px 1.5em' }}
-          type="color"
-          value={color || undefined}
-          onChange={(e) => setColor(e.target.value)}
-          label="Цвет чата"
-        />
+          <Input
+            style={{ height: 50, maxHeight: 50, padding: '5px 1.5em' }}
+            type="color"
+            value={color || undefined}
+            onChange={(e) => setColor(e.target.value)}
+            label="Цвет чата"
+          />
+        </div>
 
-        <Button type="submit" isLoading={isLoading}>
-          Сохранить
-        </Button>
+        <footer>
+          <Button type="submit" isLoading={isLoading}>
+            Сохранить
+          </Button>
+          <Button onClick={onClose} variant="outlined" color="error">
+            Отмена
+          </Button>
+        </footer>
       </form>
     </ModalGeneral>
   );

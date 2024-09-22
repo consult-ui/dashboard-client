@@ -7,10 +7,12 @@ const NotFound = () => {
   return (
     <div className={styles.wrapper}>
       <h1>404</h1>
-      <p>Упс! Такой страницы не существует</p>
-      <Link to={ELinks.DASHBOARD}>
-        <Button size="lg">Вернуться на главную</Button>
-      </Link>
+      <article>
+        <p>Ой, что-то сломалось... Страница не найдена или вовсе не существует</p>
+        <Link to={ELinks.DASHBOARD}>
+          <Button color="dark">Вернуться на главную</Button>
+        </Link>
+      </article>
     </div>
   );
 };

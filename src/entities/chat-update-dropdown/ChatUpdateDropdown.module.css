@@ -13,23 +13,32 @@
   z-index: 2;
 }
 .wrapper > li {
+  border-bottom: 1px solid var(--border-color);
+}
+.wrapper > li button {
+  width: 100%;
   padding: 0.5em 0.85em;
 
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 
+  background: none;
+  border: none;
   font-size: 14px;
   font-weight: 600;
-  border-bottom: 1px solid var(--border-color);
-  cursor: pointer;
-
   transition: 0.15s;
+}
+.wrapper > li button > svg {
+  stroke: var(--white);
 }
 .wrapper > li:last-child {
   border-bottom: 0;
   color: var(--error);
 }
-.wrapper > li:hover {
+.wrapper > li button:hover {
   opacity: 0.65;
+}
+.wrapper > li:last-child button > svg {
+  stroke: var(--error);
 }

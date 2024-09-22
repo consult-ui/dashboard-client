@@ -1,9 +1,12 @@
 import styles from './ChatsList.module.css';
 import { useChatListQuery } from '@/app/api';
 import ChatButton from '@/features/chat-button';
+import ErrorAlert from '@/shared/ui/error-alert';
 
 const ChatsList = () => {
-  const { data } = useChatListQuery();
+  const { data, error } = useChatListQuery();
+
+  if (error) return <ErrorAlert text={'Ошибка загрузки помощников.'} hideReload />;
 
   return <nav className={styles.wrapper}>{data?.data?.map((chat) => <ChatButton key={chat.id} chat={chat} />)}</nav>;
 };
