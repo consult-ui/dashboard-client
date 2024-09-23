@@ -2,10 +2,12 @@
   position: relative;
 }
 .button {
-  padding: 12px 24px;
-  display: flex;
+  max-width: 100%;
+  padding: 12px 20px;
+  display: grid;
   align-items: center;
-  justify-content: space-between;
+  grid-template-columns: 1fr 20px;
+  gap: 10px;
 
   text-decoration: none;
   background: none;
@@ -15,26 +17,32 @@
   font-weight: 600;
   transition: 0.15s;
 }
-.button.active,
-.button.active:hover {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: var(--white-static);
-}
 .button svg {
   stroke: var(--white);
-}
-.button.active svg {
-  stroke: var(--white-static);
 }
 .button:hover {
   border-color: var(--white);
 }
-.button > div {
-  display: flex;
+
+.content {
+  display: grid;
+  grid-template-columns: 15px 1fr;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
 }
+.content > div {
+  width: 14px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+}
+.content > span {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .button > button {
   position: relative;
   background: none;
