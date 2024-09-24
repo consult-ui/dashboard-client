@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 
 test('has title', async ({ page }) => {
   await page.goto('/');
-  await expect(page).toHaveTitle(/Consult Ai/);
+  await expect(page).toHaveTitle(/Consult Ai | Платформа компании/);
 });
 
 test('no auth redirect to sign in', async ({ page }) => {
