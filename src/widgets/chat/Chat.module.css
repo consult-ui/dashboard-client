@@ -8,23 +8,29 @@
 }
 
 .empty {
-  width: 925px;
+  width: 100%;
+  max-width: 1000px;
   max-height: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   gap: 1em;
   overflow-y: auto;
 }
 .empty > h3 {
   font-size: 32px;
+  text-align: center;
 }
 .empty > p {
-  max-width: 85%;
   margin-bottom: 1em;
   font-size: 14px;
-  color: var(--gray-light);
   text-align: center;
+  color: var(--gray-light);
+}
+
+@media (max-width: 1200px) {
+  .empty > h3 {
+    font-size: 24px;
+  }
 }

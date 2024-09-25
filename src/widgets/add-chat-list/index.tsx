@@ -6,7 +6,7 @@ import ErrorAlert from '@/shared/ui/error-alert';
 const AddChatList = () => {
   const { data, error } = useAssistantListQuery();
 
-  if (error) return <ErrorAlert />;
+  if (error && !data) return <ErrorAlert />;
 
   return <div className={styles.wrapper}>{data?.data.map((elem) => <AddChatCard key={elem.id} data={elem} />)}</div>;
 };

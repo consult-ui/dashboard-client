@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 const ProfileDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
+  const onClose = () => setIsOpen(false);
 
   useClickAway(ref, isOpen, setIsOpen);
 
@@ -33,13 +34,13 @@ const ProfileDropdown = () => {
 
       <ul className={styles.dropdown} hidden={!isOpen}>
         <li>
-          <Link to={ELinks.DASHBOARD + ELinks.COMPANY}>
+          <Link to={ELinks.DASHBOARD + ELinks.COMPANY} onClick={onClose}>
             <Users />
             Компания
           </Link>
         </li>
         <li>
-          <Link to={ELinks.DASHBOARD + ELinks.USER}>
+          <Link to={ELinks.DASHBOARD + ELinks.USER} onClick={onClose}>
             <Users />
             Личная информация
           </Link>

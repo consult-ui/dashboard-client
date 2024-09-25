@@ -14,7 +14,7 @@ const Dashboard = () => {
     navigate(ELinks.DASHBOARD + ELinks.CHAT + '/' + data.data[0].id);
   }, [data]);
 
-  if (error) {
+  if (error && !data) {
     return (
       <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <ErrorAlert text="При загрузке списка помощников произошла ошибка, если перезагрузка страницы не решит эту проблему, обратитесь в поддержку и наши специалисты помогут вам в ближайшее время" />
