@@ -47,3 +47,8 @@
   max-height: 3rem;
   font-size: 16px;
 }
+
+/*tooltip*/
+.tooltip {
+  max-width: 300px;
+}

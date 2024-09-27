@@ -8,8 +8,8 @@ import Settings from '@/shared/assets/icons/settings.svg?react';
 import { TOAST_ERROR, TOAST_SUCCESS } from '@/shared/constants/toasts.ts';
 import { useClickAway } from '@/shared/hooks/useClickAway.ts';
 import ModalConfirm from '@/shared/ui/modal-confirm';
-import Tooltip from '@/shared/ui/tooltip';
 import { useRef, useState } from 'react';
+import { Tooltip } from 'react-tooltip';
 
 type Props = {
   isOpen: boolean;
@@ -45,12 +45,11 @@ const ChatUpdateDropdown = ({ chat, onClose, isOpen }: Props) => {
       {isOpen && (
         <ul ref={ref} className={styles.wrapper}>
           <li>
-            <Tooltip content={chat.desc}>
-              <button title={chat.desc}>
-                <Quest />
-                <span>Подобнее</span>
-              </button>
-            </Tooltip>
+            <Tooltip id="chat-desc-tip" />
+            <button title={chat.desc} data-tooltip-id="chat-desc-tip" data-tooltip-content={chat.desc}>
+              <Quest />
+              <span>Подобнее</span>
+            </button>
           </li>
           <li>
             <button onClick={() => setIsShowUpdate(true)}>

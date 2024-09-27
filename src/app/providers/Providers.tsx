@@ -7,6 +7,7 @@ import { Suspense } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-tooltip/dist/react-tooltip.css';
 import { PersistGate } from 'redux-persist/integration/react';
 
 const Providers = () => {

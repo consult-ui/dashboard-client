@@ -1,0 +1,71 @@
+.wrapper {
+  width: 540px;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.wrapper > footer {
+  display: flex;
+  gap: 1em;
+}
+.wrapper > footer > button {
+  flex: 1;
+}
+
+.drop {
+  position: relative;
+  padding: 40px;
+  border: 2px dashed var(--gray);
+  border-radius: 16px;
+  color: var(--gray-light);
+  text-align: center;
+  transition: 0.15s;
+}
+.drop:hover,
+.drop.isDrag {
+  border: 2px dashed var(--gray-light);
+  color: var(--white);
+}
+.drop > input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/*fileList*/
+.fileList > ul {
+  max-height: 30vh;
+  margin: 10px 0 0 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+.fileList > ul > li {
+  padding: 0.25em 0;
+  display: grid;
+  grid-template-columns: 14px 1fr;
+  align-items: center;
+  gap: 12px;
+}
+.fileList > ul > li > span {
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.fileList > ul > li > button {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+}
+.fileList > ul > li > button:hover > svg {
+  opacity: 0.65;
+}

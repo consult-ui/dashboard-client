@@ -1,6 +1,6 @@
 import styles from './Input.module.css';
 import Question from '@/shared/assets/icons/question.svg?react';
-import Tooltip from '@/shared/ui/tooltip';
+import { Tooltip } from 'react-tooltip';
 
 interface IPropsLabel extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   label: string;
@@ -23,11 +23,8 @@ export const Input = (props: IProps | IPropsLabel) => {
       <div className={styles.container}>
         <header>
           <label>{label}</label>
-          {tooltip && (
-            <Tooltip content={tooltip}>
-              <Question />
-            </Tooltip>
-          )}
+          {tooltip && <Question data-tooltip-id="tooltip-input" data-tooltip-content={tooltip} />}
+          <Tooltip id="tooltip-input" className={styles.tooltip} />
         </header>
         <input
           disabled={isLoading || disabled}

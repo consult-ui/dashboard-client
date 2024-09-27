@@ -20,6 +20,15 @@
   --light: #151515;
   --gray-dark: #2e2e2e;
   --gray: #404040;
+
+  /*tooltip*/
+  --rt-color-white: #fff !important;
+  --rt-color-dark: #404040 !important;
+  --rt-color-success: #8dc572 !important;
+  --rt-color-error: #ff2a2e !important;
+  --rt-color-warning: #e3a300 !important;
+  --rt-color-info: #337ab7 !important;
+  --rt-opacity: 1 !important;
 }
 [data-theme='light'] {
   --primary: #5661f6;
@@ -30,6 +39,10 @@
   --light: #ffffff;
   --gray-dark: #ffffff;
   --gray: #dedede;
+
+  /*tooltip*/
+  --rt-color-white: #212121 !important;
+  --rt-color-dark: #e9e9e9 !important;
 }
 
 html {

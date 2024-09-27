@@ -44,7 +44,7 @@
 .button:last-child {
   right: 0.75em;
 }
-.button:last-child > svg > path {
+.button:last-child svg > path {
   stroke: var(--white-static);
 }
 .button:hover {
@@ -52,4 +52,27 @@
 }
 .button:active {
   opacity: 0.5;
+}
+
+.chipWrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+}
+.chipWrapper > span {
+  position: absolute;
+  left: -10px;
+  top: -10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: var(--primary);
+  width: 18px;
+  aspect-ratio: 1;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 20px;
 }
