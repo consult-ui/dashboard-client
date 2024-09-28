@@ -2,7 +2,7 @@
   width: 540px;
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 1.5em;
 }
 
 .wrapper > footer {
@@ -15,17 +15,30 @@
 
 .drop {
   position: relative;
-  padding: 40px;
-  border: 2px dashed var(--gray);
+  padding: 30px 10%;
+
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+
+  border: 2px dashed var(--gray-light);
   border-radius: 16px;
-  color: var(--gray-light);
-  text-align: center;
+  color: var(--white);
   transition: 0.15s;
+  opacity: 0.6;
+}
+.drop > svg {
+  stroke: var(--white);
+}
+.drop > div h5 {
+  margin-bottom: 0.25em;
+  font-size: 18px;
+  font-weight: 500;
 }
 .drop:hover,
 .drop.isDrag {
-  border: 2px dashed var(--gray-light);
-  color: var(--white);
+  opacity: 1;
+  border: 2px dashed var(--white);
 }
 .drop > input {
   position: absolute;
@@ -38,34 +51,77 @@
 }
 
 /*fileList*/
+.fileList > h6 {
+  font-weight: 600;
+  font-size: 18px;
+}
 .fileList > ul {
-  max-height: 30vh;
-  margin: 10px 0 0 0;
+  max-height: 45vh;
+  margin: 0;
   padding: 0;
   overflow-y: auto;
   list-style: none;
 }
-.fileList > ul > li {
-  padding: 0.25em 0;
+.file {
+  height: 48px;
+  margin: 12px 0;
   display: grid;
-  grid-template-columns: 14px 1fr;
+  grid-template-columns: 1fr 48px;
+  gap: 12px;
+}
+.file > div,
+.file > button {
+  padding: 0 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: var(--gray);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+.file > div {
+  display: grid;
+  grid-template-columns: 16px 1fr 60px;
   align-items: center;
   gap: 12px;
 }
-.fileList > ul > li > span {
+.file.error > div {
+  border: 1px solid var(--error);
+}
+.file > div > small {
   max-width: 100%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-size: 14px;
+  font-weight: 600;
 }
-.fileList > ul > li > button {
-  padding: 0;
-  display: flex;
-  align-items: center;
+.file > div > small.size {
+  text-align: right;
+  font-size: 12px;
+}
+.file.error > div > small.size {
+  color: var(--error);
+  font-weight: 700;
+}
+.file > div > svg {
+  stroke: var(--primary);
+}
+
+.file > button {
+  aspect-ratio: 1;
   justify-content: center;
-  background: none;
-  border: none;
+  transition: 0.15s;
 }
-.fileList > ul > li > button:hover > svg {
-  opacity: 0.65;
+.file > button > svg {
+  stroke: var(--white);
+  scale: 1.3;
+}
+.file > button:hover {
+  background: var(--border-color);
+}
+.file > button:hover > svg {
+  stroke: var(--error);
 }
