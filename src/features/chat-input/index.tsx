@@ -30,7 +30,10 @@ const ChatInput = () => {
       </button>
       <Tooltip id="tooltip-add-file" />
 
-      <input required placeholder="Введите сообщение для помощника" />
+      <input
+        required
+        placeholder={`Введите сообщение для помощника ${files.length ? ' (Файлы будут прикреплены к сообщению)' : ''}`}
+      />
 
       <button className={styles.button} type="submit">
         <Arrow />

@@ -11,22 +11,6 @@ export const convertFileSize = (file: File) => {
   }
 };
 
-export function readFileDataAsBase64(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-
-    reader.onload = (event: ProgressEvent<FileReader>) => {
-      resolve(event.target?.result as string);
-    };
-
-    reader.onerror = (err) => {
-      reject(err);
-    };
-
-    reader.readAsBinaryString(file);
-  });
-}
-
 export const validFileTypes = [
   'c',
   'cpp',
