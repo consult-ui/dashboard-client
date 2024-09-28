@@ -18,8 +18,8 @@ const LoginForm = () => {
       .unwrap()
       .then((res) => {
         if (res.success) {
-          Cookies.set('access_token', res.data.access_token);
-          Cookies.set('refresh_token', res.data.refresh_token);
+          Cookies.set('access_token', res.data.access_token, { expires: 90 });
+          Cookies.set('refresh_token', res.data.refresh_token, { expires: 90 });
           navigate(ELinks.DASHBOARD);
         } else {
           throw new Error(res?.msg);

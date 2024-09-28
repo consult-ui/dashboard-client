@@ -11,8 +11,12 @@ const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_API_URL,
   prepareHeaders: (headers) => {
     const token = Cookies.get('access_token');
+    const orgId = Cookies.get('x-org-id');
     if (token) {
       headers.set('Authorization', `Bearer ${token}`);
+    }
+    if (orgId) {
+      headers.set('x-org-id', orgId);
     }
     return headers;
   },
@@ -39,8 +43,8 @@ export const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, Fetch
         const refreshResJSON: IRefresh = await refreshResult.json();
         if (refreshResJSON?.success) {
           console.log('%cTOKEN WAS SUCCESS UPDATED!', 'color: green');
-          Cookies.set('access_token', refreshResJSON.data.access_token);
-          Cookies.set('refresh_token', refreshResJSON.data.refresh_token);
+          Cookies.set('access_token', refreshResJSON.data.access_token, { expires: 90 });
+          Cookies.set('refresh_token', refreshResJSON.data.refresh_token, { expires: 90 });
           result = await baseQuery(args, api, extraOptions);
         } else {
           toast('Ошибка обн. пользователя! Пожалуйста, войдите в систему заново!', {
