@@ -18,3 +18,12 @@ export interface Assistants extends ServerResponse {
 }
 
 export type AssistantItem = Omit<ChatItem, 'created_at'>;
+
+export interface FileUploaded extends ServerResponse {
+  data: {
+    id: string;
+    name: string;
+    size: number;
+    created_at: string;
+  };
+}

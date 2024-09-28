@@ -1,10 +1,14 @@
 import styles from './SuspenseLoader.module.css';
 
-const SuspenseLoader = () => {
+type Props = {
+  text?: string;
+};
+
+const SuspenseLoader = ({ text }: Props) => {
   return (
     <div className={styles.wrapper}>
       <p>
-        Загрузка
+        {text || 'Загрузка'}
         <span className={styles.dots} />
       </p>
     </div>

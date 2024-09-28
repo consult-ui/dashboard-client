@@ -1,14 +1,14 @@
 import styles from './ChatInput.module.css';
-import ModalFileUpload from '@/features/modal-file-upload';
+import { FileUploaded } from '@/app/api/types/chat.ts';
 import Arrow from '@/shared/assets/icons/arrow-top.svg?react';
 import Clip from '@/shared/assets/icons/clip.svg?react';
+import ModalFileUpload from '@/widgets/modal-file-upload';
 import { FormEvent, useState } from 'react';
 import { Tooltip } from 'react-tooltip';
 
 const ChatInput = () => {
   const [isFileUploadOpen, setIsFileUploadOpen] = useState(false);
-  const [files, setFiles] = useState<File[]>([]);
-  console.log(files);
+  const [files, setFiles] = useState<FileUploaded[]>([]);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();

@@ -3,8 +3,10 @@ import { useMeQuery } from '@/app/api';
 import { ELinks } from '@/app/router/types';
 import { useShowOrgModal } from '@/entities/company/company-initial-form';
 import AlertNoOrg from '@/features/alert-no-org';
+import SuspenseLoader from '@/shared/ui/suspense-loader';
 import DashboardNavbar from '@/widgets/dashboard-navbar';
 import Sidebar from '@/widgets/sidebar';
+import Cookies from 'js-cookie';
 import { lazy, Suspense, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -24,6 +26,16 @@ const DashboardLayout = ({ children }: Props) => {
       navigate(ELinks.SIGN_IN);
     }
   }, [data, isLoading]);
+
+  useEffect(() => {
+    if (data?.data?.organization_id) {
+      Cookies.set('x-org-id', String(data.data.organization_id));
+    } else {
+      Cookies.remove('x-org-id');
+    }
+  }, [data]);
+
+  if (!data?.data?.id) return <SuspenseLoader text="Загрузка пользователя" />;
 
   return (
     <div className={styles.wrapper}>

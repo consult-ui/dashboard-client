@@ -26,4 +26,6 @@ export const {
   useChatListQuery,
   useAssistantListQuery,
   useChatUpdateMutation,
+  useUploadFileMutation,
+  useDeleteFileMutation,
 } = chatApi;
