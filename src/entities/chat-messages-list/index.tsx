@@ -1,13 +1,19 @@
 import styles from './ChatMessagesList.module.css';
-import { MESSAGES_LIST } from '@/entities/chat-messages-list/data';
+import { ActiveMessage, MessageListItem } from '@/app/api/types/chat.ts';
 import Message from '@/features/message';
 
-const ChatMessagesList = () => {
+type Props = {
+  messages: MessageListItem[];
+  activeMessage: ActiveMessage;
+};
+
+const ChatMessagesList = ({ messages, activeMessage }: Props) => {
   return (
     <div className={styles.wrapper}>
-      {MESSAGES_LIST.map((elem) => (
+      {messages.map((elem) => (
         <Message key={elem.id} data={elem} />
       ))}
+      {(activeMessage.text || activeMessage.is_request_load) && <Message data={activeMessage} />}
     </div>
   );
 };

@@ -53,6 +53,9 @@
 .button:active {
   opacity: 0.5;
 }
+.button:disabled {
+  background: var(--gray);
+}
 
 .chipWrapper {
   position: relative;

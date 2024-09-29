@@ -1,6 +1,13 @@
 import { baseQueryWithReauth } from '@/app/api/constants';
 import { ServerResponse } from '@/app/api/types';
-import { Assistants, Chats, FileUploaded } from '@/app/api/types/chat.ts';
+import {
+  Assistants,
+  Chats,
+  FileUploaded,
+  MessageStream,
+  OnChunkMessage,
+  SendMessagePayload,
+} from '@/app/api/types/chat.ts';
 import { createApi } from '@reduxjs/toolkit/query/react';
 
 const chatApi = createApi({
@@ -50,6 +57,32 @@ const chatApi = createApi({
         url: `/chat/${body.chat_id}/delete-file`,
         method: 'POST',
         body: { file_id: body.file_id },
+      }),
+    }),
+    sendMessage: builder.mutation<void, { chat_id: number; body: SendMessagePayload; onChunk: OnChunkMessage }>({
+      query: (body: { chat_id: number; body: SendMessagePayload; onChunk: OnChunkMessage }) => ({
+        url: `/chat/${body.chat_id}/send`,
+        method: 'POST',
+        body: body.body,
+        responseHandler: async (res) => {
+          const reader = res.body?.getReader();
+          let done, value;
+          while (!done) {
+            ({ value, done } = await (reader as ReadableStreamDefaultReader).read());
+            const decodedValue = new TextDecoder().decode(value);
+            const lines = decodedValue.split('\n');
+            const result = {};
+
+            lines.forEach((line) => {
+              const [key, value] = line.split(': ').map((item) => item.trim());
+              if (!value) return;
+              // @ts-expect-error - enable adding new keys to object
+              result[key] = value.startsWith('{') ? JSON.parse(value) : value;
+            });
+
+            body.onChunk(result as MessageStream);
+          }
+        },
       }),
     }),
   }),

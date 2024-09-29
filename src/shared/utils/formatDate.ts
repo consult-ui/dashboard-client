@@ -1,4 +1,6 @@
-export const formatDate = (date: string | undefined) => {
+export const formatDate = (date: string | undefined | number, onlyTime?: boolean) => {
   if (!date) return '-';
-  return new Date(date).toLocaleString('ru');
+  const result = new Date(date).toLocaleString('ru');
+  if (onlyTime) return result.split(', ')[1];
+  return result;
 };

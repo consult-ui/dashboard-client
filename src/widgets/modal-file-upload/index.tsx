@@ -35,7 +35,11 @@ const ModalFileUpload = ({ open, onClose, files, setFiles }: Props) => {
     }
     Promise.all(promises)
       .then((res) => {
-        setFiles((prev) => [...prev, ...res.map((file) => file)]);
+        setFiles((prev) => [
+          ...prev,
+          // тут добавляем тип файла к типу FileUploaded, чтобы в чате понимать какого типа файл
+          ...res.map((file, idx) => ({ ...file, data: { ...file.data, type: files[idx].type } })),
+        ]);
         onClose();
         TOAST_SUCCESS('Файлы успешно добавлены, напишите тело сообщения');
       })
