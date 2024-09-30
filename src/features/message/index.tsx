@@ -8,8 +8,6 @@ type Props = {
   data: ActiveMessage | MessageListItem;
 };
 
-// TODO: добавить к
-
 const Message = ({ data }: Props) => {
   if (data.role === 'active_message') {
     const { text, is_request_load } = data as ActiveMessage;

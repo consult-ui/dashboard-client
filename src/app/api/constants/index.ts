@@ -53,7 +53,6 @@ export const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, Fetch
             autoClose: 3000,
           });
           release();
-          // TODO: add clear user data and navigate to login
           Cookies.remove('access_token');
           Cookies.remove('refresh_token');
         }

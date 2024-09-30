@@ -42,7 +42,7 @@ const ChatInput = ({ chatId, setMessages, setActiveMessage }: Props) => {
       content: [{ text, type: 'text' }, ...images],
       attachments: files.filter((file) => !isFileIsImage(file)).map((elem) => elem.data.id),
     };
-    // TODO: подумать мб куда в другое место это положить (сохранение сообщения пользователя)
+    // сохранение сообщения пользователя в список сообщений
     setMessages((prev) => [
       ...prev,
       { id: String(Date.now() + Math.random()), text, role: 'active_user_message', created_at: Date.now() },
@@ -76,7 +76,6 @@ const ChatInput = ({ chatId, setMessages, setActiveMessage }: Props) => {
       .unwrap()
       .catch((err) => {
         console.log(err);
-        // TODO: чекнуть ошибку, которая вылетает по парсингу последнего сообщения иногда
         TOAST_ERROR('Ошибка обработки сообщения, попробуйте еще раз или обратитесь в поддержку');
       });
   };
@@ -106,7 +105,7 @@ const ChatInput = ({ chatId, setMessages, setActiveMessage }: Props) => {
         placeholder={`Введите сообщение для помощника ${files.length ? ' (Файлы будут прикреплены к сообщению)' : ''}`}
       />
 
-      <button disabled={isLoading} className={styles.button} type="submit">
+      <button disabled={isLoading || !text} className={styles.button} type="submit">
         {isLoading ? '...' : <Arrow />}
       </button>
 

@@ -74,10 +74,15 @@ const chatApi = createApi({
             const result = {};
 
             lines.forEach((line) => {
-              const [key, value] = line.split(': ').map((item) => item.trim());
-              if (!value) return;
-              // @ts-expect-error - enable adding new keys to object
-              result[key] = value.startsWith('{') ? JSON.parse(value) : value;
+              const [key, ...rest] = line.split(': ');
+              const value = rest.join(': ').trim(); // Соединяем обратно, если есть дополнительные двоеточия в значении
+              if (!key || !value) return; // Проверка, что ключ и значение существуют
+              try {
+                // @ts-expect-error - enable adding new keys to object
+                result[key] = value.startsWith('{') ? JSON.parse(value) : value;
+              } catch (error) {
+                console.error(`Ошибка при парсинге значения для ключа "${key}":`, error);
+              }
             });
 
             body.onChunk(result as MessageStream);
