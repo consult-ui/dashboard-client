@@ -23,9 +23,11 @@
   border-right: none;
 }
 
-.message > p {
+.message > div {
   margin-top: 6px;
-  line-height: 1.5;
+}
+.message > div::first-letter {
+  text-transform: uppercase;
 }
 
 /*time*/

@@ -52,8 +52,6 @@ export type MessageSliced = {
 export type MessageFull = {
   id: string;
   role: string;
-  object: string;
-  run_id: string;
   status: 'completed';
   content: [
     {
@@ -64,14 +62,8 @@ export type MessageFull = {
       type: 'text';
     },
   ];
-  metadata: unknown;
-  thread_id: string;
   created_at: number;
   attachments: unknown[];
-  assistant_id: string;
-  completed_at: number;
-  incomplete_at: null;
-  incomplete_details: null;
 };
 
 export type MessageStream = {
@@ -98,3 +90,7 @@ export const ActiveMessageInitial: ActiveMessage = {
   role: 'active_message',
   is_request_load: false,
 };
+
+export interface MessagesList extends ServerResponse {
+  data: MessageFull[];
+}

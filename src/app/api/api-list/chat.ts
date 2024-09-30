@@ -4,6 +4,7 @@ import {
   Assistants,
   Chats,
   FileUploaded,
+  MessagesList,
   MessageStream,
   OnChunkMessage,
   SendMessagePayload,
@@ -58,6 +59,9 @@ const chatApi = createApi({
         method: 'POST',
         body: { file_id: body.file_id },
       }),
+    }),
+    messagesList: builder.query<MessagesList, { chat_id: number }>({
+      query: (query) => `/chat/${query.chat_id}/messages`,
     }),
     sendMessage: builder.mutation<void, { chat_id: number; body: SendMessagePayload; onChunk: OnChunkMessage }>({
       query: (body: { chat_id: number; body: SendMessagePayload; onChunk: OnChunkMessage }) => ({

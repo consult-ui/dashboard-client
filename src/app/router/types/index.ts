@@ -6,6 +6,8 @@ export enum ELinks {
   SIGN_IN = '/sign-in',
   PASSWORD_RECOVERY = '/password-recovery',
   PASSWORD_RESET = '/password-reset',
+  EXPIRATION_END = '/expiration-end',
+
   // вложенные роуты
   CHAT = 'chat',
   USER = 'user',

@@ -29,4 +29,5 @@ export const {
   useUploadFileMutation,
   useDeleteFileMutation,
   useSendMessageMutation,
+  useMessagesListQuery,
 } = chatApi;

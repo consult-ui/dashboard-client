@@ -17,15 +17,21 @@ type Props = {
 };
 
 const DashboardLayout = ({ children }: Props) => {
-  const { data, isLoading } = useMeQuery();
+  const { data, isLoading, error } = useMeQuery();
   const { isEmptyOrg } = useShowOrgModal();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isLoading && !data) {
+    const isExpirationEnded = (error as { status: number })?.status === 403;
+    if (!isLoading && !data && !isExpirationEnded) {
       navigate(ELinks.SIGN_IN);
     }
-  }, [data, isLoading]);
+    if (isExpirationEnded) {
+      navigate(ELinks.EXPIRATION_END);
+      Cookies.remove('access_token');
+      Cookies.remove('refresh_token');
+    }
+  }, [data, isLoading, error]);
 
   useEffect(() => {
     if (data?.data?.organization_id) {

@@ -1,4 +1,5 @@
 import { IRefresh } from '@/app/api/types/user.ts';
+import { ELinks } from '@/app/router/types';
 import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Mutex } from 'async-mutex';
@@ -53,6 +54,7 @@ export const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, Fetch
             autoClose: 3000,
           });
           release();
+          window.location.replace(ELinks.SIGN_IN);
           Cookies.remove('access_token');
           Cookies.remove('refresh_token');
         }

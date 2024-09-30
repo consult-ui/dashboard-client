@@ -15,6 +15,7 @@ const Dashboard = lazy(() => import('@/pages/dashboard'));
 const DashboardChat = lazy(() => import('@/pages/dashboard-chat'));
 const Company = lazy(() => import('@/pages/profile-company'));
 const User = lazy(() => import('@/pages/profile-user'));
+const ExpirationEnd = lazy(() => import('@/pages/expiration-end'));
 
 export const ROUTER_DATA: Route[] = [
   {
@@ -51,6 +52,15 @@ export const ROUTER_DATA: Route[] = [
     element: (
       <SignLayout>
         <PasswordReset />
+      </SignLayout>
+    ),
+  },
+  {
+    id: 'expiration-end',
+    link: ELinks.EXPIRATION_END,
+    element: (
+      <SignLayout>
+        <ExpirationEnd />
       </SignLayout>
     ),
   },
