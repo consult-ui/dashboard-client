@@ -21,8 +21,8 @@ export const TOAST_WARNING = (text: string, id?: string) =>
     toastId: id,
   });
 
-export const TOAST_INFO = (text: string) =>
+export const TOAST_INFO = (text: string, autoClose?: number) =>
   toast(text, {
-    autoClose: 5000,
+    autoClose: autoClose || 5000,
     type: 'info',
   });

@@ -11,6 +11,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const CompanyInitialForm = lazy(() => import('@/entities/company/company-initial-form'));
+const ExpireToasts = lazy(() => import('@/features/expire-toasts'));
 
 type Props = {
   children: React.ReactNode;
@@ -47,6 +48,7 @@ const DashboardLayout = ({ children }: Props) => {
     <div className={styles.wrapper}>
       <Sidebar />
       <Suspense fallback={undefined}>
+        <ExpireToasts user={data?.data} />
         <CompanyInitialForm />
       </Suspense>
       <div className={`${styles.content} ${isEmptyOrg ? styles.withAlert : ''}`}>

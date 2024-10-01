@@ -1,13 +1,13 @@
 import styles from './Chat.module.css';
 import { useMessagesListQuery } from '@/app/api';
-import { ActiveMessage, ActiveMessageInitial, MessageFull, MessageListItem } from '@/app/api/types/chat.ts';
+import { ActiveMessage, ActiveMessageInitial, MessageListItem } from '@/app/api/types/chat.ts';
 import ChatMessagesList from '@/entities/chat-messages-list';
 import ChatInput from '@/features/chat-input';
 import PopularQuestions from '@/features/popular-questions';
 import ErrorAlert from '@/shared/ui/error-alert';
 import SuspenseLoader from '@/shared/ui/suspense-loader';
 import AddChatList from '@/widgets/add-chat-list';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const Chat = () => {
@@ -19,22 +19,17 @@ const Chat = () => {
 
   const [activeMessage, setActiveMessage] = useState<ActiveMessage>(ActiveMessageInitial);
   const [messages, setMessages] = useState<MessageListItem[]>([]);
-  const [oldMessages, setOldMessages] = useState<MessageFull[]>([]);
-  const { data: messagesHistory, isLoading } = useMessagesListQuery(
+  const { data: oldMessages, isLoading } = useMessagesListQuery(
     { chat_id: Number(chatId as string) },
     { skip: !chatId },
   );
-
-  useEffect(() => {
-    setOldMessages(messagesHistory?.data || []);
-  }, [messagesHistory]);
 
   if (isLoading) return <SuspenseLoader />;
 
   return (
     <div className={styles.wrapper} data-testid="chat-widget">
-      {messages?.length || oldMessages.length || activeMessage.text ? (
-        <ChatMessagesList messages={messages} activeMessage={activeMessage} oldMessages={oldMessages} />
+      {messages?.length || oldMessages?.data?.length || activeMessage.text ? (
+        <ChatMessagesList messages={messages} activeMessage={activeMessage} oldMessages={oldMessages?.data} />
       ) : (
         <div className={styles.empty}>
           <h3>Добро пожаловать в диалог</h3>

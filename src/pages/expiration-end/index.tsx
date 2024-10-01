@@ -3,8 +3,6 @@ import Button from '@/shared/ui/button';
 import { Link } from 'react-router-dom';
 
 const ExpirationEnd = () => {
-  // TODO: сделать напоминалке о подписке через куки и предупрждать каждый час или при заходе за 3 дня до конца подписки
-
   return (
     <div style={{ width: '100%', maxWidth: 700, display: 'flex', flexDirection: 'column', gap: 8 }}>
       <h4>Ваша подписка закончилась, напишите в поддержку</h4>

@@ -36,7 +36,6 @@ const Message = ({ data }: Props) => {
     const { text: value, is_request_load } = data as ActiveMessage;
 
     useEffect(() => {
-      // TODO: тут как-то по-другому скорее всего надо обрабатывать (content?.[0]?.text?.value)
       parseMarkdown(value).then((res) => setText(res));
     }, [data]);
 
