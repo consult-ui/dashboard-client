@@ -11,16 +11,22 @@ type Props = {
   data: ActiveMessage | MessageListItem;
 };
 
+// TODO: сделать файлы доступными для скачивания и желательно выводить их имена с расширением
+
 const Message = ({ data }: Props) => {
   if (data.role === 'active_user_message') {
     const { text, created_at } = data as ActiveUserMessage;
+    const files = (data as ActiveUserMessage)?.files_count;
 
     return (
       <div className={`${styles.wrapper} ${styles.user}`}>
         <span className={styles.time}>{formatDate(created_at, true)}</span>
         <div className={styles.message}>
           <UserIcon />
-          <div>{text}</div>
+          <div>
+            <div>{text}</div>
+            {!!files && <span className={styles.file}>Файлы: {files}шт.</span>}
+          </div>
         </div>
       </div>
     );
@@ -43,11 +49,13 @@ const Message = ({ data }: Props) => {
       <div className={`${styles.wrapper} ${styles.robot}`}>
         <div className={styles.message}>
           <RobotIcon />
-          {is_request_load ? (
-            <div>Дайте мне пару секунд на размышление...</div>
-          ) : (
-            <div dangerouslySetInnerHTML={{ __html: text }} />
-          )}
+          <div>
+            {is_request_load ? (
+              <div>Дайте мне пару секунд на размышление...</div>
+            ) : (
+              <div dangerouslySetInnerHTML={{ __html: text }} />
+            )}
+          </div>
         </div>
         <span className={styles.time}>Только что</span>
       </div>
@@ -55,7 +63,7 @@ const Message = ({ data }: Props) => {
   }
 
   const [text, setText] = useState<string | TrustedHTML>('');
-  const { role, created_at, content } = data as MessageFull;
+  const { role, created_at, content, attachments } = data as MessageFull;
   const isAssistant = role === 'assistant';
 
   useEffect(() => {
@@ -68,7 +76,10 @@ const Message = ({ data }: Props) => {
       {!isAssistant && <span className={styles.time}>{formatDate(created_at * 1000, true)}</span>}
       <div className={styles.message}>
         {isAssistant ? <RobotIcon /> : <UserIcon />}
-        <div dangerouslySetInnerHTML={{ __html: text }} />
+        <div>
+          <div dangerouslySetInnerHTML={{ __html: text }} />
+          {!!attachments?.length && <span className={styles.file}>Файлы: {attachments?.length}шт.</span>}
+        </div>
       </div>
       {isAssistant && <span className={styles.time}>{formatDate(created_at * 1000, true)}</span>}
     </div>

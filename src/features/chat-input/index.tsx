@@ -45,7 +45,13 @@ const ChatInput = ({ chatId, setMessages, setActiveMessage }: Props) => {
     // сохранение сообщения пользователя в список сообщений
     setMessages((prev) => [
       ...prev,
-      { id: String(Date.now() + Math.random()), text, role: 'active_user_message', created_at: Date.now() },
+      {
+        id: String(Date.now() + Math.random()),
+        text,
+        role: 'active_user_message',
+        created_at: Date.now(),
+        files_count: files.length,
+      },
     ]);
     // Ставим лоадер на загрузку сообщения ассистента
     setActiveMessage({ ...ActiveMessageInitial, is_request_load: true });
@@ -66,7 +72,7 @@ const ChatInput = ({ chatId, setMessages, setActiveMessage }: Props) => {
             // сохраняем результат в список сообщений и чистим активное сообщение
             setMessages((prev) => [...prev, chunk.data as MessageFull]);
             setActiveMessage(ActiveMessageInitial);
-            // очищаем текст инпута и файлы
+            // FIX: очищаем текст инпута и файлы (файлы внутри окна их загрузки очищаются костально за счет очистки файлов тут)
             setFiles([]);
             setText('');
             break;

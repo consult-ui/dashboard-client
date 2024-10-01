@@ -63,7 +63,7 @@ export type MessageFull = {
     },
   ];
   created_at: number;
-  attachments: unknown[];
+  attachments: { file_id: string }[];
 };
 
 export type MessageStream = {
@@ -79,6 +79,7 @@ export type ActiveUserMessage = {
   text: string;
   role: 'active_user_message';
   created_at: number;
+  files_count?: number;
 };
 export type ActiveMessage = {
   text: string;

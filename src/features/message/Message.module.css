@@ -23,11 +23,28 @@
   border-right: none;
 }
 
+/*text*/
 .message > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  align-items: flex-start;
+}
+/*text block with formatted text from sse*/
+.message > div > div {
   margin-top: 6px;
 }
-.message > div::first-letter {
+.message > div > div::first-letter {
   text-transform: uppercase;
+}
+
+/*file in message*/
+.file {
+  padding: 0.5em 1.75em;
+  border: 2px solid var(--primary);
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 /*time*/

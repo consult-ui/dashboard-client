@@ -7,7 +7,7 @@ import FileIcon from '@/shared/assets/icons/upload-file.svg?react';
 import { TOAST_ERROR, TOAST_INFO, TOAST_SUCCESS } from '@/shared/constants/toasts.ts';
 import Button from '@/shared/ui/button';
 import { ModalGeneral } from '@/shared/ui/modal-general';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
 
@@ -84,6 +84,13 @@ const ModalFileUpload = ({ open, onClose, files, setFiles }: Props) => {
     });
     onUpload(filteredFiles);
   };
+
+  useEffect(() => {
+    // TODO:FIX: пока что такой косталь чтобы чистить тут файлы после того как сообщение отправили
+    if (!files.length) {
+      setInnerFiles([]);
+    }
+  }, [files]);
 
   return (
     <ModalGeneral open={open} onClose={onClose} title="Добавить файлы">
