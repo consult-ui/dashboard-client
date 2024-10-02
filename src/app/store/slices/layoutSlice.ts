@@ -3,11 +3,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface ILayout {
   theme: 'dark' | 'light';
   isShowOrgModal: boolean;
+  isPrintMessage: boolean;
 }
 
 const initialState: ILayout = {
   theme: 'light',
   isShowOrgModal: false,
+  isPrintMessage: false,
 };
 
 export const layoutSlice = createSlice({
@@ -20,8 +22,11 @@ export const layoutSlice = createSlice({
     setShowOrgModal: (state, action: PayloadAction<boolean>) => {
       state.isShowOrgModal = action.payload;
     },
+    setPrintMessage: (state, action: PayloadAction<boolean>) => {
+      state.isPrintMessage = action.payload;
+    },
   },
 });
 
-export const { switchTheme, setShowOrgModal } = layoutSlice.actions;
+export const { switchTheme, setShowOrgModal, setPrintMessage } = layoutSlice.actions;
 export default layoutSlice.reducer;

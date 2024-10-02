@@ -7,9 +7,10 @@ type Props = {
   messages: MessageListItem[];
   oldMessages: MessageFull[] | undefined;
   activeMessage: ActiveMessage;
+  chatId: string | null;
 };
 
-const ChatMessagesList = ({ messages, activeMessage, oldMessages }: Props) => {
+const ChatMessagesList = ({ messages, activeMessage, oldMessages, chatId }: Props) => {
   const ref = useRef<null | HTMLDivElement>(null);
   // находится ли пользователь внизу контейнера
   const [isAtBottom, setIsAtBottom] = useState<boolean>(true);
@@ -37,7 +38,7 @@ const ChatMessagesList = ({ messages, activeMessage, oldMessages }: Props) => {
       ref.current.scrollTop = 999999;
     };
     setTimeout(scrollToBottom, 50);
-  }, []);
+  }, [chatId]);
 
   return (
     <div className={styles.wrapper} ref={ref} onScroll={handleScroll}>

@@ -44,7 +44,6 @@ export type ImageNode = {
   type: 'image_file';
 };
 
-// TODO: add type for file response
 export type MessageSliced = {
   value: string;
   annotations: null | unknown[];

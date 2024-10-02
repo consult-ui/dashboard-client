@@ -86,10 +86,7 @@ const ModalFileUpload = ({ open, onClose, files, setFiles }: Props) => {
   };
 
   useEffect(() => {
-    // TODO:FIX: пока что такой косталь чтобы чистить тут файлы после того как сообщение отправили
-    if (!files.length) {
-      setInnerFiles([]);
-    }
+    if (!files.length) setInnerFiles([]);
   }, [files]);
 
   return (

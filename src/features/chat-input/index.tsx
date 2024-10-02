@@ -10,6 +10,8 @@ import {
   MessageSliced,
   SendMessagePayload,
 } from '@/app/api/types/chat.ts';
+import { setPrintMessage } from '@/app/store/slices/layoutSlice.ts';
+import { useAppDispatch } from '@/app/store/store.ts';
 import { isFileIsImage } from '@/features/chat-input/utils';
 import Arrow from '@/shared/assets/icons/arrow-top.svg?react';
 import Clip from '@/shared/assets/icons/clip.svg?react';
@@ -29,9 +31,11 @@ const ChatInput = ({ chatId, setMessages, setActiveMessage }: Props) => {
   const [files, setFiles] = useState<FileUploaded[]>([]);
   const [text, setText] = useState('');
   const [send, { isLoading }] = useSendMessageMutation();
+  const dispatch = useAppDispatch();
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
+    dispatch(setPrintMessage(true));
     const images: ImageNode[] = files
       .filter((file) => isFileIsImage(file))
       .map((file) => ({
@@ -83,7 +87,8 @@ const ChatInput = ({ chatId, setMessages, setActiveMessage }: Props) => {
       .catch((err) => {
         console.log(err);
         TOAST_ERROR('Ошибка обработки сообщения, попробуйте еще раз или обратитесь в поддержку');
-      });
+      })
+      .finally(() => dispatch(setPrintMessage(false)));
   };
 
   return (
@@ -111,9 +116,11 @@ const ChatInput = ({ chatId, setMessages, setActiveMessage }: Props) => {
         placeholder={`Введите сообщение для помощника ${files.length ? ' (Файлы будут прикреплены к сообщению)' : ''}`}
       />
 
-      <button disabled={isLoading || !text} className={styles.button} type="submit">
-        {isLoading ? '...' : <Arrow />}
-      </button>
+      {!isLoading && (
+        <button disabled={!text} className={styles.button} type="submit">
+          {isLoading ? '...' : <Arrow />}
+        </button>
+      )}
 
       <ModalFileUpload
         files={files}
