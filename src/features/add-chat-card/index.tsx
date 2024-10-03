@@ -7,9 +7,10 @@ import Button from '@/shared/ui/button';
 
 type Props = {
   data: AssistantItem;
+  onSuccessHandler?: () => void;
 };
 
-const AddChatCard = ({ data }: Props) => {
+const AddChatCard = ({ data, onSuccessHandler }: Props) => {
   const { name, desc, id } = data;
   const [create, { isLoading }] = useChatCreateMutation();
   const { refetch } = useChatListQuery();
@@ -20,6 +21,9 @@ const AddChatCard = ({ data }: Props) => {
       .then((res) => {
         if (res.success) {
           TOAST_SUCCESS(`Чат "${name}" успешно добавлен!`);
+          if (onSuccessHandler) {
+            onSuccessHandler();
+          }
           return refetch();
         } else {
           throw new Error(res.msg);

@@ -22,7 +22,7 @@ const ChatMessagesList = ({ messages, activeMessage, oldMessages, chatId }: Prop
       return;
     }
     const { scrollTop, scrollHeight, clientHeight } = ref.current;
-    setIsAtBottom(scrollTop + clientHeight >= scrollHeight - 65);
+    setIsAtBottom(scrollTop + clientHeight >= scrollHeight - 75);
   };
 
   useEffect(() => {
@@ -42,11 +42,11 @@ const ChatMessagesList = ({ messages, activeMessage, oldMessages, chatId }: Prop
 
   return (
     <div className={styles.wrapper} ref={ref} onScroll={handleScroll}>
-      {oldMessages?.map((elem) => <Message key={elem.id} data={elem} />)}
+      {oldMessages?.map((elem) => <Message key={elem.id} data={elem} chatId={chatId} />)}
       {messages.map((elem) => (
-        <Message key={elem.id} data={elem} />
+        <Message key={elem.id} data={elem} chatId={chatId} />
       ))}
-      {(activeMessage.text || activeMessage.is_request_load) && <Message data={activeMessage} />}
+      {(activeMessage.text || activeMessage.is_request_load) && <Message chatId={chatId} data={activeMessage} />}
     </div>
   );
 };

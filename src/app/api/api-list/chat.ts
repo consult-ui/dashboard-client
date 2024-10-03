@@ -60,6 +60,10 @@ const chatApi = createApi({
         body: { file_id: body.file_id },
       }),
     }),
+    // TODO: add type response
+    downloadFile: builder.query<ServerResponse, { chat_id: number; file_id: string }>({
+      query: (query) => `/chat/${query.chat_id}/download-file/${query.file_id}`,
+    }),
     messagesList: builder.query<MessagesList, { chat_id: number }>({
       query: (query) => `/chat/${query.chat_id}/messages`,
     }),

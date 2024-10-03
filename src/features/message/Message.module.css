@@ -5,6 +5,25 @@
   grid-template-columns: 10% 1fr;
   align-items: flex-start;
 }
+.wrapper h1 {
+  font-size: 26px;
+}
+.wrapper h2 {
+  font-size: 24px;
+}
+.wrapper h3 {
+  font-size: 22px;
+}
+.wrapper h4 {
+  font-size: 20px;
+}
+.wrapper h5 {
+  font-size: 18px;
+}
+.wrapper h6 {
+  font-size: 16px;
+}
+
 .wrapper.robot {
   grid-template-columns: 1fr 10%;
 }
@@ -40,11 +59,26 @@
 
 /*file in message*/
 .file {
-  padding: 0.5em 1.75em;
+  width: 165px;
+  padding: 0.5em 0;
+  background: none;
   border: 2px solid var(--primary);
   border-radius: 25px;
   font-size: 14px;
   font-weight: 700;
+  text-decoration: underline;
+  transition: 0.15s;
+}
+.file:hover {
+  opacity: 0.75;
+}
+.file:disabled {
+  background: var(--gray);
+  border-color: var(--gray);
+  text-decoration: none;
+}
+.file:disabled:hover {
+  opacity: 1;
 }
 
 /*time*/

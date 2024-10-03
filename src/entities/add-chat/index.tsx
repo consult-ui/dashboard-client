@@ -22,7 +22,7 @@ const AddChat = () => {
             списка ниже. Если вы <b>не нашли подходящий чат</b> в этом списке, обратитесь в поддержку, и{' '}
             <b>модераторы добавят</b> его.
           </p>
-          <AddChatList />
+          <AddChatList onAddedHandler={() => setIsShow(false)} />
         </div>
       </ModalGeneral>
     </>

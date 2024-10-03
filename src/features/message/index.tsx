@@ -1,7 +1,9 @@
 import styles from './Message.module.css';
+import { useLazyDownloadFileQuery } from '@/app/api';
 import { ActiveMessage, ActiveUserMessage, MessageFull, MessageListItem } from '@/app/api/types/chat.ts';
 import RobotIcon from '@/shared/assets/icons/logo-msg.svg?react';
 import UserIcon from '@/shared/assets/icons/user-msg.svg?react';
+import { TOAST_ERROR } from '@/shared/constants/toasts.ts';
 import { formatDate } from '@/shared/utils/formatDate.ts';
 import { useEffect, useState } from 'react';
 import { remark } from 'remark';
@@ -9,11 +11,10 @@ import html from 'remark-html';
 
 type Props = {
   data: ActiveMessage | MessageListItem;
+  chatId: string | null;
 };
 
-// TODO: сделать файлы доступными для скачивания и желательно выводить их имена с расширением
-
-const Message = ({ data }: Props) => {
+const Message = ({ data, chatId }: Props) => {
   if (data.role === 'active_user_message') {
     const { text, created_at } = data as ActiveUserMessage;
     const files = (data as ActiveUserMessage)?.files_count;
@@ -25,7 +26,11 @@ const Message = ({ data }: Props) => {
           <UserIcon />
           <div>
             <div>{text}</div>
-            {!!files && <span className={styles.file}>Файлы: {files}шт.</span>}
+            {!!files && (
+              <button disabled className={styles.file}>
+                Файлы: {files}шт.
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -78,7 +83,7 @@ const Message = ({ data }: Props) => {
         {isAssistant ? <RobotIcon /> : <UserIcon />}
         <div>
           <div dangerouslySetInnerHTML={{ __html: text }} />
-          {!!attachments?.length && <span className={styles.file}>Файлы: {attachments?.length}шт.</span>}
+          {!!attachments?.length && <File files={attachments} chatId={chatId} />}
         </div>
       </div>
       {isAssistant && <span className={styles.time}>{formatDate(created_at * 1000, true)}</span>}
@@ -87,3 +92,44 @@ const Message = ({ data }: Props) => {
 };
 
 export default Message;
+
+const File = ({ files, chatId }: { files: { file_id: string }[]; chatId: string | null }) => {
+  const [download] = useLazyDownloadFileQuery();
+  const [isLoadingId, setIsLoadingId] = useState<null | string>(null);
+
+  const onClick = (file_id: string) => {
+    if (!chatId) {
+      TOAST_ERROR('Ошибка нахождения ID файла, перезагрузите страницу и попробуйте заново!');
+      return;
+    }
+    setIsLoadingId(file_id);
+    download({ file_id, chat_id: +chatId })
+      .unwrap()
+      .then((res) => {
+        if (res?.success) {
+          // TODO: доделать после того как починят бек
+        } else {
+          throw new Error(res?.msg);
+        }
+      })
+      .catch((err) => {
+        TOAST_ERROR(`Ошибка скачивания файла (${err?.data?.msg || 'Не найден'}), обратитесь в поддержку!`);
+      })
+      .finally(() => setIsLoadingId(null));
+  };
+
+  return (
+    <>
+      {files.map(({ file_id }, idx) => (
+        <button
+          key={file_id}
+          disabled={isLoadingId === file_id}
+          className={styles.file}
+          onClick={() => onClick(file_id)}
+        >
+          {isLoadingId === file_id ? 'Загрузка...' : `Скачать файл: ${idx + 1}`}
+        </button>
+      ))}
+    </>
+  );
+};
