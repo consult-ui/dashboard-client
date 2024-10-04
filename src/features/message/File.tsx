@@ -6,7 +6,13 @@ import { useState } from 'react';
 
 const errText = 'Ошибка скачивания файла! Попробуйте перезагрузить страницу или сообщите в поддержку';
 
-const File = ({ files, chatId }: { files: { file_id: string }[]; chatId: string | null }) => {
+type Props = {
+  isAssistant: boolean;
+  files: { file_id: string }[];
+  chatId: string | null;
+};
+
+const File = ({ files, chatId, isAssistant }: Props) => {
   const [isLoadingId, setIsLoadingId] = useState<null | string>(null);
 
   const onRefresh = async (file_id: string) => {
@@ -69,6 +75,14 @@ const File = ({ files, chatId }: { files: { file_id: string }[]; chatId: string 
       })
       .finally(() => setIsLoadingId(null));
   };
+
+  if (!isAssistant) {
+    return (
+      <button disabled className={styles.file}>
+        Файлы: {files.length}шт.
+      </button>
+    );
+  }
 
   return (
     <>

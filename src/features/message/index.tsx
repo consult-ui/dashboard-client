@@ -81,7 +81,7 @@ const Message = ({ data, chatId }: Props) => {
         {isAssistant ? <RobotIcon /> : <UserIcon />}
         <div>
           <div dangerouslySetInnerHTML={{ __html: text }} />
-          {!!attachments?.length && <File files={attachments} chatId={chatId} />}
+          {!!attachments?.length && <File files={attachments} chatId={chatId} isAssistant={isAssistant} />}
         </div>
       </div>
       {isAssistant && <span className={styles.time}>{formatDate(created_at * 1000, true)}</span>}
