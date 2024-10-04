@@ -30,5 +30,4 @@ export const {
   useDeleteFileMutation,
   useSendMessageMutation,
   useMessagesListQuery,
-  useLazyDownloadFileQuery,
 } = chatApi;

@@ -1,9 +1,8 @@
 import styles from './Message.module.css';
-import { useLazyDownloadFileQuery } from '@/app/api';
 import { ActiveMessage, ActiveUserMessage, MessageFull, MessageListItem } from '@/app/api/types/chat.ts';
+import File from '@/features/message/File.tsx';
 import RobotIcon from '@/shared/assets/icons/logo-msg.svg?react';
 import UserIcon from '@/shared/assets/icons/user-msg.svg?react';
-import { TOAST_ERROR } from '@/shared/constants/toasts.ts';
 import { formatDate } from '@/shared/utils/formatDate.ts';
 import { useEffect, useState } from 'react';
 import { remark } from 'remark';
@@ -72,9 +71,8 @@ const Message = ({ data, chatId }: Props) => {
   const isAssistant = role === 'assistant';
 
   useEffect(() => {
-    // TODO: тут как-то по-другому скорее всего надо обрабатывать (content?.[0]?.text?.value)
-    parseMarkdown(content?.[0]?.text?.value).then((res) => setText(res));
-  }, []);
+    parseMarkdown(content?.find((elem) => elem.type === 'text')?.text?.value as string).then((res) => setText(res));
+  }, [content]);
 
   return (
     <div className={`${styles.wrapper} ${styles[isAssistant ? 'robot' : 'user']}`}>
@@ -92,44 +90,3 @@ const Message = ({ data, chatId }: Props) => {
 };
 
 export default Message;
-
-const File = ({ files, chatId }: { files: { file_id: string }[]; chatId: string | null }) => {
-  const [download] = useLazyDownloadFileQuery();
-  const [isLoadingId, setIsLoadingId] = useState<null | string>(null);
-
-  const onClick = (file_id: string) => {
-    if (!chatId) {
-      TOAST_ERROR('Ошибка нахождения ID файла, перезагрузите страницу и попробуйте заново!');
-      return;
-    }
-    setIsLoadingId(file_id);
-    download({ file_id, chat_id: +chatId })
-      .unwrap()
-      .then((res) => {
-        if (res?.success) {
-          // TODO: доделать после того как починят бек
-        } else {
-          throw new Error(res?.msg);
-        }
-      })
-      .catch((err) => {
-        TOAST_ERROR(`Ошибка скачивания файла (${err?.data?.msg || 'Не найден'}), обратитесь в поддержку!`);
-      })
-      .finally(() => setIsLoadingId(null));
-  };
-
-  return (
-    <>
-      {files.map(({ file_id }, idx) => (
-        <button
-          key={file_id}
-          disabled={isLoadingId === file_id}
-          className={styles.file}
-          onClick={() => onClick(file_id)}
-        >
-          {isLoadingId === file_id ? 'Загрузка...' : `Скачать файл: ${idx + 1}`}
-        </button>
-      ))}
-    </>
-  );
-};
