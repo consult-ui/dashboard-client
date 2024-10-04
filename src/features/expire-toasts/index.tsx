@@ -5,18 +5,16 @@ import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 
 type Props = {
-  user: Me['data'] | undefined;
+  user: Me['data'];
 };
 const cookieKey = 'user-expire-toast-showed';
 const threeDaysInMs = 3 * 24 * 60 * 60 * 1000;
 
 const ExpireToasts = ({ user }: Props) => {
-  if (!user) return null;
-
-  const userExpireTimestamp = Date.parse(user.expiration_date);
-  const nowTimestamp = Date.now();
-
   useEffect(() => {
+    const userExpireTimestamp = Date.parse(user.expiration_date);
+    const nowTimestamp = Date.now();
+
     if (userExpireTimestamp < nowTimestamp + threeDaysInMs && !Cookies.get(cookieKey)) {
       TOAST_INFO(
         `Ваша подписка закончится ${formatDate(user.expiration_date)}, обратитесь в поддержку, для ее продления`,

@@ -4,7 +4,7 @@ import File from '@/features/message/File.tsx';
 import RobotIcon from '@/shared/assets/icons/logo-msg.svg?react';
 import UserIcon from '@/shared/assets/icons/user-msg.svg?react';
 import { formatDate } from '@/shared/utils/formatDate.ts';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { remark } from 'remark';
 import html from 'remark-html';
 
@@ -12,8 +12,22 @@ type Props = {
   data: ActiveMessage | MessageListItem;
   chatId: string | null;
 };
+type PropsActive = {
+  data: ActiveMessage;
+  parseMarkdown: (value: string) => Promise<string>;
+};
+type PropsOld = {
+  data: MessageFull;
+  parseMarkdown: (value: string) => Promise<string>;
+  chatId: string | null;
+};
 
 const Message = ({ data, chatId }: Props) => {
+  const parseMarkdown = useCallback(async (markdownText: string) => {
+    const file = await remark().use(html).process(markdownText);
+    return String(file);
+  }, []);
+
   if (data.role === 'active_user_message') {
     const { text, created_at } = data as ActiveUserMessage;
     const files = (data as ActiveUserMessage)?.files_count;
@@ -36,38 +50,41 @@ const Message = ({ data, chatId }: Props) => {
     );
   }
 
-  async function parseMarkdown(markdownText: string) {
-    const file = await remark().use(html).process(markdownText);
-    return String(file);
-  }
-
   if (data.role === 'active_message') {
-    const [text, setText] = useState<string | TrustedHTML>('');
-    const { text: value, is_request_load } = data as ActiveMessage;
-
-    useEffect(() => {
-      parseMarkdown(value).then((res) => setText(res));
-    }, [data]);
-
-    return (
-      <div className={`${styles.wrapper} ${styles.robot}`}>
-        <div className={styles.message}>
-          <RobotIcon />
-          <div>
-            {is_request_load ? (
-              <div>Дайте мне пару секунд на размышление...</div>
-            ) : (
-              <div dangerouslySetInnerHTML={{ __html: text }} />
-            )}
-          </div>
-        </div>
-        <span className={styles.time}>Только что</span>
-      </div>
-    );
+    return <ActMessage data={data as ActiveMessage} parseMarkdown={parseMarkdown} />;
   }
 
+  return <OldMessage data={data as MessageFull} parseMarkdown={parseMarkdown} chatId={chatId} />;
+};
+
+const ActMessage = ({ data, parseMarkdown }: PropsActive) => {
   const [text, setText] = useState<string | TrustedHTML>('');
-  const { role, created_at, content, attachments } = data as MessageFull;
+  const { text: value, is_request_load } = data;
+
+  useEffect(() => {
+    parseMarkdown(value).then((res) => setText(res));
+  }, [data]);
+
+  return (
+    <div className={`${styles.wrapper} ${styles.robot}`}>
+      <div className={styles.message}>
+        <RobotIcon />
+        <div>
+          {is_request_load ? (
+            <div>Дайте мне пару секунд на размышление...</div>
+          ) : (
+            <div dangerouslySetInnerHTML={{ __html: text }} />
+          )}
+        </div>
+      </div>
+      <span className={styles.time}>Только что</span>
+    </div>
+  );
+};
+
+const OldMessage = ({ data, parseMarkdown, chatId }: PropsOld) => {
+  const [text, setText] = useState<string | TrustedHTML>('');
+  const { role, created_at, content, attachments } = data;
   const isAssistant = role === 'assistant';
 
   useEffect(() => {

@@ -13,10 +13,6 @@ import { useParams } from 'react-router-dom';
 const Chat = () => {
   const { chatId } = useParams();
 
-  if (!chatId) {
-    return <ErrorAlert text={'Чат не найден, пожалуйста, попробуйте другой запрос или обратитесь в поддержку'} />;
-  }
-
   const [activeMessage, setActiveMessage] = useState<ActiveMessage>(ActiveMessageInitial);
   const [messages, setMessages] = useState<MessageListItem[]>([]);
   const { data: oldMessages, isLoading } = useMessagesListQuery(
@@ -27,6 +23,10 @@ const Chat = () => {
 
   // чистим сообщения которые храним локально при смене чата (они там подгрузятся с бека)
   useEffect(() => setMessages([]), [chatId]);
+
+  if (!chatId) {
+    return <ErrorAlert text={'Чат не найден, пожалуйста, попробуйте другой запрос или обратитесь в поддержку'} />;
+  }
 
   if (isLoading) return <SuspenseLoader />;
 

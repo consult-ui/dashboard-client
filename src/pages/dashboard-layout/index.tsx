@@ -48,7 +48,7 @@ const DashboardLayout = ({ children }: Props) => {
     <div className={styles.wrapper}>
       <Sidebar />
       <Suspense fallback={undefined}>
-        <ExpireToasts user={data?.data} />
+        {data?.data && <ExpireToasts user={data?.data} />}
         <CompanyInitialForm />
       </Suspense>
       <div className={`${styles.content} ${isEmptyOrg ? styles.withAlert : ''}`}>
