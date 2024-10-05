@@ -1,4 +1,5 @@
 import styles from './AdviceAnalysis.module.css';
+import { useAdviceQuery } from '@/app/api';
 import AdviceModal from '@/entities/advice-analysis /modals/AdviceModal.tsx';
 import Blobs from '@/shared/assets/images/blobs.svg?react';
 import Coffee from '@/shared/assets/images/coffee.svg?react';
@@ -7,6 +8,11 @@ import { useState } from 'react';
 
 const AdviceAnalysis = () => {
   const [isOpenAdvice, setIsOpenAdvice] = useState(false);
+  const {
+    data: advice,
+    isLoading: loadEdvice,
+    isError: errAdvice,
+  } = useAdviceQuery(undefined, { skip: !isOpenAdvice });
 
   return (
     <div className={styles.wrapper}>
@@ -32,7 +38,11 @@ const AdviceAnalysis = () => {
         </div>
       </div>
 
-      <AdviceModal isOpen={isOpenAdvice} onClose={() => setIsOpenAdvice(false)} />
+      <AdviceModal
+        isOpen={isOpenAdvice}
+        onClose={() => setIsOpenAdvice(false)}
+        data={{ data: advice?.data, isError: errAdvice, isLoading: loadEdvice }}
+      />
     </div>
   );
 };

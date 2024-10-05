@@ -1,5 +1,4 @@
 import styles from '../AdviceAnalysis.module.css';
-import { useAdviceQuery } from '@/app/api';
 import ErrorAlert from '@/shared/ui/error-alert';
 import { ModalGeneral } from '@/shared/ui/modal-general';
 import SuspenseLoader from '@/shared/ui/suspense-loader';
@@ -10,10 +9,14 @@ import html from 'remark-html';
 type Props = {
   isOpen: boolean;
   onClose: () => void;
+  data: {
+    data: string | undefined;
+    isError: boolean;
+    isLoading: boolean;
+  };
 };
 
-const AdviceModal = ({ isOpen, onClose }: Props) => {
-  const { data, isError, isLoading } = useAdviceQuery(undefined, { skip: !isOpen });
+const AdviceModal = ({ isOpen, onClose, data: { data, isLoading, isError } }: Props) => {
   const [text, setText] = useState<string | TrustedHTML>('');
 
   const parseMarkdown = async (markdownText: string) => {
@@ -22,9 +25,9 @@ const AdviceModal = ({ isOpen, onClose }: Props) => {
   };
 
   useEffect(() => {
-    if (!data?.data) return;
-    parseMarkdown(data.data).then((res) => setText(res));
-  }, [data?.data]);
+    if (!data) return;
+    parseMarkdown(data).then((res) => setText(res));
+  }, [data]);
 
   return (
     <ModalGeneral open={isOpen} onClose={onClose} title="Совет дня" gradient>
