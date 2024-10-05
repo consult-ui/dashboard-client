@@ -7,4 +7,5 @@ export interface Props {
   visibleCloseButton?: boolean;
   onClose: () => void;
   open: boolean;
+  gradient?: boolean;
 }

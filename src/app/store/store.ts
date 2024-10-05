@@ -1,5 +1,6 @@
 import layoutSlice from './slices/layoutSlice.ts';
 import chatApi from '@/app/api/api-list/chat.ts';
+import etcApi from '@/app/api/api-list/etc.ts';
 import organizationsApi from '@/app/api/api-list/organizations.ts';
 import userApi from '@/app/api/api-list/user.ts';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   [userApi.reducerPath]: userApi.reducer,
   [organizationsApi.reducerPath]: organizationsApi.reducer,
   [chatApi.reducerPath]: chatApi.reducer,
+  [etcApi.reducerPath]: etcApi.reducer,
 });
 
 const persistConfig = {
@@ -30,7 +32,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(userApi.middleware, organizationsApi.middleware, chatApi.middleware),
+    }).concat(userApi.middleware, organizationsApi.middleware, chatApi.middleware, etcApi.middleware),
 });
 
 export const persistedStore = persistStore(store);

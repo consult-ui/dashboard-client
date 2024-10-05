@@ -7,12 +7,14 @@
   padding: 10px 20px;
   position: relative;
 
+  text-align: left;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   background: var(--border-color);
   border-radius: 16px;
+  border: none;
   overflow: hidden;
   transition: 0.15s;
 }
@@ -51,6 +53,20 @@
 .block:last-child .blobs {
   top: 1rem;
   right: -1rem;
+}
+
+/*modal*/
+.modalBody {
+  width: 600px;
+  min-height: 120px;
+  padding-bottom: 3em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalBody > .text {
+  width: 100%;
 }
 
 /*media*/

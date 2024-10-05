@@ -7,7 +7,17 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 export const ModalGeneral = (props: Props) => {
-  const { open, onClose, title, styles: stylesProps, zIndex, visibleCloseButton = true, className, children } = props;
+  const {
+    gradient,
+    open,
+    onClose,
+    title,
+    styles: stylesProps,
+    zIndex,
+    visibleCloseButton = true,
+    className,
+    children,
+  } = props;
   const [container] = useState<HTMLDivElement>(document.createElement('div'));
   const ref = useRef<HTMLDivElement | null>(null);
 
@@ -50,7 +60,11 @@ export const ModalGeneral = (props: Props) => {
 
   return createPortal(
     <div style={{ ...customStyles.overlay, zIndex: zIndex ?? customStyles.overlay.zIndex }}>
-      <div ref={ref} style={{ ...customStyles.content, ...stylesProps }} className={styles.wrapper}>
+      <div
+        ref={ref}
+        style={{ ...customStyles.content, ...stylesProps }}
+        className={`${styles.wrapper} ${gradient ? styles.gradient : ''}`}
+      >
         <header className={styles.header}>
           <h3>{title}</h3>
           {visibleCloseButton && (

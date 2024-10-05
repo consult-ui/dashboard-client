@@ -1,4 +1,5 @@
 import chatApi from '@/app/api/api-list/chat.ts';
+import etcApi from '@/app/api/api-list/etc.ts';
 import organizationsApi from '@/app/api/api-list/organizations.ts';
 import userApi from '@/app/api/api-list/user.ts';
 
@@ -32,3 +33,5 @@ export const {
   useMessagesListQuery,
   useQuestionsListQuery,
 } = chatApi;
+
+export const { useAdviceQuery } = etcApi;

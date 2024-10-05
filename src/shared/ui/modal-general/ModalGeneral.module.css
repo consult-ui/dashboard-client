@@ -1,4 +1,8 @@
-.wrapper {
+.wrapper.gradient {
+  background-image: url('/src/shared/assets/images/modal-gradient.png');
+  background-position: right bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .wrapper::-webkit-scrollbar {
   width: 12px;
