@@ -22,3 +22,10 @@
   color: var(--primary);
   font-weight: inherit;
 }
+
+/*media*/
+@media (max-width: 1400px) {
+  .button {
+    white-space: nowrap;
+  }
+}

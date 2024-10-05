@@ -13,11 +13,12 @@ import {
 import { setPrintMessage } from '@/app/store/slices/layoutSlice.ts';
 import { useAppDispatch } from '@/app/store/store.ts';
 import { isFileIsImage } from '@/features/chat-input/utils';
+import PopularQuestions from '@/features/popular-questions';
 import Arrow from '@/shared/assets/icons/arrow-top.svg?react';
 import Clip from '@/shared/assets/icons/clip.svg?react';
 import { TOAST_ERROR } from '@/shared/constants/toasts.ts';
 import ModalFileUpload from '@/widgets/modal-file-upload';
-import { Dispatch, FormEvent, SetStateAction, useState } from 'react';
+import { Dispatch, FormEvent, SetStateAction, useRef, useState } from 'react';
 import { Tooltip } from 'react-tooltip';
 
 type Props = {
@@ -32,9 +33,19 @@ const ChatInput = ({ chatId, setMessages, setActiveMessage }: Props) => {
   const [text, setText] = useState('');
   const [send, { isLoading }] = useSendMessageMutation();
   const dispatch = useAppDispatch();
+  const submitRef = useRef<null | HTMLButtonElement>(null);
+
+  const onClickQuestion = (quest: string) => {
+    if (!submitRef?.current) {
+      TOAST_ERROR('Ошибка отправки быстрого запроса, попробуйте еще раз');
+      return;
+    }
+    setText(quest);
+    setTimeout(() => submitRef?.current?.click(), 10);
+  };
 
   const onSubmit = (e: FormEvent) => {
-    e.preventDefault();
+    e?.preventDefault();
     dispatch(setPrintMessage(true));
     const images: ImageNode[] = files
       .filter((file) => isFileIsImage(file))
@@ -92,43 +103,47 @@ const ChatInput = ({ chatId, setMessages, setActiveMessage }: Props) => {
   };
 
   return (
-    <form onSubmit={onSubmit} className={styles.wrapper}>
-      <button
-        disabled={isLoading}
-        className={styles.button}
-        type="button"
-        data-tooltip-id="tooltip-add-file"
-        data-tooltip-content={files.length ? 'Редактировать список файлов' : 'Прикрепить файлы'}
-        onClick={() => setIsFileUploadOpen(true)}
-      >
-        <div className={styles.chipWrapper}>
-          {!!files.length && <span>{files.length}</span>}
-          <Clip />
-        </div>
-      </button>
-      <Tooltip id="tooltip-add-file" />
+    <>
+      <PopularQuestions chatId={chatId} onClick={onClickQuestion} />
 
-      <input
-        disabled={isLoading}
-        required
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder={`Введите сообщение для помощника ${files.length ? ' (Файлы будут прикреплены к сообщению)' : ''}`}
-      />
-
-      {!isLoading && (
-        <button disabled={!text} className={styles.button} type="submit">
-          {isLoading ? '...' : <Arrow />}
+      <form onSubmit={onSubmit} className={styles.wrapper}>
+        <button
+          disabled={isLoading}
+          className={styles.button}
+          type="button"
+          data-tooltip-id="tooltip-add-file"
+          data-tooltip-content={files.length ? 'Редактировать список файлов' : 'Прикрепить файлы'}
+          onClick={() => setIsFileUploadOpen(true)}
+        >
+          <div className={styles.chipWrapper}>
+            {!!files.length && <span>{files.length}</span>}
+            <Clip />
+          </div>
         </button>
-      )}
+        <Tooltip id="tooltip-add-file" />
 
-      <ModalFileUpload
-        files={files}
-        open={isFileUploadOpen}
-        onClose={() => setIsFileUploadOpen(false)}
-        setFiles={setFiles}
-      />
-    </form>
+        <input
+          disabled={isLoading}
+          required
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder={`Введите сообщение для помощника ${files.length ? ' (Файлы будут прикреплены к сообщению)' : ''}`}
+        />
+
+        {!isLoading && (
+          <button disabled={!text} className={styles.button} type="submit" ref={submitRef}>
+            <Arrow />
+          </button>
+        )}
+
+        <ModalFileUpload
+          files={files}
+          open={isFileUploadOpen}
+          onClose={() => setIsFileUploadOpen(false)}
+          setFiles={setFiles}
+        />
+      </form>
+    </>
   );
 };
 

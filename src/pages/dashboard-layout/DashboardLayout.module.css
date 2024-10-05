@@ -14,3 +14,13 @@
 .main {
   overflow-y: auto;
 }
+
+/*media*/
+@media (max-width: 1400px) {
+  .content {
+    grid-template-rows: 52px 1fr;
+  }
+  .content.withAlert {
+    grid-template-rows: 52px 50px 1fr;
+  }
+}

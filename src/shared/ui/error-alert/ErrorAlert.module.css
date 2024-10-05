@@ -9,5 +9,16 @@
   margin-top: 0.75em;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 0.75em;
+}
+
+/*media*/
+@media (max-width: 1400px) {
+  .wrapper {
+    padding: 0.65em;
+  }
+  .wrapper > p {
+    font-size: 14px;
+  }
 }

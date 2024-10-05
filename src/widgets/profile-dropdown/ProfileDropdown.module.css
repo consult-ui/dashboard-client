@@ -45,3 +45,13 @@
 .dropdown > li > a:hover {
   opacity: 0.65;
 }
+
+/*media*/
+@media (max-width: 1400px) {
+  .dropdown > li {
+    padding: 0.45em 0.75em;
+  }
+  .dropdown > li > a {
+    font-size: 14px;
+  }
+}

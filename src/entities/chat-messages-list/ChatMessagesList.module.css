@@ -9,3 +9,11 @@
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
+
+/* media */
+@media (max-width: 1400px) {
+  .wrapper {
+    padding: 1.5em 0;
+    gap: 2.25em;
+  }
+}

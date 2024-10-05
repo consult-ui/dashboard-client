@@ -7,6 +7,7 @@ import {
   MessagesList,
   MessageStream,
   OnChunkMessage,
+  QuestionsList,
   SendMessagePayload,
 } from '@/app/api/types/chat.ts';
 import { createApi } from '@reduxjs/toolkit/query/react';
@@ -62,6 +63,9 @@ const chatApi = createApi({
     }),
     messagesList: builder.query<MessagesList, { chat_id: number }>({
       query: (query) => `/chat/${query.chat_id}/messages`,
+    }),
+    questionsList: builder.query<QuestionsList, { chat_id: number }>({
+      query: (query) => `/chat/${query.chat_id}/questions`,
     }),
     sendMessage: builder.mutation<void, { chat_id: number; body: SendMessagePayload; onChunk: OnChunkMessage }>({
       query: (body: { chat_id: number; body: SendMessagePayload; onChunk: OnChunkMessage }) => ({

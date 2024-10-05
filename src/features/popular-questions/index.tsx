@@ -1,22 +1,27 @@
 import styles from './PopularQuestions.module.css';
+import { useQuestionsListQuery } from '@/app/api';
 import Button from '@/shared/ui/button';
 
-const data = [
-  'Есть ли смысл в продажах?',
-  'Как провести опрос?',
-  'Как рассчитать маржу?',
-  'Сколько сейчас времени?',
-  'Сколько у нас сотрудников?',
-  'Как поднять выручку?',
-  'Нужен список поставщиков',
-];
+type Props = {
+  chatId: string;
+  onClick: (value: string) => void;
+};
 
-const PopularQuestions = () => {
+const PopularQuestions = ({ chatId, onClick }: Props) => {
+  const { data } = useQuestionsListQuery({ chat_id: Number(chatId) });
+
+  if (!data?.data?.length) return <div />;
+
   return (
     <nav className={styles.wrapper}>
-      {data.map((elem) => (
-        <Button color="dark" key={elem} style={{ whiteSpace: 'nowrap', color: 'var(--primary)' }}>
-          {elem}
+      {data?.data?.map((quest) => (
+        <Button
+          onClick={() => onClick(quest)}
+          color="dark"
+          key={quest}
+          style={{ whiteSpace: 'nowrap', color: 'var(--primary)' }}
+        >
+          {quest}
         </Button>
       ))}
     </nav>

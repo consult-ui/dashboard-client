@@ -52,3 +52,17 @@
   top: 1rem;
   right: -1rem;
 }
+
+/*media*/
+@media (max-width: 1400px) {
+  .block {
+    padding: 10px 15px;
+  }
+  .block > div > h6 {
+    font-weight: 700;
+  }
+  .block > svg,
+  .block > div > small {
+    display: none;
+  }
+}

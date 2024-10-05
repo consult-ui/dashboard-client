@@ -29,6 +29,15 @@
   color: var(--gray-light);
 }
 
+/* media */
+@media (max-width: 1400px) {
+  .wrapper {
+    padding: 0 1.5em 0.75em;
+  }
+  .empty > h3 {
+    font-size: 28px;
+  }
+}
 @media (max-width: 1200px) {
   .empty > h3 {
     font-size: 24px;

@@ -19,7 +19,7 @@ const Sidebar = () => {
       <div className={styles.body}>
         <AdviceAnalysis />
         <div className={styles.chatsTitle}>
-          <p>Искусственные помощники</p>
+          <p>Виртуальные помощники</p>
           <div className={styles.line} />
         </div>
         <ChatsList />

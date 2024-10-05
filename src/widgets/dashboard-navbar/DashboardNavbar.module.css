@@ -26,3 +26,13 @@
   font-weight: 400;
   color: var(--gray-light);
 }
+
+/*media*/
+@media (max-width: 1400px) {
+  .info > h6 {
+    font-size: 15px;
+  }
+  .info > h6 > span {
+    font-size: 10px;
+  }
+}

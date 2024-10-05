@@ -94,3 +94,7 @@ export const ActiveMessageInitial: ActiveMessage = {
 export interface MessagesList extends ServerResponse {
   data: MessageFull[];
 }
+
+export interface QuestionsList extends ServerResponse {
+  data: string[];
+}

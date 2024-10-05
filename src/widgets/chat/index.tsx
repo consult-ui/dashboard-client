@@ -3,7 +3,6 @@ import { useMessagesListQuery } from '@/app/api';
 import { ActiveMessage, ActiveMessageInitial, MessageListItem } from '@/app/api/types/chat.ts';
 import ChatMessagesList from '@/entities/chat-messages-list';
 import ChatInput from '@/features/chat-input';
-import PopularQuestions from '@/features/popular-questions';
 import ErrorAlert from '@/shared/ui/error-alert';
 import SuspenseLoader from '@/shared/ui/suspense-loader';
 import AddChatList from '@/widgets/add-chat-list';
@@ -50,7 +49,6 @@ const Chat = () => {
           <AddChatList />
         </div>
       )}
-      <PopularQuestions />
       <ChatInput chatId={chatId} setActiveMessage={setActiveMessage} setMessages={setMessages} />
     </div>
   );

@@ -59,3 +59,23 @@
 .buttons > a > button:hover {
   border-color: var(--white);
 }
+
+/*media*/
+@media (max-width: 1400px) {
+  .wrapper {
+    padding: 0 1em;
+  }
+  .text {
+    padding: 0 0.5em;
+    font-size: 14px;
+  }
+  .buttons > a > button {
+    height: 36px;
+    font-size: 13px;
+    gap: 5px;
+  }
+  .buttons > a > button > svg {
+    width: 20px;
+    height: 20px;
+  }
+}
