@@ -74,26 +74,48 @@ const chatApi = createApi({
         body: body.body,
         responseHandler: async (res) => {
           const reader = res.body?.getReader();
-          let done, value;
+          let done = false;
+          let incompleteChunk = '';
           while (!done) {
-            ({ value, done } = await (reader as ReadableStreamDefaultReader).read());
-            const decodedValue = new TextDecoder().decode(value);
-            const lines = decodedValue.split('\n');
-            const result = {};
+            const { value, done: streamDone } = await (reader as ReadableStreamDefaultReader).read();
+            done = streamDone;
 
-            lines.forEach((line) => {
-              const [key, ...rest] = line.split(': ');
-              const value = rest.join(': ').trim(); // Соединяем обратно, если есть дополнительные двоеточия в значении
-              if (!key || !value) return; // Проверка, что ключ и значение существуют
+            if (value) {
+              const decodedValue = new TextDecoder().decode(value);
+              const fullData = incompleteChunk + decodedValue; // Добавляем предыдущий незавершенный кусок
+              const lines = fullData.split('\n');
+              incompleteChunk = lines.pop() || ''; // Сохраняем последнюю строку, если она неполная
+
+              const result = {};
+
+              lines.forEach((line) => {
+                try {
+                  const [key, ...rest] = line.split(': ');
+                  const value = rest.join(': ').trim();
+                  if (!key || !value) return;
+
+                  if (value.startsWith('{')) {
+                    try {
+                      // @ts-expect-error - enable adding new keys to object
+                      result[key] = JSON.parse(value);
+                    } catch (jsonError) {
+                      console.warn(`Ошибка при парсинге JSON для ключа "${key}":`, jsonError);
+                    }
+                  } else {
+                    // @ts-expect-error - enable adding new keys to object
+                    result[key] = value;
+                  }
+                } catch (lineError) {
+                  console.error('Ошибка при обработке строки:', line, lineError);
+                }
+              });
+
               try {
-                // @ts-expect-error - enable adding new keys to object
-                result[key] = value.startsWith('{') ? JSON.parse(value) : value;
-              } catch (error) {
-                console.error(`Ошибка при парсинге значения для ключа "${key}":`, error);
+                body.onChunk(result as MessageStream);
+              } catch (chunkError) {
+                console.error('Ошибка при обработке чанка данных:', chunkError);
               }
-            });
-
-            body.onChunk(result as MessageStream);
+            }
           }
         },
       }),
