@@ -37,6 +37,7 @@
 .header > button {
   display: none;
   width: 32px;
+  padding: 0;
   aspect-ratio: 1;
   align-items: center;
   justify-content: center;

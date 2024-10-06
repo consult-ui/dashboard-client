@@ -33,10 +33,14 @@
   display: none;
   flex-direction: column;
 }
+.logoWrapper {
+  display: none;
+}
 
 .navButton {
   display: none;
   width: 32px;
+  padding: 0;
   aspect-ratio: 1;
   align-items: center;
   justify-content: center;
@@ -67,5 +71,8 @@
   }
   .activeChatWrapper {
     display: flex;
+  }
+  .logoWrapper {
+    display: inline-flex;
   }
 }

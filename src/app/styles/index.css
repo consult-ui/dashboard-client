@@ -136,6 +136,9 @@ input:disabled {
   html {
     font-size: 14px;
   }
+  body {
+    height: 100dvh;
+  }
   *::-webkit-scrollbar {
     width: 12px;
   }

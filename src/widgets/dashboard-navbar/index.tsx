@@ -1,13 +1,17 @@
 import styles from './DashboardNavbar.module.css';
+import { ELinks } from '@/app/router/types';
 import ChatsList from '@/entities/chats-list';
 import { useGetInfoOrganization } from '@/entities/company/hooks/useGetInfoOrganization.tsx';
+import Logo from '@/shared/assets/icons/logo.svg?react';
 import NavIcon from '@/shared/assets/icons/nav.svg?react';
 import ProfileDropdown from '@/widgets/profile-dropdown';
 import { useSidebarShow } from '@/widgets/sidebar/hooks/useSidebarShow.ts';
+import { Link, useLocation } from 'react-router-dom';
 
 const DashboardNavbar = () => {
   const { data } = useGetInfoOrganization();
   const { setIsShow } = useSidebarShow();
+  const { pathname } = useLocation();
 
   return (
     <nav className={styles.wrapper} data-testid="dashboard-navbar">
@@ -27,9 +31,15 @@ const DashboardNavbar = () => {
         <NavIcon />
       </button>
 
-      <div className={styles.activeChatWrapper}>
-        <ChatsList isActiveChatOnly />
-      </div>
+      {pathname.startsWith(ELinks.DASHBOARD + ELinks.CHAT) ? (
+        <div className={styles.activeChatWrapper}>
+          <ChatsList isActiveChatOnly />
+        </div>
+      ) : (
+        <Link to={ELinks.HOME} className={styles.logoWrapper}>
+          <Logo />
+        </Link>
+      )}
 
       <ProfileDropdown />
     </nav>
