@@ -60,3 +60,10 @@
 .button > button:disabled {
   opacity: 0.65;
 }
+
+/*media*/
+@media (max-width: 768px) {
+  .button {
+    padding: 8px 20px;
+  }
+}
