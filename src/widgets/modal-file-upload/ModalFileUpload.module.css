@@ -61,3 +61,28 @@
   opacity: 0;
   cursor: pointer;
 }
+
+/*media*/
+@media (max-width: 768px) {
+  .wrapper {
+    width: 100%;
+    max-width: 450px;
+  }
+  .drop {
+    position: relative;
+    padding: 8px 15px;
+    gap: 0.75em;
+  }
+  .drop > svg {
+    width: 35px;
+  }
+  .drop > div > h5 {
+    font-size: 14px;
+  }
+  .drop > div > small:last-child {
+    font-size: 10px;
+  }
+  .wrapper > footer {
+    gap: 0.5em;
+  }
+}

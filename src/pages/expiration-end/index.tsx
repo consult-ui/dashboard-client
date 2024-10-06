@@ -1,12 +1,13 @@
+import styles from './ExpirationEnd.module.css';
 import { ELinks } from '@/app/router/types';
 import Button from '@/shared/ui/button';
 import { Link } from 'react-router-dom';
 
 const ExpirationEnd = () => {
   return (
-    <div style={{ width: '100%', maxWidth: 700, display: 'flex', flexDirection: 'column', gap: 8 }}>
+    <div className={styles.wrapper}>
       <h4>Ваша подписка закончилась, напишите в поддержку</h4>
-      <p style={{ color: 'var(--gray-light)' }}>
+      <p>
         Подписка на платформу закончилась, пожалуйста, обратитесь к нашей поодержке, чтобы возобновить доступ к нашему
         сервису. С уважением, команда Consult Ai.
         <br /> <br />
@@ -14,7 +15,7 @@ const ExpirationEnd = () => {
         доступ будет возобновлен в течение 2-3 минут.
       </p>
 
-      <div style={{ display: 'flex', gap: 12, margin: '30px 0 80px' }}>
+      <div className={styles.buttons}>
         <Button>Написать в Telegram</Button>
         <Button>Написать в WhatsApp</Button>
         <Button>Позвонить</Button>
@@ -26,7 +27,7 @@ const ExpirationEnd = () => {
           Перейти к авторизации
         </Button>
       </Link>
-      <p style={{ color: 'var(--gray-light)' }}>
+      <p>
         и зайти в свой аккаунт. Все ваши данные будут сохранены и вы сможете продолжить пользоваться нашей платформой.
       </p>
     </div>

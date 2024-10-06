@@ -8,3 +8,10 @@
   flex-direction: column;
   gap: 1.5rem;
 }
+
+/*media*/
+@media (max-width: 1200px) {
+  .card {
+    padding: 1em;
+  }
+}

@@ -54,3 +54,14 @@
     -webkit-line-clamp: 2;
   }
 }
+@media (max-width: 768px) {
+  .card > header > div > small {
+    font-size: 10px;
+  }
+  .card > header > div > h6 {
+    font-size: 14px;
+  }
+  .card > p {
+    font-size: 12px;
+  }
+}

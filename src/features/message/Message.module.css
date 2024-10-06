@@ -145,3 +145,27 @@
     border-radius: 24px 0 0 24px;
   }
 }
+@media (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+  .time {
+    display: none;
+  }
+  .wrapper > .message {
+    grid-template-columns: 25px 1fr;
+    gap: 0.75em;
+  }
+  .wrapper > .message ol,
+  .wrapper > .message ul {
+    padding-left: 0;
+  }
+  .wrapper > .message > svg {
+    width: 25px;
+    height: 25px;
+  }
+  /*text block with formatted text from sse*/
+  .message > div > div {
+    margin-top: 4px;
+  }
+}

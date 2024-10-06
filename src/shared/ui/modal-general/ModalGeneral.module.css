@@ -1,3 +1,6 @@
+.wrapper {
+  padding: 1.5em;
+}
 .wrapper.gradient {
   background-image: url('/src/shared/assets/images/modal-gradient.png');
   background-position: right bottom;
@@ -33,15 +36,29 @@
 }
 .btnClose {
   width: 40px;
-  height: 40px;
+  aspect-ratio: 1;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 0.75rem;
+  border-radius: 8px;
   padding: 0.55rem 0.5rem !important;
 }
 .content {
   display: flex;
+}
+
+/*media*/
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 1em;
+  }
+  .header > h3 {
+    font-size: 1.15rem;
+  }
+  .btnClose {
+    width: 32px;
+    padding: 0 !important;
+  }
 }

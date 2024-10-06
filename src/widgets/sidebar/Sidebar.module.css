@@ -11,6 +11,7 @@
   border-right: 1px solid var(--border-color);
 
   overflow-y: auto;
+  transition: 0.35s ease;
 }
 .nav::-webkit-scrollbar {
   width: 12px;
@@ -32,6 +33,19 @@
 }
 .header > a {
   margin-top: 8px;
+}
+.header > button {
+  display: none;
+  width: 32px;
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--border-color);
+  border: none;
+}
+.header > button > svg {
+  transform: rotate(180deg);
 }
 
 /*body*/
@@ -69,5 +83,28 @@
   .chatsTitle p {
     margin: 0 0 0.35em 0.5em;
     font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+  .nav {
+    width: 300px;
+    position: fixed;
+    left: -100%;
+    gap: 1em;
+    z-index: 3;
+  }
+  .nav.active {
+    left: 0;
+    box-shadow: var(--dark-static-opac-75) 0 0 0 9999px;
+  }
+  .chatsTitle {
+    margin-top: 0.5em;
+  }
+  .header {
+    padding: 0 1em;
+    justify-content: space-between;
+  }
+  .header > button {
+    display: flex;
   }
 }

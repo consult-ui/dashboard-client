@@ -52,3 +52,13 @@
 .tooltip {
   max-width: 300px;
 }
+
+/*media*/
+@media (max-width: 768px) {
+  .input.sm {
+    font-size: 12px;
+  }
+  .input.md {
+    font-size: 14px;
+  }
+}

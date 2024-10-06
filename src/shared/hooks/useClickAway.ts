@@ -13,6 +13,7 @@ export const useClickAway = (
   };
 
   useEffect(() => {
+    if (!isOpen) return;
     document.addEventListener('mousedown', closeOpenMenus);
     return () => {
       document.removeEventListener('mousedown', closeOpenMenus);

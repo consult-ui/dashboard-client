@@ -6,12 +6,12 @@
   gap: 0.5rem;
 }
 .item > span {
-  font-size: 0.85rem;
+  font-size: 0.85em;
   color: var(--gray-light);
   font-weight: 500;
 }
 .item > p {
-  font-size: 1.15rem;
+  font-size: 1.15em;
   color: var(--white);
   font-weight: 400;
 }
@@ -23,4 +23,17 @@
 .item > h2 > span {
   font-weight: 300;
   font-size: 1rem;
+}
+
+/*media*/
+@media (max-width: 768px) {
+  .item {
+    gap: 0.125em;
+  }
+  .item > p {
+    font-size: 1em;
+  }
+  .item > h2 {
+    font-size: 1.25rem;
+  }
 }

@@ -27,6 +27,24 @@
   color: var(--gray-light);
 }
 
+.activeChatWrapper {
+  width: calc(100% - 32px * 2 - 2em);
+  max-width: 300px;
+  display: none;
+  flex-direction: column;
+}
+
+.navButton {
+  display: none;
+  width: 32px;
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--gray-dark);
+  border: none;
+}
+
 /*media*/
 @media (max-width: 1400px) {
   .info > h6 {
@@ -34,5 +52,20 @@
   }
   .info > h6 > span {
     font-size: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 0 0.75em;
+    background: none;
+  }
+  .info {
+    display: none;
+  }
+  .navButton {
+    display: flex;
+  }
+  .activeChatWrapper {
+    display: flex;
   }
 }

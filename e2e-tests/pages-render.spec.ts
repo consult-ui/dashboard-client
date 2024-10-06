@@ -20,9 +20,16 @@ test('with auth redirect to home page', async ({ page }) => {
 
 test('sign out + redirect to sign in', async ({ page }) => {
   await signIn(page);
-  const dropdownBtn = page.getByTestId('profile-dropdown-btn');
-  await expect(dropdownBtn).toBeVisible();
-  await dropdownBtn.click();
+  const screenWidth = await page.evaluate(() => window.innerWidth);
+  if (screenWidth <= 768) {
+    const dropdownBtnM = page.getByTestId('profile-dropdown-btn-mobile');
+    await expect(dropdownBtnM).toBeVisible();
+    await dropdownBtnM.click();
+  } else {
+    const dropdownBtnD = page.getByTestId('profile-dropdown-btn-desktop');
+    await expect(dropdownBtnD).toBeVisible();
+    await dropdownBtnD.click();
+  }
   const logoutBtn = page.getByTestId('sign-out-modal-btn');
   await expect(logoutBtn).toBeVisible();
   await logoutBtn.click();

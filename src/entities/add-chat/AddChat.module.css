@@ -4,9 +4,10 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+  color: var(--gray-light) !important;
 }
 .button > svg path {
-  stroke: var(--white);
+  stroke: var(--gray-light);
 }
 .button:hover > svg path {
   stroke: var(--primary);

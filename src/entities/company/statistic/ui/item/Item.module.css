@@ -1,5 +1,5 @@
 .item {
-  gap: 0.25rem;
+  gap: 0.25em;
 }
 .item > span {
   max-width: 100%;
@@ -11,7 +11,18 @@
   text-overflow: ellipsis;
 }
 .item > h2 {
-  font-size: 1.5rem;
+  font-size: 1.5em;
   color: var(--white);
   font-weight: 800;
+}
+
+/*media*/
+@media (max-width: 768px) {
+  .item {
+    padding: 1em;
+    gap: 0.125em;
+  }
+  .item > h2 {
+    font-size: 1.25em;
+  }
 }

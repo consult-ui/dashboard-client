@@ -7,3 +7,10 @@
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
 }
+
+/*media*/
+@media (max-width: 1200px) {
+  .items {
+    grid-template-columns: 1fr;
+  }
+}

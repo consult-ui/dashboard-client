@@ -43,8 +43,8 @@ const ModalFileUpload = ({ open, onClose, files, setFiles }: Props) => {
         onClose();
         TOAST_SUCCESS('Файлы успешно добавлены, напишите тело сообщения');
       })
-      .catch(() => {
-        TOAST_ERROR('Ошибка загрузки файлов, обратитесь в поддержку');
+      .catch((err) => {
+        TOAST_ERROR(err?.data?.msg || 'Ошибка загрузки файлов, обратитесь в поддержку');
       })
       .finally(() => setIsLoading(false));
   };

@@ -1,5 +1,5 @@
 .item {
-  gap: 0.25rem !important;
+  gap: 0.25rem;
 }
 .item > span {
   max-width: 100%;
@@ -14,4 +14,19 @@
   font-size: 1.5rem;
   color: var(--white);
   font-weight: 800;
+}
+
+/*media*/
+@media (max-width: 1200px) {
+  .item {
+    gap: 0.125rem;
+  }
+  .item > h2 {
+    font-size: 1.25rem;
+  }
+}
+@media (max-width: 768px) {
+  .item {
+    padding: 1em;
+  }
 }

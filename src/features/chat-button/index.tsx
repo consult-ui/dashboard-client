@@ -10,9 +10,10 @@ import { Link, useParams } from 'react-router-dom';
 
 type Props = {
   chat: ChatItem;
+  isMobStyles?: boolean;
 };
 
-const ChatButton = ({ chat }: Props) => {
+const ChatButton = ({ chat, isMobStyles }: Props) => {
   const params = useParams();
   const [isShow, setIsShow] = useState(false);
   const isPrintMessage = useAppSelector((state) => state.layout.isPrintMessage);
@@ -34,7 +35,7 @@ const ChatButton = ({ chat }: Props) => {
       <Link
         onClick={isPrintMessage ? onStopLink : undefined}
         style={stylesLink()}
-        className={styles.button}
+        className={`${styles.button} ${isMobStyles ? styles.mob : ''}`}
         key={chat.id}
         to={ELinks.DASHBOARD + ELinks.CHAT + `/${chat.id}`}
       >

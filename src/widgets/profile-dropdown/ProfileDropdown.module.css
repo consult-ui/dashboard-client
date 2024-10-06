@@ -3,18 +3,28 @@
   z-index: 5;
 }
 
-.wrapper > button {
+.wrapper > button.fullDropdown {
   display: flex;
   align-items: center;
   gap: 28px;
 }
-.wrapper > button > div {
+.wrapper > button.fullDropdown > div {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-.wrapper > button > div > svg {
+.wrapper > button.fullDropdown > div > svg {
   margin-top: -1px;
+}
+.wrapper > button.mobDropdown {
+  width: 32px;
+  aspect-ratio: 1;
+  padding: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border-color: transparent !important;
+  border-radius: 8px;
 }
 
 .dropdown {
@@ -53,5 +63,17 @@
   }
   .dropdown > li > a {
     font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+  .wrapper > button.fullDropdown {
+    display: none;
+  }
+  .wrapper > button.mobDropdown {
+    display: flex;
+  }
+  .dropdown {
+    width: 200px;
+    right: 0;
   }
 }

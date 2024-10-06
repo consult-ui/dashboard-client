@@ -14,3 +14,20 @@
 .form > footer > button {
   height: 50px;
 }
+
+/*media*/
+@media (max-width: 768px) {
+  .form {
+    width: 100%;
+  }
+  .form > div {
+    flex-direction: column;
+  }
+  .form > footer {
+    grid-template-columns: 1fr;
+    gap: 0.5em;
+  }
+  .form > footer > button {
+    height: auto;
+  }
+}

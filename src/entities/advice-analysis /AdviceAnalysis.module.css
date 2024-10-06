@@ -68,6 +68,10 @@
 .modalBody > .text {
   width: 100%;
 }
+.modalBody > .text > p,
+.modalBody > .text > ul {
+  font-size: 1em;
+}
 
 /*media*/
 @media (max-width: 1400px) {
@@ -80,5 +84,16 @@
   .block > svg,
   .block > div > small {
     display: none;
+  }
+}
+@media (max-width: 768px) {
+  .modalBody {
+    width: 100%;
+  }
+}
+@media (max-width: 425px) {
+  .block > div > h6 {
+    font-size: 14px;
+    text-align: center;
   }
 }

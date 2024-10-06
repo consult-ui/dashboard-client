@@ -88,3 +88,24 @@
   font-weight: 700;
   border-radius: 20px;
 }
+
+/*media*/
+@media (max-width: 768px) {
+  .wrapper > input {
+    padding: 0.5em calc(36px + 0.75em);
+    font-size: 14px;
+  }
+  .button {
+    top: 7px;
+    width: 36px;
+  }
+  .button svg {
+    transform: scale(0.75);
+  }
+  .button:first-child {
+    left: 0.5em;
+  }
+  .button:last-child {
+    right: 0.5em;
+  }
+}

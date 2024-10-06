@@ -20,18 +20,3 @@
   color: var(--gray-light);
   border-bottom: 1px solid var(--border-color);
 }
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.btnContainer {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.main {
-  width: 100%;
-  padding: 1rem;
-}

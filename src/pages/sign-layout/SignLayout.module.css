@@ -4,16 +4,24 @@
 }
 
 .wrapper > section:first-child {
+  width: 768px;
   height: inherit;
-  padding: 5em 5.75%;
+  min-height: 625px;
+  padding: 5em;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   background: var(--gray-dark);
+  overflow-y: auto;
+}
+.wrapper > section:first-child > svg {
+  min-height: 24px;
+  margin-bottom: 2.5em;
 }
 .wrapper > section > small {
+  margin-top: 2.5em;
   font-size: 14px;
   font-weight: 600;
   color: var(--gray-light);
@@ -25,4 +33,27 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: right center;
+}
+
+/*media*/
+@media (max-width: 768px) {
+  .bg {
+    display: none;
+  }
+  .wrapper > section:first-child {
+    padding: 3em;
+  }
+  .wrapper > section:first-child > svg {
+    margin: 0 auto 1.5em;
+  }
+  .wrapper > section > small {
+    margin-top: 1.5em;
+    text-align: center;
+    font-size: 12px;
+  }
+}
+@media (max-width: 450px) {
+  .wrapper > section:first-child {
+    padding: 2em 1.25em;
+  }
 }

@@ -4,8 +4,20 @@
   gap: 12px;
 }
 
+/*media*/
 @media (max-width: 1200px) {
   .wrapper {
     grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 768px) {
+  .wrapper {
+    max-height: 35vh;
+    overflow-y: auto;
+  }
+}
+@media (max-width: 550px) {
+  .wrapper {
+    grid-template-columns: 1fr;
   }
 }

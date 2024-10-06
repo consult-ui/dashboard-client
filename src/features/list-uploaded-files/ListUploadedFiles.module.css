@@ -84,3 +84,38 @@
 .file > button:hover > svg {
   stroke: var(--error);
 }
+
+/*media*/
+@media (max-width: 768px) {
+  .fileList > h6 {
+    font-size: 14px;
+  }
+  .fileList > small {
+    font-size: 12px;
+  }
+  .file {
+    height: 32px;
+    margin: 8px 0;
+    grid-template-columns: 1fr 32px;
+    gap: 8px;
+  }
+  .file > div,
+  .file > button {
+    padding: 0;
+    border-radius: 8px;
+  }
+  .file > div {
+    padding: 0 12px;
+    grid-template-columns: 14px 1fr 60px;
+    gap: 8px;
+  }
+  .file > div > small {
+    font-size: 12px;
+  }
+  .file > div > svg {
+    width: 14px;
+  }
+  .file > button > svg {
+    scale: 1.15;
+  }
+}

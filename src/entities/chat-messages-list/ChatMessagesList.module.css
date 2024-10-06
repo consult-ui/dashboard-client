@@ -17,3 +17,9 @@
     gap: 2.25em;
   }
 }
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 1em 0;
+    gap: 1.5em;
+  }
+}

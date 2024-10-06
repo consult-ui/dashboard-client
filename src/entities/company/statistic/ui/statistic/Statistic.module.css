@@ -13,9 +13,3 @@
   color: var(--gray-light);
   border-bottom: 1px solid var(--border-color);
 }
-
-.editContainer {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}

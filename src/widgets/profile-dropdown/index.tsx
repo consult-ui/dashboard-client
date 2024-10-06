@@ -4,6 +4,7 @@ import LogoutButton from '@/features/logout-button';
 import ThemeSwitcher from '@/features/theme-switcher';
 import Arrow from '@/shared/assets/icons/arrow.svg?react';
 import Icon from '@/shared/assets/icons/lk-icon.svg?react';
+import User from '@/shared/assets/icons/user.svg?react';
 import Users from '@/shared/assets/icons/users.svg?react';
 import { useClickAway } from '@/shared/hooks/useClickAway.ts';
 import Button from '@/shared/ui/button';
@@ -23,13 +24,23 @@ const ProfileDropdown = () => {
         variant="outlined"
         color="dark"
         onClick={() => setIsOpen((prev) => !prev)}
-        data-testid="profile-dropdown-btn"
+        data-testid="profile-dropdown-btn-desktop"
+        className={styles.fullDropdown}
       >
         <div>
           <Icon />
           Личный кабинет
         </div>
         <Arrow />
+      </Button>
+
+      <Button
+        data-testid="profile-dropdown-btn-mobile"
+        onClick={() => setIsOpen((prev) => !prev)}
+        color="dark"
+        className={styles.mobDropdown}
+      >
+        <User />
       </Button>
 
       <ul className={styles.dropdown} hidden={!isOpen}>

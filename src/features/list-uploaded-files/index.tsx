@@ -60,8 +60,8 @@ const ListUploadedFiles = (props: Props) => {
     <div className={styles.fileList}>
       <h6>Загруженные файлы:</h6>
       <small>
-        Если в списке, есть файлы, которые не подходят по критериям загрузки, они <span>не будут загружены</span> в
-        сообщение! Такие файлы имеют красный текст.
+        Если в списке, есть файлы, которые не подходят для загрузки, они <span>не будут загружены!</span> Такие файлы
+        имеют красный текст.
       </small>
       <Tooltip className={styles.tooltip} id="tooltip-file" />
 

@@ -17,6 +17,13 @@
   font-weight: 600;
   transition: 0.15s;
 }
+/*mob styles for elem in nav*/
+.button.mob {
+  height: 32px;
+  padding: 0 20px;
+  border: none;
+  background: var(--gray-dark);
+}
 .button svg {
   stroke: var(--white);
 }

@@ -11,5 +11,23 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 3em;
+}
+
+/*media*/
+@media (max-width: 1400px) {
+  .wrapper > h1 {
+    font-size: 24px;
+  }
+}
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 0.75em;
+  }
+  .wrapper > h1 {
+    font-size: 20px;
+  }
+  .main {
+    gap: 2em;
+  }
 }

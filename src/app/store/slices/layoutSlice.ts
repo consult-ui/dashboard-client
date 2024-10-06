@@ -2,12 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface ILayout {
   theme: 'dark' | 'light';
+  isShowSidebar: boolean;
   isShowOrgModal: boolean;
   isPrintMessage: boolean;
 }
 
 const initialState: ILayout = {
   theme: 'light',
+  isShowSidebar: true,
   isShowOrgModal: false,
   isPrintMessage: false,
 };
@@ -25,8 +27,11 @@ export const layoutSlice = createSlice({
     setPrintMessage: (state, action: PayloadAction<boolean>) => {
       state.isPrintMessage = action.payload;
     },
+    setShowSidebar: (state, action: PayloadAction<boolean>) => {
+      state.isShowSidebar = action.payload;
+    },
   },
 });
 
-export const { switchTheme, setShowOrgModal, setPrintMessage } = layoutSlice.actions;
+export const { switchTheme, setShowOrgModal, setPrintMessage, setShowSidebar } = layoutSlice.actions;
 export default layoutSlice.reducer;

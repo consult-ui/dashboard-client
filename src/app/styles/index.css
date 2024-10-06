@@ -10,10 +10,11 @@
   /*no changed vars*/
   --error: #ff2a2e;
   --warning: #e3a300;
+  --dark-static-opac-75: rgba(33, 33, 33, 0.75);
+  --white-static: #ffffff;
   /*changed vars*/
   --white: #ffffff;
   --primary: #5661f6;
-  --white-static: #ffffff;
   --gray-light: #c2c2c2;
   --border-color: #4c4c4c;
   --dark: #212121;
@@ -128,4 +129,14 @@ input:disabled {
 }
 *::-webkit-scrollbar-thumb:active {
   background: var(--primary);
+}
+
+/*media*/
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
 }

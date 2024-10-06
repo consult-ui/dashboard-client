@@ -23,6 +23,25 @@
 }
 .wrapper > article > p {
   max-width: 350px;
-  font-size: 20px;
+  font-size: 1.25em;
   font-weight: 300;
+}
+
+/*media*/
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+    gap: 1em;
+  }
+  .wrapper > h1 {
+    font-size: 35vw;
+  }
+  .wrapper > article {
+    padding: 1em;
+    border: none;
+    align-items: center;
+  }
+  .wrapper > article > p {
+    text-align: center;
+  }
 }
