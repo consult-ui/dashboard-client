@@ -1,4 +1,7 @@
 import { useSignOutMutation } from '@/app/api';
+import chatApi from '@/app/api/api-list/chat.ts';
+import etcApi from '@/app/api/api-list/etc.ts';
+import orgApi from '@/app/api/api-list/organizations.ts';
 import userApi from '@/app/api/api-list/user.ts';
 import { ELinks } from '@/app/router/types';
 import { useAppDispatch } from '@/app/store/store.ts';
@@ -23,9 +26,15 @@ const LogoutButton = () => {
         if (res.success) {
           Cookies.remove('access_token');
           Cookies.remove('refresh_token');
+          Cookies.remove('x-org-id');
+          sessionStorage.clear();
+          setTimeout(() => {
+            dispatch(userApi.util.resetApiState());
+            dispatch(etcApi.util.resetApiState());
+            dispatch(chatApi.util.resetApiState());
+            dispatch(orgApi.util.resetApiState());
+          }, 500);
           navigate(ELinks.SIGN_IN);
-          // clear cached for user queries
-          setTimeout(() => dispatch(userApi.util.resetApiState()), 500);
         } else {
           throw new Error(res.msg);
         }
