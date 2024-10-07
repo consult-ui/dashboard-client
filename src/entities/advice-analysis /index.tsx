@@ -2,10 +2,8 @@ import styles from './AdviceAnalysis.module.css';
 import { useAdviceQuery } from '@/app/api';
 import AdviceModal from '@/entities/advice-analysis /modals/AdviceModal.tsx';
 import IdeasIcon from '@/shared/assets/icons/idea.svg?react';
-import StatsIcon from '@/shared/assets/icons/stats.svg?react';
 import Blobs from '@/shared/assets/images/blobs.svg?react';
-import Coffee from '@/shared/assets/images/coffee.svg?react';
-import Stats from '@/shared/assets/images/stats.svg?react';
+import Stats from '@/shared/assets/images/coffe.svg?react';
 import { useState } from 'react';
 
 const AdviceAnalysis = () => {
@@ -31,20 +29,6 @@ const AdviceAnalysis = () => {
           <Blobs />
         </div>
       </button>
-
-      <div className={styles.block}>
-        <div>
-          <h6>
-            Анализ отзывов
-            <StatsIcon />
-          </h6>
-          <small>Следите за отзывами не выходя с платформы</small>
-        </div>
-        <Coffee />
-        <div className={styles.blobs}>
-          <Blobs />
-        </div>
-      </div>
 
       <AdviceModal
         isOpen={isOpenAdvice}

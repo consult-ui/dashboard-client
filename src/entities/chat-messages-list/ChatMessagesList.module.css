@@ -1,4 +1,5 @@
 .wrapper {
+  /*position: relative;*/
   padding: 2.25em 0;
 
   display: flex;
@@ -8,6 +9,34 @@
   overflow-y: auto;
   overflow-x: hidden;
   scroll-behavior: smooth;
+}
+
+/*shadow*/
+.shadow {
+  will-change: auto;
+  position: fixed;
+  bottom: 0;
+
+  width: 100%;
+  height: 7.5vh;
+  min-height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(0deg, var(--dark) 0%, var(--dark-opac-50) 66%, rgba(0, 0, 0, 0) 100%);
+
+  transition: opacity 0.35s ease;
+}
+.shadow > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.shadow > button > svg {
+  transform: rotate(180deg) scale(0.85);
 }
 
 /* media */

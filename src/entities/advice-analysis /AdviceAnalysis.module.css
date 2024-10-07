@@ -49,18 +49,15 @@
   overflow: hidden;
 }
 .block > svg {
-  margin: 0 -10px -10px 15px;
+  margin: 0 -20px -10px 15px;
   z-index: 5;
 }
 .blobs {
   position: absolute;
-  right: 0;
   bottom: 0;
-  z-index: 1;
-}
-.block:last-child .blobs {
-  top: 1rem;
+  top: 0;
   right: -1rem;
+  z-index: 1;
 }
 
 /*modal*/
@@ -102,5 +99,10 @@
   }
   .block > .blobs {
     display: none;
+  }
+}
+@media (max-width: 768px) {
+  .modalBody {
+    width: 100%;
   }
 }
